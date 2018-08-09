@@ -414,7 +414,7 @@
           
               <li class="second-level" style="line-height: 20px;" id="sd_40"><a   href="prop-schemafunder.html">schema:funder</a></li>
           
-              <li class="second-level" style="line-height: 20px;" id="sd_41"><a class="active"  href="prop-schemahasoffercatalog.html">schema:hasOfferCatalog</a></li>
+              <li class="second-level" style="line-height: 20px;" id="sd_41"><a   href="prop-schemahasoffercatalog.html">schema:hasOfferCatalog</a></li>
           
               <li class="second-level" style="line-height: 20px;" id="sd_42"><a   href="prop-schemahaspart.html">schema:hasPart</a></li>
           
@@ -510,7 +510,7 @@
           
               <li class="second-level" style="line-height: 20px;" id="sd_88"><a   href="prop-webapisentin.html">webapi:sentIn</a></li>
           
-              <li class="second-level" style="line-height: 20px;" id="sd_89"><a   href="prop-webapitokenformat.html">webapi:tokenFormat</a></li>
+              <li class="second-level" style="line-height: 20px;" id="sd_89"><a class="active"  href="prop-webapitokenformat.html">webapi:tokenFormat</a></li>
           
 
         
@@ -610,7 +610,7 @@
           <a href="entities-tree-properties.html">Properties</a>
     </li>
       <li class="active">
-            http://schema.org/hasOfferCatalog
+            https://actions.semantify.it/vocab/tokenFormat
         </li>
   </ol>
 
@@ -631,7 +631,7 @@
 
             <h1>
 
-                schema:hasOfferCatalog
+                webapi:tokenFormat
                 
                     <small class="label label-info label-xs ">leaf node</small>
                   
@@ -650,7 +650,7 @@
                         <li><a href="entities-tree-properties.html">rdf:Property</a>
 
                           <ul>
-                            <li><a style="font-weight: bold;" title="'hasOfferCatalog' - Indicates an OfferCatalog listing for this Organization, Person, or Service.">schema:hasOfferCatalog</a>
+                            <li><a style="font-weight: bold;" title="'tokenFormat' - Format of the bearer token">webapi:tokenFormat</a>
 
                             
                               </li>
@@ -674,7 +674,7 @@
              </div>
              <div class="panel-body">
 
-                 <code>http://schema.org/hasOfferCatalog</code>
+                 <code>https://actions.semantify.it/vocab/tokenFormat</code>
              </div>
            </div>
             </div></div>
@@ -689,7 +689,7 @@
              </div>
              <div class="panel-body">
 
-                 hasOfferCatalog
+                 tokenFormat
              </div>
            </div>
             </div></div>
@@ -704,7 +704,7 @@
             </div>
             <div class="panel-body">
 
-                Indicates an OfferCatalog listing for this Organization, Person, or Service.
+                Format of the bearer token
             </div>
           </div>
            </div></div>
@@ -735,17 +735,7 @@
                      
                          
                          
-                              <a href="http://schema.org/Person" target="_blank" title="http://schema.org/Person">schema:Person</a>
-                           
-                           , 
-                         
-                         
-                              <a href="http://schema.org/Organization" target="_blank" title="http://schema.org/Organization">schema:Organization</a>
-                           
-                           , 
-                         
-                         
-                              <a href="class-schemaservice.html" title="http://schema.org/Service">schema:Service</a>
+                              <a href="class-webapitokenauthentication.html" title="https://actions.semantify.it/vocab/TokenAuthentication">webapi:TokenAuthentication</a>
                            
                            
                          
@@ -753,14 +743,14 @@
                    </td>
 
                     <td>
-                      schema:hasOfferCatalog
+                      webapi:tokenFormat
                     </td>
 
                     <td>
                       
                           
                           
-                               <a href="http://schema.org/OfferCatalog" target="_blank" title="http://schema.org/OfferCatalog">schema:OfferCatalog</a>
+                               <a href="https://actions.semantify.it/vocab/Text" target="_blank" title="https://actions.semantify.it/vocab/Text">webapi:Text</a>
                              
                             
                           
@@ -798,13 +788,11 @@
 <span class="k">@prefix</span><span class="w"> </span><span class="nn">xml:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/XML/1998/namespace&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
 <span class="k">@prefix</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
 
-<span class="nn">schema:</span><span class="nt">hasOfferCatalog</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">rdf:</span><span class="nt">Property</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nn">rdfs:</span><span class="nt">label</span><span class="w"> </span><span class="s">&quot;hasOfferCatalog&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nn">schema:</span><span class="nt">domainIncludes</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">Organization</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nn">schema:</span><span class="nt">Person</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nn">schema:</span><span class="nt">Service</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nn">schema:</span><span class="nt">rangeIncludes</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">OfferCatalog</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nn">rdfs:</span><span class="nt">comment</span><span class="w"> </span><span class="s">&quot;Indicates an OfferCatalog listing for this Organization, Person, or Service.&quot;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="nn">webapi:</span><span class="nt">tokenFormat</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">rdf:</span><span class="nt">Property</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nn">rdfs:</span><span class="nt">label</span><span class="w"> </span><span class="s">&quot;tokenFormat&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nn">schema:</span><span class="nt">domainIncludes</span><span class="w"> </span><span class="nn">webapi:</span><span class="nt">TokenAuthentication</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nn">schema:</span><span class="nt">rangeIncludes</span><span class="w"> </span><span class="nn">webapi:</span><span class="nt">Text</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nn">rdfs:</span><span class="nt">comment</span><span class="w"> </span><span class="s">&quot;Format of the bearer token&quot;</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
 </pre></div>
 
 
@@ -904,7 +892,7 @@ $('#search-input-sidebar').keyup(function() {
 
     $(document).ready(function (){
       $('#sidebar-wrapper').animate({
-          scrollTop: $("#sd_41").offset().top - 100
+          scrollTop: $("#sd_89").offset().top - 100
       }, 100);
     });
 

@@ -280,6 +280,8 @@
         
         
         
+        <li ><a href="entities-tree-shapes.html">Shapes</a></li>
+        
         <li  ><a href="statistics.html">Statistics</a></li>
 
 
@@ -349,7 +351,7 @@
         
 
         
-            <li class="-second-level" id="sd_properties"><a  href="entities-tree-properties.html">Properties (75)</a>
+            <li class="-second-level" id="sd_properties"><a  href="entities-tree-properties.html">Properties (78)</a>
             </li>
 
             
@@ -504,6 +506,12 @@
           
               <li class="second-level" style="line-height: 20px;" id="sd_86"><a   href="prop-schemaversion.html">schema:version</a></li>
           
+              <li class="second-level" style="line-height: 20px;" id="sd_87"><a   href="prop-webapicredentialstring.html">webapi:credentialString</a></li>
+          
+              <li class="second-level" style="line-height: 20px;" id="sd_88"><a   href="prop-webapisentin.html">webapi:sentIn</a></li>
+          
+              <li class="second-level" style="line-height: 20px;" id="sd_89"><a   href="prop-webapitokenformat.html">webapi:tokenFormat</a></li>
+          
 
         
 
@@ -644,17 +652,23 @@
                 <ul>
                     
 
-                        <li><a href="entities-tree-classes.html">owl:Thing</a>
+                        
+
+                        <li>
+
+                          <a href="class-webapiauthenticationspecification.html" title="'AuthenticationSpecification' - Specification of the authentication method required to perfom the on a web resource.">webapi:AuthenticationSpecification</a>
 
                           <ul>
-                            <li><a style="font-weight: bold;" title="'FormBasedAuthentication' - Custom form-based authentication method specification">webapi:FormBasedAuthentication</a>
 
+                            <li><a style="font-weight: bold;" title="'FormBasedAuthentication' - Custom form-based authentication method specification">webapi:FormBasedAuthentication</a>
                             
                               </li>
 
                           </ul>
 
-                        </li>
+                          </li>
+                        
+
                     
 
                 </ul>
@@ -710,6 +724,21 @@
 
 
            
+            <div class="row"><div class="col-md-12">
+              <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Superclasses (2)</h3>
+            </div>
+            <div class="panel-body">
+
+            
+                    <li><a href="class-webapiauthenticationspecification.html" title="https://actions.semantify.it/vocab/AuthenticationSpecification">webapi:AuthenticationSpecification</a></li><li><a href="class-schemapropertyvalue.html" title="http://schema.org/PropertyValue">schema:PropertyValue</a></li>
+            
+
+            </div>
+          </div>
+           </div></div>
+           
 
 
 
@@ -736,6 +765,305 @@
                 
 
                     
+
+                    
+
+                        <tr class="table-inheritanceinfo">
+                            <th colspan="4" class="treeinfo"><span class="label label-default">From class <a title="webapi:FormBasedAuthentication" href="class-webapiformbasedauthentication.html" class="fromclass_link">webapi:FormBasedAuthentication</a></span>
+                            </th>
+                        </tr>
+
+                            
+                            <tr>
+                                <td class="firsttd">
+                                    <a class="propcolor" title="webapi:sentIn" href="prop-webapisentin.html">webapi:sentIn</a>
+                                </td>
+                                <td class="secondtd">
+                                    <i>rdf:Property<i>
+                                </td>
+                                <td class="thirdtd">
+                                    <span>The part of the HTTP request where the credentials are sent.</span>
+                                </td>
+                                <td class="fourthtd">
+                                    
+                                    
+
+                                        
+                                          <i>webapi:Text</i>
+                                        
+
+
+                                    
+                                    
+                                </td>
+                            </tr>
+
+                            
+
+                    
+
+                    
+
+                
+
+                    
+
+                    
+
+                        <tr class="table-inheritanceinfo">
+                            <th colspan="4" class="treeinfo"><span class="label label-default">From class <a title="schema:PropertyValue" href="class-schemapropertyvalue.html" class="fromclass_link">schema:PropertyValue</a></span>
+                            </th>
+                        </tr>
+
+                            
+                            <tr>
+                                <td class="firsttd">
+                                    <a class="propcolor" title="schema:maxValue" href="prop-schemamaxvalue.html">schema:maxValue</a>
+                                </td>
+                                <td class="secondtd">
+                                    <i>rdf:Property<i>
+                                </td>
+                                <td class="thirdtd">
+                                    <span>The upper value of some characteristic or property.</span>
+                                </td>
+                                <td class="fourthtd">
+                                    
+                                    
+
+                                        
+                                          <i>schema:Number</i>
+                                        
+
+
+                                    
+                                    
+                                </td>
+                            </tr>
+
+                            
+                            <tr>
+                                <td class="firsttd">
+                                    <a class="propcolor" title="schema:minValue" href="prop-schemaminvalue.html">schema:minValue</a>
+                                </td>
+                                <td class="secondtd">
+                                    <i>rdf:Property<i>
+                                </td>
+                                <td class="thirdtd">
+                                    <span>The lower value of some characteristic or property.</span>
+                                </td>
+                                <td class="fourthtd">
+                                    
+                                    
+
+                                        
+                                          <i>schema:Number</i>
+                                        
+
+
+                                    
+                                    
+                                </td>
+                            </tr>
+
+                            
+                            <tr>
+                                <td class="firsttd">
+                                    <a class="propcolor" title="schema:propertyID" href="prop-schemapropertyid.html">schema:propertyID</a>
+                                </td>
+                                <td class="secondtd">
+                                    <i>rdf:Property<i>
+                                </td>
+                                <td class="thirdtd">
+                                    <span>A commonly used identifier for the characteristic represented by the property, e.g. a manufacturer or a standard code for a property. propertyID can be
+(1) a prefixed string, mainly meant to be used with standards for product properties; (2) a site-specific, non-prefixed string (e.g. the primary key of the property or the vendor-specific id of the property), or (3)
+a URL indicating the type of the property, either pointing to an external vocabulary, or a Web resource that describes the property (e.g. a glossary entry).
+Standards bodies should promote a standard prefix for the identifiers of properties from their standards.</span>
+                                </td>
+                                <td class="fourthtd">
+                                    
+                                    
+
+                                        
+                                          <i>schema:Text</i>
+                                        
+
+
+                                    
+
+                                        
+                                          <i>schema:URL</i>
+                                        
+
+
+                                    
+                                    
+                                </td>
+                            </tr>
+
+                            
+                            <tr>
+                                <td class="firsttd">
+                                    <a class="propcolor" title="schema:unitCode" href="prop-schemaunitcode.html">schema:unitCode</a>
+                                </td>
+                                <td class="secondtd">
+                                    <i>rdf:Property<i>
+                                </td>
+                                <td class="thirdtd">
+                                    <span>The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.</span>
+                                </td>
+                                <td class="fourthtd">
+                                    
+                                    
+
+                                        
+                                          <i>schema:URL</i>
+                                        
+
+
+                                    
+
+                                        
+                                          <i>schema:Text</i>
+                                        
+
+
+                                    
+                                    
+                                </td>
+                            </tr>
+
+                            
+                            <tr>
+                                <td class="firsttd">
+                                    <a class="propcolor" title="schema:unitText" href="prop-schemaunittext.html">schema:unitText</a>
+                                </td>
+                                <td class="secondtd">
+                                    <i>rdf:Property<i>
+                                </td>
+                                <td class="thirdtd">
+                                    <span>A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
+&lt;a href=&#39;unitCode&#39;&gt;unitCode&lt;/a&gt;.</span>
+                                </td>
+                                <td class="fourthtd">
+                                    
+                                    
+
+                                        
+                                          <i>schema:Text</i>
+                                        
+
+
+                                    
+                                    
+                                </td>
+                            </tr>
+
+                            
+                            <tr>
+                                <td class="firsttd">
+                                    <a class="propcolor" title="schema:value" href="prop-schemavalue.html">schema:value</a>
+                                </td>
+                                <td class="secondtd">
+                                    <i>rdf:Property<i>
+                                </td>
+                                <td class="thirdtd">
+                                    <span>&lt;p&gt;The value of the quantitative value or property value node.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For &lt;a class=&quot;localLink&quot; href=&quot;http://schema.org/QuantitativeValue&quot;&gt;QuantitativeValue&lt;/a&gt; and &lt;a class=&quot;localLink&quot; href=&quot;http://schema.org/MonetaryAmount&quot;&gt;MonetaryAmount&lt;/a&gt;, the recommended type for values is &#39;Number&#39;.&lt;/li&gt;
+&lt;li&gt;For &lt;a class=&quot;localLink&quot; href=&quot;http://schema.org/PropertyValue&quot;&gt;PropertyValue&lt;/a&gt;, it can be &#39;Text;&#39;, &#39;Number&#39;, &#39;Boolean&#39;, or &#39;StructuredValue&#39;.&lt;/li&gt;
+&lt;/ul&gt;
+</span>
+                                </td>
+                                <td class="fourthtd">
+                                    
+                                    
+
+                                        
+                                          <i>schema:Boolean</i>
+                                        
+
+
+                                    
+
+                                        
+                                          <i>schema:Text</i>
+                                        
+
+
+                                    
+
+                                        
+                                          <i>schema:StructuredValue</i>
+                                        
+
+
+                                    
+
+                                        
+                                          <i>schema:Number</i>
+                                        
+
+
+                                    
+                                    
+                                </td>
+                            </tr>
+
+                            
+                            <tr>
+                                <td class="firsttd">
+                                    <a class="propcolor" title="schema:valueReference" href="prop-schemavaluereference.html">schema:valueReference</a>
+                                </td>
+                                <td class="secondtd">
+                                    <i>rdf:Property<i>
+                                </td>
+                                <td class="thirdtd">
+                                    <span>A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.</span>
+                                </td>
+                                <td class="fourthtd">
+                                    
+                                    
+
+                                        
+                                          <a title="schema:PropertyValue" href="class-schemapropertyvalue.html" class="rdfclass">schema:PropertyValue</a>
+                                        
+
+
+                                    
+
+                                        
+                                          <i>schema:Enumeration</i>
+                                        
+
+
+                                    
+
+                                        
+                                          <i>schema:QuantitativeValue</i>
+                                        
+
+
+                                    
+
+                                        
+                                          <i>schema:QualitativeValue</i>
+                                        
+
+
+                                    
+
+                                        
+                                          <i>schema:StructuredValue</i>
+                                        
+
+
+                                    
+                                    
+                                </td>
+                            </tr>
+
+                            
 
                     
 
@@ -784,7 +1112,7 @@
 <span class="nn">webapi:</span><span class="nt">FormBasedAuthentication</span><span class="w"> </span><span class="kt">a</span><span class="w"> </span><span class="nn">rdfs:</span><span class="nt">Class</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="nn">rdfs:</span><span class="nt">label</span><span class="w"> </span><span class="s">&quot;FormBasedAuthentication&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="nn">rdfs:</span><span class="nt">comment</span><span class="w"> </span><span class="s">&quot;Custom form-based authentication method specification&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="nn">rdfs:</span><span class="nt">subClassOf</span><span class="w"> </span><span class="nn">schema:</span><span class="nt">AuthenticationSpecification</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="w">    </span><span class="nn">rdfs:</span><span class="nt">subClassOf</span><span class="w"> </span><span class="nn">webapi:</span><span class="nt">AuthenticationSpecification</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
 </pre></div>
 
 
@@ -824,7 +1152,7 @@
   <footer class="footer">
     <div class="container">
     
-      <p class="text-muted">Documentation automatically generated on 7th August 2018 with <a href="https://github.com/lambdamusic/OntoDocs">OntoDocs</a> (v1.2.1)</p>
+      <p class="text-muted">Documentation automatically generated on 9th August 2018 with <a href="https://github.com/lambdamusic/OntoDocs">OntoDocs</a> (v1.2.1)</p>
 
     
     </div>

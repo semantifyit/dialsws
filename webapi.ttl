@@ -8,6 +8,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix webapi: <https://actions.semantify.it/vocab/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 
 ##classes
 schema:WebAPI a rdfs:Class ;
@@ -70,7 +71,76 @@ schema:Thing a rdfs:Class ;
     rdfs:label "Thing" ;
     rdfs:comment "The most generic type of item." .
 
+##shapes
 
+webapi:ActionsShape a sh:NodeShape;
+sh:targetClass schema:Action;
+sh:property [
+	sh:path schema:instrument;
+	sh:class webapi:AuthenticationSpecification;
+] .
+
+webapi:FormBasedAuthenticationShape a sh:NodeShape;
+	sh:name "FormBasedAuthenticationShape";
+	sh:description "The shape that defines constraints on the form based authentication descriptions";
+	sh:targetClass webapi:FormBasedAuthentication;
+	sh:property [
+		sh:path webapi:sentIn;
+		sh:in ("header" "body");
+	];
+	sh:property [
+		sh:path schema:name;
+		sh:description "A custom form based authentication must have one name.";
+		sh:class schema:Text;
+		sh:minCount 1;
+		sh:maxCount 1;
+	] .
+
+webapi:AuthenticationSpecificationShape a sh:NodeShape;
+	sh:name "AuthenticationSpecificationShape";
+	sh:description "A shape describing constraints on authentication specifications";
+	sh:targetClass webapi:AuthenticationSpecification;
+	sh:property [
+		sh:path schema:value;
+		sh:description "An authentication specification must have one value.";
+		sh:class schema:Text;
+		sh:minCount 1;
+		sh:maxCount 1;
+	] .
+
+webapi:WebAPIShape a sh:NodeShape;
+	sh:name "WebAPIShape";
+	sh:description "A shape that constrains the WebAPI type.";
+	sh:targetClass schema:WebAPI;
+	sh:property [
+		sh:path schema:documentation;
+		sh:minCount 1;
+		sh:or 
+		(
+			[
+				sh:node schema:DocumentationShape;
+			]
+			[
+				sh:class schema:URL;
+			]
+		)
+	] .
+
+webapi:DocumentationShape a sh:NodeShape;
+	sh:name "DocumentationShape";
+	sh:description "A shape for WebAPI documentation";
+	sh:targetClass schema:CreativeWork;
+	sh:property [
+		sh:path schema:encodingFormat;
+		sh:minCount 1;
+		sh:maxCount 1;
+		sh:in ("application/ld+json" "text/html")
+	];
+	sh:property [
+		sh:path schema:URL;
+		sh:minCount 1;
+		sh:maxCount 1;
+	] .
 
 
 ##properties
@@ -643,3 +713,21 @@ schema:unitCode a rdf:Property ;
 	rdfs:comment "The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon." ;
 	schema:domainIncludes schema:TypeAndQuantityNode , schema:PropertyValue , schema:UnitPriceSpecification ;
 	schema:rangeIncludes schema:URL .
+
+webapi:credentialString a rdf:Property;
+	rdfs:label "credentialString";
+	schema:domainIncludes webapi:HTTPBasicAuthentication;
+	schema:rangeIncludes webapi:Text;
+	rdfs:comment """A base64-encoded string for the HTTP Basic Authentication. See https://en.wikipedia.org/wiki/Basic_access_authentication""".
+
+webapi:sentIn a rdf:Property;
+	rdfs:label "sentIn";
+	schema:domainIncludes webapi:FormBasedAuthentication;
+	schema:rangeIncludes webapi:Text;
+	rdfs:comment "The part of the HTTP request where the credentials are sent.".
+
+webapi:tokenFormat a rdf:Property;
+	rdfs:label "tokenFormat";
+	schema:domainIncludes webapi:TokenAuthentication;
+	schema:rangeIncludes webapi:Text;
+	rdfs:comment "Format of the bearer token".	
