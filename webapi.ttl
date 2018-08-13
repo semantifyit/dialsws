@@ -76,7 +76,7 @@ schema:Thing a rdfs:Class ;
 webapi:ActionsShape a sh:NodeShape;
 sh:targetClass schema:Action;
 sh:property [
-	sh:path schema:instrument;
+	sh:path webapi:authentication;
 	sh:class webapi:AuthenticationSpecification;
 ] .
 
@@ -731,4 +731,11 @@ webapi:tokenFormat a rdf:Property;
 	rdfs:label "tokenFormat";
 	schema:domainIncludes webapi:TokenAuthentication;
 	schema:rangeIncludes webapi:Text;
-	rdfs:comment "Format of the bearer token".	
+	rdfs:comment "Format of the bearer token".
+
+webapi:authentication a rdf:Property;
+	rdfs:label "authentication";
+	schema:domainIncludes webapi:Action;
+	schema:rangeIncludes webapi:AuthenticationSpecification;
+	rdfs:subPropertyOf schema:instrument .
+	rdfs:comment "The authentication specification for the action. "
