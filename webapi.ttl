@@ -118,7 +118,8 @@ webapi:WebAPIShape a sh:NodeShape;
 		sh:or 
 		(
 			[
-				sh:node schema:DocumentationShape;
+				sh:node webapi:DocumentationShape;
+				sh:class schema:CreativeWork;
 			]
 			[
 				sh:nodeKind sh:IRI;
@@ -129,7 +130,7 @@ webapi:WebAPIShape a sh:NodeShape;
 webapi:DocumentationShape a sh:NodeShape;
 	sh:name "DocumentationShape";
 	sh:description "A shape for WebAPI documentation";
-	sh:targetClass schema:CreativeWork;
+	sh:targetObjectsOf schema:documentation;
 	sh:property [
 		sh:path schema:encodingFormat;
 		sh:minCount 1;
