@@ -1,0 +1,38 @@
+{
+    "@context": ["http://schema.org/", "http://actions.semantify.it/vocab/"],
+    "@type": "CreateAction",
+    "name": "Creates new events objects under an organization and returns it as event.",
+    "authentication": {
+        "@type": "HTTPBasicAuthentication",
+        "value-input": "required"
+    },
+    "object": {
+        "@type": "Event",
+        "name-input":"required",
+        "startDate-input":"required",
+        "endDate-input":"required"
+    },
+    "result": {
+        "@type": "Event",
+        "name-input":"required",
+        "startDate-input":"required",
+        "endDate-input":"required",
+        "organizer": {
+            "@type":"Organizer",
+            "identifier-input": "required name=id"
+        },
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency-input": "required" 
+        }
+    },
+    "target": {
+        "@type":"EntryPoint",
+        "urlTemplate": "https://www.eventbriteapi.com/v3/{id}/events/",
+        "encodingType": "application/ld+json",
+        "contentType": "application/ld+json",
+        "httpMethod": "POST"
+    }
+    
+    
+}
