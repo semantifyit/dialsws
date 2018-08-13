@@ -715,12 +715,6 @@ schema:unitCode a rdf:Property ;
 	schema:domainIncludes schema:TypeAndQuantityNode , schema:PropertyValue , schema:UnitPriceSpecification ;
 	schema:rangeIncludes schema:URL .
 
-webapi:credentialString a rdf:Property;
-	rdfs:label "credentialString";
-	schema:domainIncludes webapi:HTTPBasicAuthentication;
-	schema:rangeIncludes webapi:Text;
-	rdfs:comment """A base64-encoded string for the HTTP Basic Authentication. See https://en.wikipedia.org/wiki/Basic_access_authentication""".
-
 webapi:sentIn a rdf:Property;
 	rdfs:label "sentIn";
 	schema:domainIncludes webapi:FormBasedAuthentication;
