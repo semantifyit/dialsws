@@ -729,7 +729,7 @@ webapi:tokenFormat a rdf:Property;
 
 webapi:authentication a rdf:Property;
 	rdfs:label "authentication";
-	schema:domainIncludes webapi:Action;
+	schema:domainIncludes schema:Action;
 	schema:rangeIncludes webapi:AuthenticationSpecification;
-	rdfs:subPropertyOf schema:instrument .
-	rdfs:comment "The authentication specification for the action. "
+	rdfs:subPropertyOf schema:instrument ;
+	rdfs:comment "The authentication specification for the action. " .

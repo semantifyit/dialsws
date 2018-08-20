@@ -13,7 +13,7 @@
     <link rel="icon" href="static/libs/img/favicon.ico">
 
 	
-		<title>OntoDocs > /home/umut/.ontospy/models/webapi.ttl</title>
+		<title>OntoDocs > Schema.org Web API Description Vocabulary</title>
 	
 
     <!-- Bootstrap core CSS -->
@@ -265,7 +265,7 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li ><a href="index.html"><code style="font-size: 115%;">/home/umut/.ontospy/models/webapi.ttl</code></a></li>
+        <li ><a href="index.html"><code style="font-size: 115%;">Schema.org Web API Description Vocabulary</code></a></li>
         
 
        
@@ -506,7 +506,7 @@
           
               <li class="second-level" style="line-height: 20px;" id="sd_86"><a   href="prop-schemaversion.html">schema:version</a></li>
           
-              <li class="second-level" style="line-height: 20px;" id="sd_87"><a   href="prop-webapicredentialstring.html">webapi:credentialString</a></li>
+              <li class="second-level" style="line-height: 20px;" id="sd_87"><a   href="prop-webapiauthentication.html">webapi:authentication</a></li>
           
               <li class="second-level" style="line-height: 20px;" id="sd_88"><a   href="prop-webapisentin.html">webapi:sentIn</a></li>
           
@@ -743,6 +743,21 @@
 
 
           
+           <div class="row"><div class="col-md-12">
+             <div class="panel panel-default">
+           <div class="panel-heading">
+             <h3 class="panel-title">Shapes (1)</h3>
+           </div>
+           <div class="panel-body">
+
+
+             <li><a href="shape-webapiformbasedauthenticationshape.html" title="https://actions.semantify.it/vocab/FormBasedAuthenticationShape">webapi:FormBasedAuthenticationShape</a></li>
+
+
+           </div>
+         </div>
+          </div></div>
+          
 
 
 
@@ -782,7 +797,7 @@
                                     <i>rdf:Property<i>
                                 </td>
                                 <td class="thirdtd">
-                                    <span>The part of the HTTP request where the credentials are sent.</span>
+                                    <span>The part of the HTTP request where the credentials are sent.See: <a href="shape-webapiformbasedauthenticationshape.html" title="https://actions.semantify.it/vocab/FormBasedAuthenticationShape">webapi:FormBasedAuthenticationShape</a> </span>
                                 </td>
                                 <td class="fourthtd">
                                     
@@ -824,7 +839,7 @@
                                     <i>rdf:Property<i>
                                 </td>
                                 <td class="thirdtd">
-                                    <span>The upper value of some characteristic or property.</span>
+                                    <span>The upper value of some characteristic or property. </span>
                                 </td>
                                 <td class="fourthtd">
                                     
@@ -849,7 +864,7 @@
                                     <i>rdf:Property<i>
                                 </td>
                                 <td class="thirdtd">
-                                    <span>The lower value of some characteristic or property.</span>
+                                    <span>The lower value of some characteristic or property. </span>
                                 </td>
                                 <td class="fourthtd">
                                     
@@ -877,7 +892,7 @@
                                     <span>A commonly used identifier for the characteristic represented by the property, e.g. a manufacturer or a standard code for a property. propertyID can be
 (1) a prefixed string, mainly meant to be used with standards for product properties; (2) a site-specific, non-prefixed string (e.g. the primary key of the property or the vendor-specific id of the property), or (3)
 a URL indicating the type of the property, either pointing to an external vocabulary, or a Web resource that describes the property (e.g. a glossary entry).
-Standards bodies should promote a standard prefix for the identifiers of properties from their standards.</span>
+Standards bodies should promote a standard prefix for the identifiers of properties from their standards. </span>
                                 </td>
                                 <td class="fourthtd">
                                     
@@ -909,21 +924,21 @@ Standards bodies should promote a standard prefix for the identifiers of propert
                                     <i>rdf:Property<i>
                                 </td>
                                 <td class="thirdtd">
-                                    <span>The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.</span>
+                                    <span>The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon. </span>
                                 </td>
                                 <td class="fourthtd">
                                     
                                     
 
                                         
-                                          <i>schema:URL</i>
+                                          <i>schema:Text</i>
                                         
 
 
                                     
 
                                         
-                                          <i>schema:Text</i>
+                                          <i>schema:URL</i>
                                         
 
 
@@ -942,7 +957,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
                                 </td>
                                 <td class="thirdtd">
                                     <span>A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
-&lt;a href=&#39;unitCode&#39;&gt;unitCode&lt;/a&gt;.</span>
+&lt;a href=&#39;unitCode&#39;&gt;unitCode&lt;/a&gt;. </span>
                                 </td>
                                 <td class="fourthtd">
                                     
@@ -973,7 +988,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
 &lt;li&gt;For &lt;a class=&quot;localLink&quot; href=&quot;http://schema.org/QuantitativeValue&quot;&gt;QuantitativeValue&lt;/a&gt; and &lt;a class=&quot;localLink&quot; href=&quot;http://schema.org/MonetaryAmount&quot;&gt;MonetaryAmount&lt;/a&gt;, the recommended type for values is &#39;Number&#39;.&lt;/li&gt;
 &lt;li&gt;For &lt;a class=&quot;localLink&quot; href=&quot;http://schema.org/PropertyValue&quot;&gt;PropertyValue&lt;/a&gt;, it can be &#39;Text;&#39;, &#39;Number&#39;, &#39;Boolean&#39;, or &#39;StructuredValue&#39;.&lt;/li&gt;
 &lt;/ul&gt;
-</span>
+ </span>
                                 </td>
                                 <td class="fourthtd">
                                     
@@ -981,13 +996,6 @@ Standards bodies should promote a standard prefix for the identifiers of propert
 
                                         
                                           <i>schema:Boolean</i>
-                                        
-
-
-                                    
-
-                                        
-                                          <i>schema:Text</i>
                                         
 
 
@@ -1006,6 +1014,13 @@ Standards bodies should promote a standard prefix for the identifiers of propert
 
 
                                     
+
+                                        
+                                          <i>schema:Text</i>
+                                        
+
+
+                                    
                                     
                                 </td>
                             </tr>
@@ -1019,28 +1034,28 @@ Standards bodies should promote a standard prefix for the identifiers of propert
                                     <i>rdf:Property<i>
                                 </td>
                                 <td class="thirdtd">
-                                    <span>A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.</span>
+                                    <span>A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature. </span>
                                 </td>
                                 <td class="fourthtd">
                                     
                                     
 
                                         
-                                          <a title="schema:PropertyValue" href="class-schemapropertyvalue.html" class="rdfclass">schema:PropertyValue</a>
-                                        
-
-
-                                    
-
-                                        
-                                          <i>schema:Enumeration</i>
-                                        
-
-
-                                    
-
-                                        
                                           <i>schema:QuantitativeValue</i>
+                                        
+
+
+                                    
+
+                                        
+                                          <i>schema:StructuredValue</i>
+                                        
+
+
+                                    
+
+                                        
+                                          <a title="schema:PropertyValue" href="class-schemapropertyvalue.html" class="rdfclass">schema:PropertyValue</a>
                                         
 
 
@@ -1054,7 +1069,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
                                     
 
                                         
-                                          <i>schema:StructuredValue</i>
+                                          <i>schema:Enumeration</i>
                                         
 
 
@@ -1152,7 +1167,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
   <footer class="footer">
     <div class="container">
     
-      <p class="text-muted">Documentation automatically generated on 9th August 2018 with <a href="https://github.com/lambdamusic/OntoDocs">OntoDocs</a> (v1.2.1)</p>
+      <p class="text-muted">Documentation automatically generated on 21st August 2018 with <a href="https://github.com/lambdamusic/OntoDocs">OntoDocs</a> (v1.2.1)</p>
 
     
     </div>
