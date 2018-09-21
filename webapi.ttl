@@ -82,6 +82,7 @@ webapi:ActionsShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:actionStatus;
 		sh:class schema:ActionStatusType;
+		sh:defaultValue schema:PotentialActionStatus;
 		sh:minCount 1;
 		sh:maxCount 1
 	] .
