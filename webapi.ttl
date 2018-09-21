@@ -74,11 +74,35 @@ schema:Thing a rdfs:Class ;
 ##shapes
 
 webapi:ActionsShape a sh:NodeShape;
-sh:targetClass schema:Action;
-sh:property [
-	sh:path webapi:authentication;
-	sh:class webapi:AuthenticationSpecification;
-] .
+	sh:targetClass schema:Action;
+	sh:property [
+		sh:path webapi:authentication;
+		sh:class webapi:AuthenticationSpecification;
+	];
+	sh:property [
+		sh:path schema:actionStatus;
+		sh:class schema:ActionStatusType;
+		sh:minCount 1;
+		sh:maxCount 1
+	] .
+
+webapi:PotentialActionShape a sh:NodeShape;
+	sh:target webapi:ActionStatusTarget; #define SPARQL target
+	sh:property [
+		sh:path schema:object;
+		sh:class schema:Thing;
+		sh:minCount 1;
+	];
+	sh:property [
+		sh:path schema:result;
+		sh:class schema:Thing;
+		sh:minCount 1;
+	];
+	sh:property [
+		sh:path schema:target;
+		sh:class schema:EntryPoint;
+		sh:minCount 1;
+	] .
 
 webapi:FormBasedAuthenticationShape a sh:NodeShape;
 	sh:name "FormBasedAuthenticationShape";
@@ -340,13 +364,6 @@ schema:copyrightHolder a rdf:Property ;
 	rdfs:comment "The party holding the legal copyright to the CreativeWork." ;
 	schema:rangeIncludes schema:Organization .
 
-schema:comment a rdf:Property ;
-	rdfs:label "comment" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:Comment ;
-	rdfs:comment "Comments, typically from users." ;
-	schema:domainIncludes schema:RsvpAction .
-
 schema:inLanguage a rdf:Property ;
 	rdfs:label "inLanguage" ;
 	schema:domainIncludes schema:Event ;
@@ -355,14 +372,6 @@ schema:inLanguage a rdf:Property ;
 	schema:domainIncludes schema:CreativeWork , schema:CommunicateAction , schema:WriteAction ;
 	schema:rangeIncludes schema:Language .
 
-schema:funder a rdf:Property ;
-	rdfs:label "funder" ;
-	schema:domainIncludes schema:Person ;
-	schema:rangeIncludes schema:Person ;
-	rdfs:comment "A person or organization that supports (sponsors) something through some kind of financial contribution." ;
-	schema:domainIncludes schema:Event , schema:Organization , schema:CreativeWork ;
-	schema:rangeIncludes schema:Organization .
-
 schema:sponsor a rdf:Property ;
 	rdfs:label "sponsor" ;
 	schema:domainIncludes schema:Person ;
@@ -370,20 +379,6 @@ schema:sponsor a rdf:Property ;
 	rdfs:comment "A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event." ;
 	schema:domainIncludes schema:Event , schema:Organization , schema:CreativeWork ;
 	schema:rangeIncludes schema:Organization .
-
-schema:commentCount a rdf:Property ;
-	rdfs:label "commentCount" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:Integer ;
-	rdfs:comment "The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere." .
-
-schema:spatialCoverage a rdf:Property ;
-	rdfs:label "spatialCoverage" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:Place ;
-	rdfs:comment """The spatialCoverage of a CreativeWork indicates the place(s) which are the focus of the content. It is a subproperty of
-      contentLocation intended primarily for more technical and detailed materials. For example with a Dataset, it indicates
-      areas that the dataset describes: a dataset of New York weather would have spatialCoverage which was the place: the state of New York.""" .
 
 schema:audience a rdf:Property ;
 	rdfs:label "audience" ;
@@ -429,25 +424,12 @@ schema:offers a rdf:Property ;
 	rdfs:comment "An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event." ;
 	schema:domainIncludes schema:Event , schema:CreativeWork , schema:Product , schema:AggregateOffer , schema:MenuItem .
 
-schema:thumbnailUrl a rdf:Property ;
-	rdfs:label "thumbnailUrl" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:URL ;
-	rdfs:comment "A thumbnail image relevant to the Thing." .
-
 schema:about a rdf:Property ;
 	rdfs:label "about" ;
 	schema:domainIncludes schema:Event ;
 	schema:rangeIncludes schema:Thing ;
 	rdfs:comment "The subject matter of the content." ;
 	schema:domainIncludes schema:CreativeWork , schema:CommunicateAction .
-
-schema:award a rdf:Property ;
-	rdfs:label "award" ;
-	schema:domainIncludes schema:Person ;
-	schema:rangeIncludes schema:Text ;
-	rdfs:comment "An award won by or for this item." ;
-	schema:domainIncludes schema:Service , schema:Organization , schema:CreativeWork , schema:Product .
 
 schema:isPartOf a rdf:Property ;
 	rdfs:label "isPartOf" ;
@@ -481,12 +463,6 @@ schema:discussionUrl a rdf:Property ;
 	schema:rangeIncludes schema:URL ;
 	rdfs:comment "A link to the page containing the comments of the CreativeWork." .
 
-schema:mentions a rdf:Property ;
-	rdfs:label "mentions" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:Thing ;
-	rdfs:comment "Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept." .
-
 schema:datePublished a rdf:Property ;
 	rdfs:label "datePublished" ;
 	schema:domainIncludes schema:CreativeWork ;
@@ -500,15 +476,6 @@ schema:contributor a rdf:Property ;
 	rdfs:comment "A secondary contributor to the CreativeWork or Event." ;
 	schema:domainIncludes schema:CreativeWork ;
 	schema:rangeIncludes schema:Organization .
-
-schema:temporalCoverage a rdf:Property ;
-	rdfs:label "temporalCoverage" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:Text ;
-	rdfs:comment """The temporalCoverage of a CreativeWork indicates the period that the content applies to, i.e. that it describes, either as a DateTime or as a textual string indicating a time period in <a href=\"https://en.wikipedia.org/wiki/ISO_8601#Time_intervals\">ISO 8601 time interval format</a>. In
-      the case of a Dataset it will typically indicate the relevant time period in a precise notation (e.g. for a 2011 census dataset, the year 2011 would be written \"2011/2012\"). Other forms of content e.g. ScholarlyArticle, Book, TVSeries or TVEpisode may indicate their temporalCoverage in broader terms - textually or via well-known URL.
-      Written works such as books may sometimes have precise temporal coverage too, e.g. a work set in 1939 - 1945 can be indicated in ISO 8601 interval format format via \"1939/1945\".""" ;
-	schema:rangeIncludes schema:URL , schema:DateTime .
 
 schema:isBasedOn a rdf:Property ;
 	rdfs:label "isBasedOn" ;
@@ -733,3 +700,17 @@ webapi:authentication a rdf:Property;
 	schema:rangeIncludes webapi:AuthenticationSpecification;
 	rdfs:subPropertyOf schema:instrument ;
 	rdfs:comment "The authentication specification for the action. " .
+
+	#instances
+
+schema:CompletedActionStatus a schema:ActionStatusType ;
+    rdfs:label "CompletedActionStatus" ;
+    rdfs:comment "An action that has already taken place." .
+
+schema:FailedActionStatus a schema:ActionStatusType ;
+    rdfs:label "FailedActionStatus" ;
+    rdfs:comment "An action that failed to complete. The action's error property and the HTTP return code contain more information about the failure." .
+
+schema:PotentialActionStatus a schema:ActionStatusType ;
+    rdfs:label "PotentialActionStatus" ;
+    rdfs:comment "A description of an action that is supported." .
