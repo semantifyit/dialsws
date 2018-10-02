@@ -105,6 +105,23 @@ webapi:PotentialActionShape a sh:NodeShape;
 		sh:minCount 1;
 	] .
 
+webapi:ActionStatusTarget a sh:SPARQLTargetType;
+	rdfs:subClassOf sh:Target;
+	sh:labelTemplate "Target action annotations with {$actionStatus} status";
+	sh:parameter [
+		sh:path schema:actionStatus;
+		sh:class schema:ActionStatusType;
+		sh:nodeKind sh:IRI;
+	];
+	sh:prefixes ex: ;
+	sh:select """
+		SELECT ?this
+		WHERE {
+			?this a schema:Action .
+			?this schema:actionStatus $actionStatus .
+		}
+		""" .		
+
 webapi:FormBasedAuthenticationShape a sh:NodeShape;
 	sh:name "FormBasedAuthenticationShape";
 	sh:description "The shape that defines constraints on the form based authentication descriptions";
@@ -155,7 +172,7 @@ webapi:WebAPIShape a sh:NodeShape;
 webapi:DocumentationShape a sh:NodeShape;
 	sh:name "DocumentationShape";
 	sh:description "A shape for WebAPI documentation";
-	sh:targetObjectsOf schema:documentation;
+	#sh:targetObjectsOf schema:documentation; #testing
 	sh:property [
 		sh:path schema:encodingFormat;
 		sh:minCount 1;
