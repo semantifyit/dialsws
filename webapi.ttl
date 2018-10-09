@@ -88,8 +88,11 @@ webapi:ActionsShape a sh:NodeShape;
 	] .
 
 webapi:PotentialActionShape a sh:NodeShape;
-	sh:target webapi:ActionStatusTarget; #define SPARQL target
-	sh:property [
+	sh:target	[
+		a webapi:ActionStatusTarget;
+		schema:target schema:PotentialActionStatus;
+	];
+	sh:property	[
 		sh:path schema:object;
 		sh:class schema:Thing;
 		sh:minCount 1;
