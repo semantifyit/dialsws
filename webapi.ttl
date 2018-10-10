@@ -11,7 +11,8 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
 #shacl declarations
-webapi:	sh:declare [
+<https://actions.semantify.it/vocab> a owl:Ontology.
+<https://actions.semantify.it/vocab> sh:declare [
 		a sh:PrefixDeclaration;
 		sh:prefix "schema";
 		sh:namespace <http://schema.org/> ;
