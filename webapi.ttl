@@ -12,7 +12,7 @@
 
 #shacl declarations
 	sh:declare [
-		a sh:PrefixDeclaration
+		a sh:PrefixDeclaration;
 		sh:prefix "schema";
 		sh:namespace <http://schema.org/> ;
 	].
