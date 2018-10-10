@@ -10,9 +10,9 @@
 @prefix webapi: <https://actions.semantify.it/vocab/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-#shacl declerations
-schema:
+#shacl declarations
 	sh:declare [
+		a sh:PrefixDeclaration
 		sh:prefix "schema";
 		sh:namespace <http://schema.org/> ;
 	].
