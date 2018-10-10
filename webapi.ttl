@@ -124,7 +124,7 @@ webapi:ActionStatusTarget a sh:SPARQLTargetType;
 		sh:class schema:ActionStatusType;
 		sh:nodeKind sh:IRI;
 	];
-	sh:prefixes schema: ;
+	sh:prefixes <https://actions.semantify.it/vocab> ;
 	sh:select """
 		SELECT ?this
 		WHERE {
