@@ -11,7 +11,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
 #shacl declarations
-	sh:declare [
+webapi:	sh:declare [
 		a sh:PrefixDeclaration;
 		sh:prefix "schema";
 		sh:namespace <http://schema.org/> ;
