@@ -124,12 +124,12 @@ webapi:ActionStatusTarget a sh:SPARQLTargetType;
 		sh:class schema:ActionStatusType;
 		sh:nodeKind sh:IRI;
 	];
-	sh:prefixes schema: ;
+	#sh:prefixes schema: ;
 	sh:select """
 		SELECT ?this
 		WHERE {
-			?this a schema:Action .
-			?this schema:actionStatus $actionStatus .
+			?this a <http://schema.org/Action> .
+			?this <http://schema.org/actionStatus> $actionStatus .
 		}
 		""" .		
 
