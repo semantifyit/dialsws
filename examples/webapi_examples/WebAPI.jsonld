@@ -4,7 +4,7 @@
     "name": "Hotel Alpenchalets-Obholzer Booking API",
     "documentation": {
         "@type": "CreativeWork",
-        "encodingFormat": "application/ld+json",
+        "encodingFormat": {"@value": "application/ld+json"},
         "url": "https://actions.semantify.it/api/easybooking/hotels/4"
     }
 
