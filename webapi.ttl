@@ -68,6 +68,10 @@ webapi:TokenAuthentication a rdfs:Class;
 	rdfs:comment "Values of this specification is mapped to 'Bearer <token>' pattern in the Authentication header of a request.";
 	rdfs:subClassOf webapi:AuthenticationSpecification.
 
+webapi:Error a rdfs:Class;
+	rdfs:label "Error";
+	rdfs:comment "An error specification";
+	rdfs:subClassOf hydra:Error .
 
 schema:PropertyValue a rdfs:Class ;
     rdfs:label "PropertyValue" ;
