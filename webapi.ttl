@@ -9,6 +9,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix webapi: <https://actions.semantify.it/vocab/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
 
 #shacl declarations
 <https://actions.semantify.it/vocab> a owl:Ontology.
@@ -48,6 +49,11 @@ schema:Action a rdfs:Class ;
     dct:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass> ;
     rdfs:comment """An action performed by a direct agent and indirect participants upon a direct object. Optionally happens at a location with the help of an inanimate instrument. The execution of the action may produce a result. Specific action sub-type documentation specifies the exact expectation of each argument/role.<br/><br/>""".
 
+webapi:AuthenticationAction a rdfs:Class ;
+    rdfs:label "Action" ;
+    rdfs:comment """An action performed to complete an authentication flow for obtaining a token.<br/><br/>""".
+	rdfs:subClassOf schema:Action .
+
 webapi:AuthenticationSpecification a rdfs:Class;
 	rdfs:label "AuthenticationSpecification";
 	rdfs:comment "Specification of the authentication method required to perfom the on a web resource.";
@@ -71,7 +77,9 @@ webapi:TokenAuthentication a rdfs:Class;
 webapi:Error a rdfs:Class;
 	rdfs:label "Error";
 	rdfs:comment "An error specification";
-	rdfs:subClassOf hydra:Error .
+	rdfs:subClassOf hydra:Error ;
+	rdfs:subClassOf schema:PropertyValue .
+
 
 schema:PropertyValue a rdfs:Class ;
     rdfs:label "PropertyValue" ;
