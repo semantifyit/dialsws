@@ -726,13 +726,13 @@ schema:unitCode a rdf:Property ;
 webapi:sentIn a rdf:Property;
 	rdfs:label "sentIn";
 	schema:domainIncludes webapi:FormBasedAuthentication;
-	schema:rangeIncludes webapi:Text;
+	schema:rangeIncludes schema:Text;
 	rdfs:comment "The part of the HTTP request where the credentials are sent.".
 
 webapi:tokenFormat a rdf:Property;
 	rdfs:label "tokenFormat";
 	schema:domainIncludes webapi:TokenAuthentication;
-	schema:rangeIncludes webapi:Text;
+	schema:rangeIncludes schema:Text;
 	rdfs:comment "Format of the bearer token".
 
 webapi:authentication a rdf:Property;
