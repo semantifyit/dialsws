@@ -51,7 +51,7 @@ schema:Action a rdfs:Class ;
 
 webapi:AuthenticationAction a rdfs:Class ;
     rdfs:label "Action" ;
-    rdfs:comment """An action performed to complete an authentication flow for obtaining a token.<br/><br/>""".
+    rdfs:comment """An action performed to complete an authentication flow for obtaining a token.<br/><br/>""" ;
 	rdfs:subClassOf schema:Action .
 
 webapi:AuthenticationSpecification a rdfs:Class;
