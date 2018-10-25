@@ -110,7 +110,7 @@ webapi:ActionsShape a sh:NodeShape;
 webapi:PotentialActionShape a sh:NodeShape;
 	sh:target	[
 		a webapi:ActionStatusTarget;
-		schema:target schema:PotentialActionStatus;
+		schema:actionStatus schema:PotentialActionStatus;
 	];
 	sh:property	[
 		sh:path schema:object;
