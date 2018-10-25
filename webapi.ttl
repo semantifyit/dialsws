@@ -208,14 +208,6 @@ schema:documentation a rdf:Property ;
         schema:URL ;
     rdfs:comment "Further documentation describing the Web API in more detail." .
 
-schema:brand a rdf:Property ;
-	rdfs:label "brand" ;
-	schema:domainIncludes schema:Person ;
-	schema:rangeIncludes schema:Brand ;
-	rdfs:comment "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person." ;
-	schema:domainIncludes schema:Service , schema:Organization , schema:Product ;
-	schema:rangeIncludes schema:Organization .
-
 schema:areaServed a rdf:Property ;
 	rdfs:label "areaServed" ;
 	schema:domainIncludes schema:Service ;
@@ -224,12 +216,6 @@ schema:areaServed a rdf:Property ;
 	schema:domainIncludes schema:Organization , schema:Demand , schema:Offer , schema:ContactPoint , schema:DeliveryChargeSpecification ;
 	schema:rangeIncludes schema:Text , schema:Place , schema:AdministrativeArea .
 
-schema:audience a rdf:Property ;
-	rdfs:label "audience" ;
-	schema:domainIncludes schema:Service ;
-	schema:rangeIncludes schema:Audience ;
-	rdfs:comment "An intended audience, i.e. a group for whom something was created." ;
-	schema:domainIncludes schema:Event , schema:CreativeWork , schema:Product , schema:PlayAction , schema:LodgingBusiness .
 
 schema:provider a rdf:Property ;
 	rdfs:label "provider" ;
@@ -408,13 +394,6 @@ schema:sponsor a rdf:Property ;
 	rdfs:comment "A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event." ;
 	schema:domainIncludes schema:Event , schema:Organization , schema:CreativeWork ;
 	schema:rangeIncludes schema:Organization .
-
-schema:audience a rdf:Property ;
-	rdfs:label "audience" ;
-	schema:domainIncludes schema:Service ;
-	schema:rangeIncludes schema:Audience ;
-	rdfs:comment "An intended audience, i.e. a group for whom something was created." ;
-	schema:domainIncludes schema:Event , schema:CreativeWork , schema:Product , schema:PlayAction , schema:LodgingBusiness .
 
 schema:dateCreated a rdf:Property ;
 	rdfs:label "dateCreated" ;
