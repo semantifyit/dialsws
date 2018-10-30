@@ -155,7 +155,7 @@ webapi:FormBasedAuthenticationShape a sh:NodeShape;
 	sh:targetClass webapi:FormBasedAuthentication;
 	sh:property [
 		sh:path webapi:sentIn;
-		sh:in ("header" "body", "url");
+		sh:in (webapi:HTTPMessageBody webapi:HTTPMessageHeader webapi:HTTPMessageURL);
 	];
 	sh:property [
 		sh:path schema:name;
@@ -738,3 +738,15 @@ schema:FailedActionStatus a schema:ActionStatusType ;
 schema:PotentialActionStatus a schema:ActionStatusType ;
     rdfs:label "PotentialActionStatus" ;
     rdfs:comment "A description of an action that is supported." .
+
+webapi:HTTPMessageBody a schema:HTTPMessagePart;
+	rdfs:label "HTTPMessageBody";
+	rdfs:comment "Body of an HTTP message" .
+
+webapi:HTTPMessageHeader a schema:HTTPMessagePart;
+	rdfs:label "HTTPMessageHeader";
+	rdfs:comment "Header of an HTTP message" .
+
+webapi:HTTPMessageURL a schema:HTTPMessagePart;
+	rdfs:label "HTTPMessageURL";
+	rdfs:comment "URL in the start line of an HTTP message" .
