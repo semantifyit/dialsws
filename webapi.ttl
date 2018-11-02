@@ -251,7 +251,7 @@ webapi:DocumentationShape a sh:NodeShape;
 					sh:hasValue schema:CreativeWork;
 				];
 				sh:property [
-					sh:path name;
+					sh:path schema:name;
 					sh:datatype xsd:string ;
 					sh:minValue 1;
 				];
@@ -277,7 +277,7 @@ webapi:ContactShape a sh:NodeShape;
 		sh:datatype xsd:string;
 	];
 	sh:property [
-		sh:path url;
+		sh:path schema:url;
 		sh:nodeKind sh:IRI;
 	] .
 
