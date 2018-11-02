@@ -160,7 +160,7 @@ webapi:FormBasedAuthenticationShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:name;
 		sh:description "A custom form based authentication must have one name.";
-		sh:class xsd:string;
+		sh:datatype xsd:string;
 		sh:minCount 1;
 		sh:maxCount 1;
 	] .
@@ -172,7 +172,7 @@ webapi:AuthenticationSpecificationShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:value;
 		sh:description "An authentication specification must have one value.";
-		sh:class xsd:string;
+		sh:datatype xsd:string;
 		sh:minCount 1;
 		sh:maxCount 1;
 	] .
@@ -217,7 +217,7 @@ webapi:DocumentationShape a sh:NodeShape;
 	];
 	sh:property [
 		sh:path schema:description;
-		sh:class xsd:string;
+		sh:datatype xsd:string;
 	];
 	sh:property [
 		sh:path schema:version;
@@ -227,18 +227,59 @@ webapi:DocumentationShape a sh:NodeShape;
 	];
 	sh:property [
 		sh:path schema:author;
-		sh:or ([sh:class schema:Person] [sh:class schema:Organization]);
+		sh:or ([sh:class schema:Person; sh:node webapi:ContactShape] [sh:class schema:Organization; sh:node webapi:ContactShape]);
 	];
 	sh:property [
 		sh:path schema:accountablePerson;
 		sh:class schema:Person;
-		sh:node webapi:
+		sh:node webapi:ContactShape
 	];
 	sh:property [
 		sh:path schema:contributor;
-		sh:or ([sh:class schema:Person] [sh:class schema:Organization]);
+		sh:or ([sh:class schema:Person; sh:node webapi:ContactShape] [sh:class schema:Organization; sh:node webapi:ContactShape]);
+	];
+	sh:property [
+		sh:path schema:license;
+		sh:or 
+		(
+		[
+			sh:node [ 
+				a sh:NodeShape;
+				sh:nodeKind sh:IRI;
+				sh:property [
+					sh:path rdf:type;
+					sh:hasValue schema:CreativeWork;
+				];
+				sh:property [
+					sh:path name;
+					sh:datatype xsd:string ;
+					sh:minValue 1;
+				];
+
+			]
+		]
+		[
+			sh:nodeKind sh:IRI;
+		]
+		)
+
 	] .
 
+webapi:ContactShape a sh:NodeShape;
+	sh:name "ContactShape";
+	sh:description "A shape for the essential contact information of a Person or Organization";
+	sh:property [
+		sh:path schema:name;
+		sh:datatype xsd:string;
+	];
+	sh:property [
+		sh:path schema:email;
+		sh:datatype xsd:string;
+	];
+	sh:property [
+		sh:path url;
+		sh:nodeKind sh:IRI;
+	] .
 
 ##properties
 schema:documentation a rdf:Property ;
