@@ -160,7 +160,7 @@ webapi:FormBasedAuthenticationShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:name;
 		sh:description "A custom form based authentication must have one name.";
-		sh:class schema:Text;
+		sh:class xsd:string;
 		sh:minCount 1;
 		sh:maxCount 1;
 	] .
@@ -172,7 +172,7 @@ webapi:AuthenticationSpecificationShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:value;
 		sh:description "An authentication specification must have one value.";
-		sh:class schema:Text;
+		sh:class xsd:string;
 		sh:minCount 1;
 		sh:maxCount 1;
 	] .
@@ -199,7 +199,6 @@ webapi:WebAPIShape a sh:NodeShape;
 webapi:DocumentationShape a sh:NodeShape;
 	sh:name "DocumentationShape";
 	sh:description "A shape for WebAPI documentation";
-	#sh:targetObjectsOf schema:documentation; #testing
 	sh:property [
 		sh:path schema:encodingFormat;
 		sh:minCount 1;
@@ -210,6 +209,34 @@ webapi:DocumentationShape a sh:NodeShape;
 		sh:path schema:url;
 		sh:minCount 1;
 		sh:maxCount 1;
+	];
+	sh:property [
+		sh:path schema:name;
+		sh:minCount 1;
+		sh:maxCount 1;
+	];
+	sh:property [
+		sh:path schema:description;
+		sh:class xsd:string;
+	];
+	sh:property [
+		sh:path schema:version;
+		sh:pattern "\\bv?\\d+\\.\\d+\\.\\d+(?:\\.[0-9]+)?\\b";
+		sh:minCount 1;
+		sh:maxCount 1;
+	];
+	sh:property [
+		sh:path schema:author;
+		sh:or ([sh:class schema:Person] [sh:class schema:Organization]);
+	];
+	sh:property [
+		sh:path schema:accountablePerson;
+		sh:class schema:Person;
+		sh:node webapi:
+	];
+	sh:property [
+		sh:path schema:contributor;
+		sh:or ([sh:class schema:Person] [sh:class schema:Organization]);
 	] .
 
 
