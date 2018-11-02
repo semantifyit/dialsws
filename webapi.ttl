@@ -51,7 +51,7 @@ schema:Action a rdfs:Class ;
 
 webapi:AuthenticationAction a rdfs:Class ;
     rdfs:label "Action" ;
-    rdfs:comment """An action performed to complete an authentication flow for obtaining a token.<br/><br/>""".
+    rdfs:comment """An action performed to complete an authentication flow for obtaining a token.<br/><br/>""" ;
 	rdfs:subClassOf schema:Action .
 
 webapi:AuthenticationSpecification a rdfs:Class;
@@ -80,6 +80,10 @@ webapi:Error a rdfs:Class;
 	rdfs:subClassOf hydra:Error ;
 	rdfs:subClassOf schema:PropertyValue .
 
+webapi:HTTPMessagePart a rdf:Class;
+	rdfs:label "HTTPMessagePart";
+	rdfs:comment "A part of the HTTP message where the content is sent.";
+	rdfs:subClassOf schema:Enumeration .
 
 schema:PropertyValue a rdfs:Class ;
     rdfs:label "PropertyValue" ;
@@ -110,7 +114,7 @@ webapi:ActionsShape a sh:NodeShape;
 webapi:PotentialActionShape a sh:NodeShape;
 	sh:target	[
 		a webapi:ActionStatusTarget;
-		schema:target schema:PotentialActionStatus;
+		schema:actionStatus schema:PotentialActionStatus;
 	];
 	sh:property	[
 		sh:path schema:object;
@@ -151,7 +155,7 @@ webapi:FormBasedAuthenticationShape a sh:NodeShape;
 	sh:targetClass webapi:FormBasedAuthentication;
 	sh:property [
 		sh:path webapi:sentIn;
-		sh:in ("header" "body");
+		sh:in (webapi:HTTPMessageBody webapi:HTTPMessageHeader webapi:HTTPMessageURL);
 	];
 	sh:property [
 		sh:path schema:name;
@@ -220,14 +224,6 @@ schema:documentation a rdf:Property ;
         schema:URL ;
     rdfs:comment "Further documentation describing the Web API in more detail." .
 
-schema:brand a rdf:Property ;
-	rdfs:label "brand" ;
-	schema:domainIncludes schema:Person ;
-	schema:rangeIncludes schema:Brand ;
-	rdfs:comment "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person." ;
-	schema:domainIncludes schema:Service , schema:Organization , schema:Product ;
-	schema:rangeIncludes schema:Organization .
-
 schema:areaServed a rdf:Property ;
 	rdfs:label "areaServed" ;
 	schema:domainIncludes schema:Service ;
@@ -236,12 +232,6 @@ schema:areaServed a rdf:Property ;
 	schema:domainIncludes schema:Organization , schema:Demand , schema:Offer , schema:ContactPoint , schema:DeliveryChargeSpecification ;
 	schema:rangeIncludes schema:Text , schema:Place , schema:AdministrativeArea .
 
-schema:audience a rdf:Property ;
-	rdfs:label "audience" ;
-	schema:domainIncludes schema:Service ;
-	schema:rangeIncludes schema:Audience ;
-	rdfs:comment "An intended audience, i.e. a group for whom something was created." ;
-	schema:domainIncludes schema:Event , schema:CreativeWork , schema:Product , schema:PlayAction , schema:LodgingBusiness .
 
 schema:provider a rdf:Property ;
 	rdfs:label "provider" ;
@@ -420,13 +410,6 @@ schema:sponsor a rdf:Property ;
 	rdfs:comment "A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event." ;
 	schema:domainIncludes schema:Event , schema:Organization , schema:CreativeWork ;
 	schema:rangeIncludes schema:Organization .
-
-schema:audience a rdf:Property ;
-	rdfs:label "audience" ;
-	schema:domainIncludes schema:Service ;
-	schema:rangeIncludes schema:Audience ;
-	rdfs:comment "An intended audience, i.e. a group for whom something was created." ;
-	schema:domainIncludes schema:Event , schema:CreativeWork , schema:Product , schema:PlayAction , schema:LodgingBusiness .
 
 schema:dateCreated a rdf:Property ;
 	rdfs:label "dateCreated" ;
@@ -726,13 +709,13 @@ schema:unitCode a rdf:Property ;
 webapi:sentIn a rdf:Property;
 	rdfs:label "sentIn";
 	schema:domainIncludes webapi:FormBasedAuthentication;
-	schema:rangeIncludes webapi:Text;
+	schema:rangeIncludes schema:Text;
 	rdfs:comment "The part of the HTTP request where the credentials are sent.".
 
 webapi:tokenFormat a rdf:Property;
 	rdfs:label "tokenFormat";
 	schema:domainIncludes webapi:TokenAuthentication;
-	schema:rangeIncludes webapi:Text;
+	schema:rangeIncludes schema:Text;
 	rdfs:comment "Format of the bearer token".
 
 webapi:authentication a rdf:Property;
@@ -741,7 +724,7 @@ webapi:authentication a rdf:Property;
 	schema:rangeIncludes webapi:AuthenticationSpecification;
 	rdfs:subPropertyOf schema:instrument ;
 	rdfs:comment "The authentication specification for the action. " .
-
+	
 	#instances
 
 schema:CompletedActionStatus a schema:ActionStatusType ;
@@ -755,3 +738,15 @@ schema:FailedActionStatus a schema:ActionStatusType ;
 schema:PotentialActionStatus a schema:ActionStatusType ;
     rdfs:label "PotentialActionStatus" ;
     rdfs:comment "A description of an action that is supported." .
+
+webapi:HTTPMessageBody a schema:HTTPMessagePart;
+	rdfs:label "HTTPMessageBody";
+	rdfs:comment "Body of an HTTP message" .
+
+webapi:HTTPMessageHeader a schema:HTTPMessagePart;
+	rdfs:label "HTTPMessageHeader";
+	rdfs:comment "Header of an HTTP message" .
+
+webapi:HTTPMessageURL a schema:HTTPMessagePart;
+	rdfs:label "HTTPMessageURL";
+	rdfs:comment "URL in the start line of an HTTP message" .
