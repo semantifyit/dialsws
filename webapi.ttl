@@ -194,6 +194,10 @@ webapi:WebAPIShape a sh:NodeShape;
 				sh:nodeKind sh:IRI;
 			]
 		)
+	];
+	sh:property [
+		sh:path schema:termsOfService;
+		sh:or ([sh:nodeKind sh:IRI;] [sh:datatype xsd:string])
 	] .
 
 webapi:DocumentationShape a sh:NodeShape;
@@ -232,10 +236,14 @@ webapi:DocumentationShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:accountablePerson;
 		sh:class schema:Person;
-		sh:node webapi:ContactShape
+		sh:node webapi:ContactShape;
 	];
 	sh:property [
 		sh:path schema:contributor;
+		sh:or ([sh:class schema:Person; sh:node webapi:ContactShape] [sh:class schema:Organization; sh:node webapi:ContactShape]);
+	];
+	sh:property [
+		sh:path schema:provider;
 		sh:or ([sh:class schema:Person; sh:node webapi:ContactShape] [sh:class schema:Organization; sh:node webapi:ContactShape]);
 	];
 	sh:property [
