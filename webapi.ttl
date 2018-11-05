@@ -278,25 +278,16 @@ webapi:DocumentationShape a sh:NodeShape;
 	];
 	sh:property [
 		sh:path schema:license;
-		sh:or 
-		(
-		[
-			sh:class schema:CreativeWork;
-			sh:node [ 
-				a sh:NodeShape;
-				sh:nodeKind sh:IRI;
-				sh:property [
-					sh:path schema:name;
-					sh:datatype xsd:string ;
-					sh:minValue 1;
-				];
-
-			]
-		]
-		[
+		sh:class schema:CreativeWork;
+		sh:node [ 
+			a sh:NodeShape;
 			sh:nodeKind sh:IRI;
+			sh:property [
+				sh:path schema:name;
+				sh:datatype xsd:string ;
+				sh:minValue 1;
+			];
 		]
-		)
 
 	] .
 
