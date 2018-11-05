@@ -135,30 +135,24 @@ webapi:PotentialActionShape a sh:NodeShape;
 		sh:path schema:error;
 		sh:class webapi:Error;
 		sh:property [
-			schema:path webapi:value-output;
+			schema:path schema:value-output;
+			schema:class schema:PropertyValueSpecification;
 			sh:node [ 
 				a sh:NodeShape;
 				sh:property [
-					sh:path rdf:type;
-					sh:class schema:PropertyValueSpecification;
-				];
-				sh:property [
 					sh:path schema:defaultValue;
 					sh:datatype xsd:integer;
-					sh:minValue 1;
+					sh:minCount 1;
 					sh:minInclusive 100;
 					sh:maxInclusive 599;
 				];
 			];	
 		];
 		sh:property [
-			schema:path webapi:description-output;
+			sh:path schema:description-output;
+			sh:class schema:PropertyValueSpecification;
 			sh:node [ 
 				a sh:NodeShape;
-				sh:property [
-					sh:path rdf:type;
-					sh:class schema:PropertyValueSpecification;
-				];
 				sh:property [
 					sh:path schema:defaultValue;
 					sh:datatype xsd:string;
@@ -287,13 +281,10 @@ webapi:DocumentationShape a sh:NodeShape;
 		sh:or 
 		(
 		[
+			sh:class schema:CreativeWork;
 			sh:node [ 
 				a sh:NodeShape;
 				sh:nodeKind sh:IRI;
-				sh:property [
-					sh:path rdf:type;
-					sh:hasValue schema:CreativeWork;
-				];
 				sh:property [
 					sh:path schema:name;
 					sh:datatype xsd:string ;
