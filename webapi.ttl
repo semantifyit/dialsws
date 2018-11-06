@@ -135,7 +135,7 @@ webapi:PotentialActionShape a sh:NodeShape;
 		sh:path schema:error;
 		sh:class webapi:Error;
 		sh:property [
-			schema:path schema:value-output;
+			sh:path schema:value-output;
 			schema:class schema:PropertyValueSpecification;
 			sh:node [ 
 				a sh:NodeShape;
@@ -285,7 +285,7 @@ webapi:DocumentationShape a sh:NodeShape;
 			sh:property [
 				sh:path schema:name;
 				sh:datatype xsd:string ;
-				sh:minValue 1;
+				sh:minCount 1;
 			];
 		]
 
