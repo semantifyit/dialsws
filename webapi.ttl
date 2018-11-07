@@ -136,7 +136,7 @@ webapi:PotentialActionShape a sh:NodeShape;
 		sh:class webapi:Error;
 		sh:property [
 			sh:path schema:value-output;
-			schema:class schema:PropertyValueSpecification;
+			sh:class schema:PropertyValueSpecification;
 			sh:node [ 
 				a sh:NodeShape;
 				sh:property [
