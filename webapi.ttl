@@ -136,10 +136,6 @@ webapi:PotentialActionShape a sh:NodeShape;
 				sh:datatype xsd:string;
 			];
 			sh:property [
-				sh:path schema:contentType;
-				sh:datatype xsd:string;
-			];
-			sh:property [
 				sh:path schema:httpMethod;
 				sh:datatype xsd:string;
 				sh:minCount 1;
