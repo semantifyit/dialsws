@@ -256,7 +256,6 @@ webapi:DocumentationShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:encodingFormat;
 		sh:minCount 1;
-		sh:maxCount 1;
 		sh:in ("application/ld+json" "text/html") #think about this
 	];
 	sh:property [
