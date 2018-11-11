@@ -142,12 +142,12 @@ webapi:PotentialActionShape a sh:NodeShape;
 			sh:property [
 				sh:path schema:httpMethod;
 				sh:datatype xsd:string;
-				sh:minValue 1;
+				sh:minCount 1;
 			];
 			sh:property [
 				sh:path schema:urlTemplate;
 				sh:nodeKind sh:IRI ;
-				sh:minValue 1;
+				sh:minCount 1;
 			];
 		];
 	];	
