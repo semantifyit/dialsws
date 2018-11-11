@@ -100,10 +100,6 @@ schema:Thing a rdfs:Class ;
 webapi:ActionsShape a sh:NodeShape;
 	sh:targetClass schema:Action;
 	sh:property [
-		sh:path webapi:authentication;
-		sh:class webapi:AuthenticationSpecification;
-	];
-	sh:property [
 		sh:path schema:actionStatus;
 		sh:class schema:ActionStatusType;
 		sh:defaultValue schema:PotentialActionStatus;
@@ -119,7 +115,6 @@ webapi:PotentialActionShape a sh:NodeShape;
 	sh:property	[
 		sh:path schema:object;
 		sh:class schema:Thing;
-		sh:minCount 1;
 	];
 	sh:property [
 		sh:path schema:result;
@@ -130,7 +125,32 @@ webapi:PotentialActionShape a sh:NodeShape;
 		sh:path schema:target;
 		sh:class schema:EntryPoint;
 		sh:minCount 1;
-	];
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:contentType;
+				sh:datatype xsd:string;
+			];
+			sh:property [
+				sh:path schema:encodingType;
+				sh:datatype xsd:string;
+			];
+			sh:property [
+				sh:path schema:contentType;
+				sh:datatype xsd:string;
+			];
+			sh:property [
+				sh:path schema:httpMethod;
+				sh:datatype xsd:string;
+				sh:minValue 1;
+			];
+			sh:property [
+				sh:path schema:urlTemplate;
+				sh:nodeKind sh:IRI ;
+				sh:minValue 1;
+			];
+		];
+	];	
 	sh:property [
 		sh:path schema:error;
 		sh:class webapi:Error;
@@ -143,7 +163,7 @@ webapi:PotentialActionShape a sh:NodeShape;
 					sh:path schema:defaultValue;
 					sh:datatype xsd:integer;
 					sh:minCount 1;
-					sh:minInclusive 100;
+					sh:minInclusive 400;
 					sh:maxInclusive 599;
 				];
 			];	
