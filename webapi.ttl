@@ -149,20 +149,12 @@ webapi:PotentialActionShape a sh:NodeShape;
 	];	
 	sh:property [
 		sh:path schema:error;
+		sh:description "Human readable error messages for potential errors for this action.";
 		sh:class webapi:Error;
 		sh:property [
-			sh:path schema:value-output;
-			sh:class schema:PropertyValueSpecification;
-			sh:node [ 
-				a sh:NodeShape;
-				sh:property [
-					sh:path schema:defaultValue;
-					sh:datatype xsd:integer;
-					sh:minCount 1;
-					sh:minInclusive 400;
-					sh:maxInclusive 599;
-				];
-			];	
+			sh:path schema:propertyID;
+			sh:description: "An internal ID for the error message.";
+			sh:class schema:PropertyValueSpecification;	
 		];
 		sh:property [
 			sh:path schema:description-output;
@@ -194,6 +186,117 @@ webapi:ActionStatusTarget a sh:SPARQLTargetType;
 			?this schema:actionStatus $actionStatus .
 		}
 		""" .		
+
+webapi:PotentialActionStatusShape a sh:NodeShape;
+	sh:targetNode schema:PotentialActionStatus;
+	sh:property [
+		sh:path webapi:httpStatusCode;
+		sh:class schema:PropertyValue;
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:value-output;
+				sh:class schema:PropertyValueSpecification;
+				sh:node [ 
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:defaultValue;
+						sh:datatype xsd:integer;
+						sh:minCount 1;
+						sh:minInclusive 100;
+						sh:maxInclusive 599;
+					];
+				];			
+			]; 
+			sh:property [
+				sh:path schema:description-output;
+				sh:class schema:PropertyValueSpecification;
+				sh:node [ 
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:defaultValue;
+						sh:datatype xsd:string;
+						sh:minCount 1;
+					];
+				];	
+			];
+
+		];
+	].
+
+webapi:FailedActionStatusShape a sh:NodeShape;
+	sh:targetNode schema:FailedActionStatus;
+	sh:minCount 1;
+	sh:maxCount 1;
+	sh:property [
+		sh:path webapi:httpStatusCode;
+		sh:class schema:PropertyValue;
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:value;
+				sh:class schema:PropertyValueSpecification;	
+				sh:minCount 1;
+				sh:maxCount 1;
+				sh:minInclusive 400;
+				sh:maxInclusive 599;
+			]; 
+			sh:property [
+				sh:path schema:description;
+				sh:class schema:PropertyValueSpecification;
+				sh:minCount 1;
+				sh:maxCount 1;
+			];
+
+		];
+	].	
+
+webapi:CompletedActionStatusShape a sh:NodeShape;
+	sh:targetNode schema:FailedActionStatus;
+	sh:property [
+		sh:path webapi:httpStatusCode;
+		sh:class schema:PropertyValue;
+		sh:minCount 1;
+		sh:maxCount 1;
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:value;
+				sh:class schema:PropertyValueSpecification;	
+				sh:minCount 1;
+				sh:maxCount 1;
+				sh:defaultValue 200;
+				sh:minInclusive 200;
+				sh:maxInclusive 299;
+			]; 
+			sh:property [
+				sh:path schema:description;
+				sh:class schema:PropertyValueSpecification;
+				sh:minCount 1;
+				sh:maxCount 1;
+			];
+
+		];
+	].
+
+webapi:ActiveActionStatusShape a sh:NodeShape;
+	sh:targetNode schema:ActiveActionStatus;
+	sh:property [
+		sh:path webapi:httpStatusCode;
+		sh:class schema:PropertyValue;
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:value;
+				sh:class schema:PropertyValueSpecification;	
+			]; 
+			sh:property [
+				sh:path schema:description;
+				sh:class schema:PropertyValueSpecification;
+			];
+
+		];
+	].
 
 webapi:FormBasedAuthenticationShape a sh:NodeShape;
 	sh:name "FormBasedAuthenticationShape";
@@ -696,6 +799,12 @@ webapi:authentication a rdf:Property;
 	schema:rangeIncludes webapi:AuthenticationSpecification;
 	rdfs:subPropertyOf schema:instrument ;
 	rdfs:comment "The authentication specification for the action. " .
+
+webapi:httpStatusCode a rdf:Property;
+	rdfs:label "httpStatusCode";
+	schema:domainIncludes schema:ActionStatusType;
+	schema:rangeIncludes schema:PropertyValue;
+	rdfs:comment "HTTP status code (RFC) to support the action status. " .
 	
 	#instances
 
@@ -711,14 +820,18 @@ schema:PotentialActionStatus a schema:ActionStatusType ;
     rdfs:label "PotentialActionStatus" ;
     rdfs:comment "A description of an action that is supported." .
 
-webapi:HTTPMessageBody a schema:HTTPMessagePart;
+schema:ActiveActionStatus a schema:ActionStatusType ;
+    rdfs:label "ActiveActionStatus" ;
+    rdfs:comment "An ongoning action. Typically used for requests and responses that require further client action (e.g. redirection)" .
+
+webapi:HTTPMessageBody a webapi:HTTPMessagePart;
 	rdfs:label "HTTPMessageBody";
 	rdfs:comment "Body of an HTTP message" .
 
-webapi:HTTPMessageHeader a schema:HTTPMessagePart;
+webapi:HTTPMessageHeader a webapi:HTTPMessagePart;
 	rdfs:label "HTTPMessageHeader";
 	rdfs:comment "Header of an HTTP message" .
 
-webapi:HTTPMessageURL a schema:HTTPMessagePart;
+webapi:HTTPMessageURL a webapi:HTTPMessagePart;
 	rdfs:label "HTTPMessageURL";
 	rdfs:comment "URL in the start line of an HTTP message" .
