@@ -100,10 +100,6 @@ schema:Thing a rdfs:Class ;
 webapi:ActionsShape a sh:NodeShape;
 	sh:targetClass schema:Action;
 	sh:property [
-		sh:path webapi:authentication;
-		sh:class webapi:AuthenticationSpecification;
-	];
-	sh:property [
 		sh:path schema:actionStatus;
 		sh:class schema:ActionStatusType;
 		sh:defaultValue schema:PotentialActionStatus;
@@ -119,7 +115,6 @@ webapi:PotentialActionShape a sh:NodeShape;
 	sh:property	[
 		sh:path schema:object;
 		sh:class schema:Thing;
-		sh:minCount 1;
 	];
 	sh:property [
 		sh:path schema:result;
@@ -130,23 +125,37 @@ webapi:PotentialActionShape a sh:NodeShape;
 		sh:path schema:target;
 		sh:class schema:EntryPoint;
 		sh:minCount 1;
-	];
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:contentType;
+				sh:datatype xsd:string;
+			];
+			sh:property [
+				sh:path schema:encodingType;
+				sh:datatype xsd:string;
+			];
+			sh:property [
+				sh:path schema:httpMethod;
+				sh:datatype xsd:string;
+				sh:in ("GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE")
+				sh:minCount 1;
+			];
+			sh:property [
+				sh:path schema:urlTemplate;
+				sh:nodeKind sh:IRI ;
+				sh:minCount 1;
+			];
+		];
+	];	
 	sh:property [
 		sh:path schema:error;
+		sh:description "Human readable error messages for potential errors for this action.";
 		sh:class webapi:Error;
 		sh:property [
-			sh:path schema:value-output;
-			sh:class schema:PropertyValueSpecification;
-			sh:node [ 
-				a sh:NodeShape;
-				sh:property [
-					sh:path schema:defaultValue;
-					sh:datatype xsd:integer;
-					sh:minCount 1;
-					sh:minInclusive 100;
-					sh:maxInclusive 599;
-				];
-			];	
+			sh:path schema:propertyID;
+			sh:description: "An internal ID for the error message.";
+			sh:class schema:PropertyValueSpecification;	
 		];
 		sh:property [
 			sh:path schema:description-output;
@@ -178,6 +187,117 @@ webapi:ActionStatusTarget a sh:SPARQLTargetType;
 			?this schema:actionStatus $actionStatus .
 		}
 		""" .		
+
+webapi:PotentialActionStatusShape a sh:NodeShape;
+	sh:targetNode schema:PotentialActionStatus;
+	sh:property [
+		sh:path webapi:httpStatusCode;
+		sh:class schema:PropertyValue;
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:value-output;
+				sh:class schema:PropertyValueSpecification;
+				sh:node [ 
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:defaultValue;
+						sh:datatype xsd:integer;
+						sh:minCount 1;
+						sh:minInclusive 100;
+						sh:maxInclusive 599;
+					];
+				];			
+			]; 
+			sh:property [
+				sh:path schema:description-output;
+				sh:class schema:PropertyValueSpecification;
+				sh:node [ 
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:defaultValue;
+						sh:datatype xsd:string;
+						sh:minCount 1;
+					];
+				];	
+			];
+
+		];
+	].
+
+webapi:FailedActionStatusShape a sh:NodeShape;
+	sh:targetNode schema:FailedActionStatus;
+	sh:minCount 1;
+	sh:maxCount 1;
+	sh:property [
+		sh:path webapi:httpStatusCode;
+		sh:class schema:PropertyValue;
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:value;
+				sh:datatype xsd:integer;	
+				sh:minCount 1;
+				sh:maxCount 1;
+				sh:minInclusive 400;
+				sh:maxInclusive 599;
+			]; 
+			sh:property [
+				sh:path schema:description;
+				sh:datatype xsd:integer;
+				sh:minCount 1;
+				sh:maxCount 1;
+			];
+
+		];
+	].	
+
+webapi:CompletedActionStatusShape a sh:NodeShape;
+	sh:targetNode schema:FailedActionStatus;
+	sh:property [
+		sh:path webapi:httpStatusCode;
+		sh:class schema:PropertyValue;
+		sh:minCount 1;
+		sh:maxCount 1;
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:value;
+				sh:datatype xsd:integer;	
+				sh:minCount 1;
+				sh:maxCount 1;
+				sh:defaultValue 200;
+				sh:minInclusive 200;
+				sh:maxInclusive 299;
+			]; 
+			sh:property [
+				sh:path schema:description;
+				sh:class schema:PropertyValueSpecification;
+				sh:minCount 1;
+				sh:maxCount 1;
+			];
+
+		];
+	].
+
+webapi:ActiveActionStatusShape a sh:NodeShape;
+	sh:targetNode schema:ActiveActionStatus;
+	sh:property [
+		sh:path webapi:httpStatusCode;
+		sh:class schema:PropertyValue;
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:value;
+				sh:class schema:PropertyValueSpecification;	
+			]; 
+			sh:property [
+				sh:path schema:description;
+				sh:class schema:PropertyValueSpecification;
+			];
+
+		];
+	].
 
 webapi:FormBasedAuthenticationShape a sh:NodeShape;
 	sh:name "FormBasedAuthenticationShape";
@@ -236,7 +356,6 @@ webapi:DocumentationShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:encodingFormat;
 		sh:minCount 1;
-		sh:maxCount 1;
 		sh:in ("application/ld+json" "text/html") #think about this
 	];
 	sh:property [
@@ -318,14 +437,6 @@ schema:documentation a rdf:Property ;
         schema:URL ;
     rdfs:comment "Further documentation describing the Web API in more detail." .
 
-schema:areaServed a rdf:Property ;
-	rdfs:label "areaServed" ;
-	schema:domainIncludes schema:Service ;
-	schema:rangeIncludes schema:GeoShape ;
-	rdfs:comment "The geographic area where a service or offered item is provided." ;
-	schema:domainIncludes schema:Organization , schema:Demand , schema:Offer , schema:ContactPoint , schema:DeliveryChargeSpecification ;
-	schema:rangeIncludes schema:Text , schema:Place , schema:AdministrativeArea .
-
 
 schema:provider a rdf:Property ;
 	rdfs:label "provider" ;
@@ -335,13 +446,6 @@ schema:provider a rdf:Property ;
 	schema:domainIncludes schema:Flight , schema:CreativeWork , schema:Reservation , schema:Invoice , schema:BusTrip , schema:ParcelDelivery , schema:TrainTrip ;
 	schema:rangeIncludes schema:Organization .
 
-schema:logo a rdf:Property ;
-	rdfs:label "logo" ;
-	schema:domainIncludes schema:Brand ;
-	schema:rangeIncludes schema:URL ;
-	rdfs:comment "An associated logo." ;
-	schema:domainIncludes schema:Service , schema:Place , schema:Organization , schema:Product ;
-	schema:rangeIncludes schema:ImageObject .
 
 schema:offers a rdf:Property ;
 	rdfs:label "offers" ;
@@ -349,13 +453,6 @@ schema:offers a rdf:Property ;
 	schema:rangeIncludes schema:Offer ;
 	rdfs:comment "An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event." ;
 	schema:domainIncludes schema:Event , schema:CreativeWork , schema:Product , schema:AggregateOffer , schema:MenuItem .
-
-schema:aggregateRating a rdf:Property ;
-	rdfs:label "aggregateRating" ;
-	schema:domainIncludes schema:Brand ;
-	schema:rangeIncludes schema:AggregateRating ;
-	rdfs:comment "The overall rating, based on a collection of reviews or ratings, of the item." ;
-	schema:domainIncludes schema:Service , schema:Place , schema:Event , schema:Organization , schema:CreativeWork , schema:Product , schema:Offer .
 
 schema:category a rdf:Property ;
 	rdfs:label "category" ;
@@ -373,20 +470,6 @@ schema:isSimilarTo a rdf:Property ;
 	schema:domainIncludes schema:Product ;
 	schema:rangeIncludes schema:Product .
 
-schema:review a rdf:Property ;
-	rdfs:label "review" ;
-	schema:domainIncludes schema:Brand ;
-	schema:rangeIncludes schema:Review ;
-	rdfs:comment "A review of the item." ;
-	schema:domainIncludes schema:Service , schema:Place , schema:Event , schema:Organization , schema:CreativeWork , schema:Product , schema:Offer .
-
-schema:hasOfferCatalog a rdf:Property ;
-	rdfs:label "hasOfferCatalog" ;
-	schema:domainIncludes schema:Person ;
-	schema:rangeIncludes schema:OfferCatalog ;
-	rdfs:comment "Indicates an OfferCatalog listing for this Organization, Person, or Service." ;
-	schema:domainIncludes schema:Service , schema:Organization .
-
 schema:isRelatedTo a rdf:Property ;
 	rdfs:label "isRelatedTo" ;
 	schema:domainIncludes schema:Service ;
@@ -395,36 +478,12 @@ schema:isRelatedTo a rdf:Property ;
 	schema:domainIncludes schema:Product ;
 	schema:rangeIncludes schema:Product .
 
-schema:availableChannel a rdf:Property ;
-	rdfs:label "availableChannel" ;
-	schema:domainIncludes schema:Service ;
-	schema:rangeIncludes schema:ServiceChannel ;
-	rdfs:comment "A means of accessing the service (e.g. a phone bank, a web site, a location, etc.)." .
-
-schema:serviceType a rdf:Property ;
-	rdfs:label "serviceType" ;
-	schema:domainIncludes schema:Service ;
-	schema:rangeIncludes schema:Text ;
-	rdfs:comment "The type of service being offered, e.g. veterans' benefits, emergency relief, etc." .
-
 schema:name a rdf:Property ;
 	rdfs:label "name" ;
 	schema:domainIncludes schema:Thing ;
 	schema:rangeIncludes schema:Text ;
 	rdfs:comment "The name of the item." .
 
-schema:disambiguatingDescription a rdf:Property ;
-	rdfs:label "disambiguatingDescription" ;
-	schema:domainIncludes schema:Thing ;
-	schema:rangeIncludes schema:Text ;
-	rdfs:comment "A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation." .
-
-schema:identifier a rdf:Property ;
-	rdfs:label "identifier" ;
-	schema:domainIncludes schema:Thing ;
-	schema:rangeIncludes schema:Text ;
-	rdfs:comment "The identifier property represents any kind of identifier for any kind of <a class=\"localLink\" href=\"http://schema.org/Thing\">Thing</a>, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See <a href=\"/docs/datamodel.html#identifierBg\">background notes</a> for more details." ;
-	schema:rangeIncludes schema:URL , schema:PropertyValue .
 
 schema:description a rdf:Property ;
 	rdfs:label "description" ;
@@ -444,13 +503,6 @@ schema:potentialAction a rdf:Property ;
 	schema:rangeIncludes schema:Action ;
 	rdfs:comment "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role." .
 
-schema:image a rdf:Property ;
-	rdfs:label "image" ;
-	schema:domainIncludes schema:Thing ;
-	schema:rangeIncludes schema:URL ;
-	rdfs:comment "An image of the item. This can be a <a class=\"localLink\" href=\"http://schema.org/URL\">URL</a> or a fully described <a class=\"localLink\" href=\"http://schema.org/ImageObject\">ImageObject</a>." ;
-	schema:rangeIncludes schema:ImageObject .
-
 schema:additionalType a rdf:Property ;
 	rdfs:label "additionalType" ;
 	schema:domainIncludes schema:Thing ;
@@ -469,26 +521,6 @@ schema:accountablePerson a rdf:Property ;
 	schema:rangeIncludes schema:Person ;
 	rdfs:comment "Specifies the Person that is legally accountable for the CreativeWork." .
 
-schema:schemaVersion a rdf:Property ;
-	rdfs:label "schemaVersion" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:Text ;
-	rdfs:comment "Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application." ;
-	schema:rangeIncludes schema:URL .
-
-schema:interactionStatistic a rdf:Property ;
-	rdfs:label "interactionStatistic" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:InteractionCounter ;
-	rdfs:comment "The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used." .
-
-schema:copyrightHolder a rdf:Property ;
-	rdfs:label "copyrightHolder" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:Person ;
-	rdfs:comment "The party holding the legal copyright to the CreativeWork." ;
-	schema:rangeIncludes schema:Organization .
-
 schema:inLanguage a rdf:Property ;
 	rdfs:label "inLanguage" ;
 	schema:domainIncludes schema:Event ;
@@ -497,13 +529,6 @@ schema:inLanguage a rdf:Property ;
 	schema:domainIncludes schema:CreativeWork , schema:CommunicateAction , schema:WriteAction ;
 	schema:rangeIncludes schema:Language .
 
-schema:sponsor a rdf:Property ;
-	rdfs:label "sponsor" ;
-	schema:domainIncludes schema:Person ;
-	schema:rangeIncludes schema:Person ;
-	rdfs:comment "A person or organization that supports a thing through a pledge, promise, or financial contribution. e.g. a sponsor of a Medical Study or a corporate sponsor of an event." ;
-	schema:domainIncludes schema:Event , schema:Organization , schema:CreativeWork ;
-	schema:rangeIncludes schema:Organization .
 
 schema:dateCreated a rdf:Property ;
 	rdfs:label "dateCreated" ;
@@ -549,17 +574,6 @@ schema:about a rdf:Property ;
 	rdfs:comment "The subject matter of the content." ;
 	schema:domainIncludes schema:CreativeWork , schema:CommunicateAction .
 
-schema:isPartOf a rdf:Property ;
-	rdfs:label "isPartOf" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:CreativeWork ;
-	rdfs:comment "Indicates a CreativeWork that this CreativeWork is (in some sense) part of." .
-
-schema:hasPart a rdf:Property ;
-	rdfs:label "hasPart" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:CreativeWork ;
-	rdfs:comment "Indicates a CreativeWork that is (in some sense) a part of this CreativeWork." .
 
 schema:license a rdf:Property ;
 	rdfs:label "license" ;
@@ -650,24 +664,6 @@ schema:keywords a rdf:Property ;
 	schema:rangeIncludes schema:Text ;
 	rdfs:comment "Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas." .
 
-schema:isAccessibleForFree a rdf:Property ;
-	rdfs:label "isAccessibleForFree" ;
-	schema:domainIncludes schema:Event ;
-	schema:rangeIncludes schema:Boolean ;
-	rdfs:comment "A flag to signal that the publication is accessible for free." ;
-	schema:domainIncludes schema:CreativeWork , schema:PublicationEvent .
-
-schema:sourceOrganization a rdf:Property ;
-	rdfs:label "sourceOrganization" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:Organization ;
-	rdfs:comment "The Organization on whose behalf the creator was working." .
-
-schema:editor a rdf:Property ;
-	rdfs:label "editor" ;
-	schema:domainIncludes schema:CreativeWork ;
-	schema:rangeIncludes schema:Person ;
-	rdfs:comment "Specifies the Person who edited the CreativeWork." .
 
 schema:encodingFormat a rdf:Property ;
     rdfs:label "encodingFormat" ;
@@ -693,20 +689,6 @@ schema:encodingFormat a rdf:Property ;
 	schema:rangeIncludes schema:EntryPoint ;
 	rdfs:comment "Indicates a target EntryPoint for an Action." .
 
-
-schema:agent a rdf:Property ;
-	rdfs:label "agent" ;
-	schema:domainIncludes schema:Action ;
-	schema:rangeIncludes schema:Person ;
-	rdfs:comment "The direct performer or driver of the action (animate or inanimate). e.g. <em>John</em> wrote a book." ;
-	schema:rangeIncludes schema:Organization .
-
-schema:participant a rdf:Property ;
-	rdfs:label "participant" ;
-	schema:domainIncludes schema:Action ;
-	schema:rangeIncludes schema:Person ;
-	rdfs:comment "Other co-agents that participated in the action indirectly. e.g. John wrote a book with <em>Steve</em>." ;
-	schema:rangeIncludes schema:Organization .
 
 schema:object a rdf:Property ;
 	rdfs:label "object" ;
@@ -818,6 +800,12 @@ webapi:authentication a rdf:Property;
 	schema:rangeIncludes webapi:AuthenticationSpecification;
 	rdfs:subPropertyOf schema:instrument ;
 	rdfs:comment "The authentication specification for the action. " .
+
+webapi:httpStatusCode a rdf:Property;
+	rdfs:label "httpStatusCode";
+	schema:domainIncludes schema:ActionStatusType;
+	schema:rangeIncludes schema:PropertyValue;
+	rdfs:comment "HTTP status code (RFC) to support the action status. " .
 	
 	#instances
 
@@ -833,14 +821,18 @@ schema:PotentialActionStatus a schema:ActionStatusType ;
     rdfs:label "PotentialActionStatus" ;
     rdfs:comment "A description of an action that is supported." .
 
-webapi:HTTPMessageBody a schema:HTTPMessagePart;
+schema:ActiveActionStatus a schema:ActionStatusType ;
+    rdfs:label "ActiveActionStatus" ;
+    rdfs:comment "An ongoning action. Typically used for requests and responses that require further client action (e.g. redirection)" .
+
+webapi:HTTPMessageBody a webapi:HTTPMessagePart;
 	rdfs:label "HTTPMessageBody";
 	rdfs:comment "Body of an HTTP message" .
 
-webapi:HTTPMessageHeader a schema:HTTPMessagePart;
+webapi:HTTPMessageHeader a webapi:HTTPMessagePart;
 	rdfs:label "HTTPMessageHeader";
 	rdfs:comment "Header of an HTTP message" .
 
-webapi:HTTPMessageURL a schema:HTTPMessagePart;
+webapi:HTTPMessageURL a webapi:HTTPMessagePart;
 	rdfs:label "HTTPMessageURL";
 	rdfs:comment "URL in the start line of an HTTP message" .
