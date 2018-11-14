@@ -11,6 +11,7 @@ The doc folder contains a multipage HTML documentation created by Ontodocs.
 
 See https://actions.semantify.it/vocab for the documentation.
 
+Şimşek, U., Kärle, E. & Fensel, D. (2018). Machine Readable Web APIs with Schema.org Action Annotations. Procedia Computer Science, 137, 255 - 261. doi: https://doi.org/10.1016/j.procs.2018.09.025 
 
 ## Semi-automated Dialogue Generation for Goal Oriented Dialogue Systems
 
