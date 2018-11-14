@@ -5,7 +5,7 @@ Schema.org is one of the biggest collaborative vocabulary engineering projects a
 
 ## Web API Description with Schema.org Actions
 
-This repository contains a subset of schema.org and SHACL shapes.
+This repository contains a subset of schema.org and SHACL shapes. The shapes cover useful types and properties for API description, based on the analysis made on OpenAPI/SmartAPI Specification and Hydra.
 
 The doc folder contains a multipage HTML documentation created by Ontodocs.
 
