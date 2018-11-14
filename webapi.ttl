@@ -138,7 +138,7 @@ webapi:PotentialActionShape a sh:NodeShape;
 			sh:property [
 				sh:path schema:httpMethod;
 				sh:datatype xsd:string;
-				sh:in ("GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE")
+				sh:in ("GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE");
 				sh:minCount 1;
 			];
 			sh:property [
