@@ -119,12 +119,10 @@ webapi:PropertyValueSpecificationShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:name;
 		sh:datatype xsd:string  ;
-		sh:defaultValue true;
 		sh:maxCount 1
 	];
 	sh:property [
 		sh:path schema:defaultValue;
-		sh:defaultValue true;
 		sh:nodeKind sh:IRIOrLiteral;
 		sh:maxCount 1
 	]	.
