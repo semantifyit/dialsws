@@ -167,7 +167,7 @@ webapi:PotentialActionShape a sh:NodeShape;
 			];
 			sh:property [
 				sh:path schema:urlTemplate;
-				sh:nodeKind xsd:string ;
+				sh:datetype xsd:string ;
 				sh:minCount 1;
 			];
 		];
@@ -897,9 +897,9 @@ webapi:httpStatusCode a rdf:Property;
 	
 	#instances
 
-schema:CompletedActionStatus a schema:ActionStatusType ;
-    rdfs:label "CompletedActionStatus" ;
-    rdfs:comment "An action that has already taken place." .
+#schema:CompletedActionStatus a schema:ActionStatusType ;
+#    rdfs:label "CompletedActionStatus" ;
+#    rdfs:comment "An action that has already taken place." .
 
 #schema:FailedActionStatus a schema:ActionStatusType ;
 #    rdfs:label "FailedActionStatus" ;
