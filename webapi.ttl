@@ -107,6 +107,26 @@ webapi:ActionsShape a sh:NodeShape;
 		sh:maxCount 1
 	] .
 
+webapi:PropertyValueSpecificationShape a sh:NodeShape;
+	sh:targetClass schema:PropertyValueSpecification;
+	sh:property [
+		sh:path schema:valueRequired;
+		sh:datatype xsd:boolean;
+		sh:defaultValue true;
+		sh:minCount 1;
+		sh:maxCount 1
+	];
+	sh:property [
+		sh:path schema:name;
+		sh:datatype xsd:string  ;
+		sh:maxCount 1
+	];
+	sh:property [
+		sh:path schema:defaultValue;
+		sh:nodeKind sh:IRIOrLiteral;
+		sh:maxCount 1
+	]	.
+
 webapi:PotentialActionShape a sh:NodeShape;
 	sh:target	[
 		a webapi:ActionStatusTarget;
@@ -138,7 +158,7 @@ webapi:PotentialActionShape a sh:NodeShape;
 			sh:property [
 				sh:path schema:httpMethod;
 				sh:datatype xsd:string;
-				sh:in ("GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE")
+				sh:in ("GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE");
 				sh:minCount 1;
 			];
 			sh:property [

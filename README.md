@@ -5,15 +5,16 @@ Schema.org is one of the biggest collaborative vocabulary engineering projects a
 
 ## Web API Description with Schema.org Actions
 
-This repository contains a subset of schema.org and SHACL shapes.
+This repository contains a subset of schema.org and SHACL shapes. The shapes cover useful types and properties for API description, based on the analysis made on OpenAPI/SmartAPI Specification and Hydra.
 
 The doc folder contains a multipage HTML documentation created by Ontodocs.
 
 See https://actions.semantify.it/vocab for the documentation.
 
+Şimşek, U., Kärle, E. & Fensel, D. (2018). Machine Readable Web APIs with Schema.org Action Annotations. Procedia Computer Science, 137, 255 - 261. doi: https://doi.org/10.1016/j.procs.2018.09.025 
 
 ## Semi-automated Dialogue Generation for Goal Oriented Dialogue Systems
 
-Simsek,  U.,  Fensel,  D.:  Intent  generation  for goal-oriented  dialogue  systemsbased  on  schema.org annotations.  In:  The  Prooceedings  of  1st  International Workshop  on  Chatbots  co-located  with  ICWSM 2018  (2018),  http://dblp.uni-trier.de/db/journals/corr/corr1807.html#abs-1807-01292 (To appear)
+Simsek,  U.,  Fensel,  D.:  Intent  generation  for goal-oriented  dialogue  systems based  on  schema.org annotations.  In:  The  Prooceedings  of  1st  International Workshop  on  Chatbots  co-located  with  ICWSM 2018  (2018),  http://dblp.uni-trier.de/db/journals/corr/corr1807.html#abs-1807-01292 (To appear)
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
