@@ -342,6 +342,7 @@ webapi:FailedActionStatusShape a sh:NodeShape;
 
 webapi:CompletedActionStatusShape a sh:NodeShape;
 	sh:targetNode schema:CompletedActionStatus;
+	sh:deactivated true;
 	sh:property [
 		sh:path webapi:httpStatusCode;
 		sh:class schema:PropertyValue;
