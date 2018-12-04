@@ -1,5 +1,5 @@
 {
-  "@context": ["http://schema.org/", {"webapi": "http://actions.semantify.it/vocab/"}],
+  "@context": ["http://schema.org/", {"webapi": "https://actions.semantify.it/vocab/"}],
     "@type": "Action",
     "name": "Creates new events objects under an organization and returns it as event.",
     "actionStatus": {"@type": "ActionStatusType", "@id": "http://schema.org/PotentialActionStatus"},
