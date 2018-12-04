@@ -199,9 +199,10 @@ webapi:PotentialActionShape a sh:NodeShape;
 			sh:or 
 			(
 				[
-					sh:node [
+				    sh:class webapi:FormBasedAuthentication;
+					sh:node 
+					[
 						a sh:NodeShape;
-						sh:class webapi:FormBasedAuthentication;
 						sh:property [
 							sh:path schema:value-input;
 							sh:class schema:PropertyValueSpecification;
@@ -223,9 +224,10 @@ webapi:PotentialActionShape a sh:NodeShape;
 					]
 				]
 				[
-					sh:node [
+				    sh:class webapi:TokenAuthentication;
+					sh:node 
+					[
 						a sh:NodeShape;
-						sh:class webapi:TokenAuthentication;
 						sh:property [
 							sh:path schema:value-input;
 							sh:class schema:PropertyValueSpecification;
@@ -237,9 +239,9 @@ webapi:PotentialActionShape a sh:NodeShape;
 					]
 				]
 				[
+				    sh:class webapi:HTTPBasicAuthentication;
 					sh:node [
 						a sh:NodeShape;
-						sh:class webapi:HTTPBasicAuthentication;
 						sh:property [
 							sh:path schema:value-input;
 							sh:class schema:PropertyValueSpecification;
