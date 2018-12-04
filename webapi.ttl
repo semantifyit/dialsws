@@ -315,11 +315,11 @@ webapi:PotentialActionStatusShape a sh:NodeShape;
 
 webapi:FailedActionStatusShape a sh:NodeShape;
 	sh:targetNode schema:FailedActionStatus;
-	sh:minCount 1;
-	sh:maxCount 1;
 	sh:property [
 		sh:path webapi:httpStatusCode;
 		sh:class schema:PropertyValue;
+		sh:minCount 1;
+		sh:maxCount 1;
 		sh:node [
 			a sh:NodeShape;
 			sh:property [
