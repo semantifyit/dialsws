@@ -3,8 +3,8 @@
     "@type": "Action",
     "name": "Creates new events objects under an organization and returns it as event.",
     "actionStatus": {"@type": "ActionStatusType", "@id": "http://schema.org/PotentialActionStatus"},
-  "webapi:authentication": {
-        "@type": "webapi:FormBsedAuthentication",
+    "webapi:authentication": {
+        "@type": "webapi:FormBasedAuthentication",
         "name-input": {
             "@type":"PropertyValueSpecification",
             "valueRequired": true

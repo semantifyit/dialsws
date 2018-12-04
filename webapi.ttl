@@ -137,6 +137,62 @@ webapi:PotentialActionShape a sh:NodeShape;
 		a webapi:ActionStatusTarget;
 		schema:actionStatus schema:PotentialActionStatus;
 	];
+	sh:property [
+		sh:path webapi:authentication;
+		sh:or 
+		(
+			[
+				sh:class webapi:FormBasedAuthentication;
+				sh:node 
+				[
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:value-input;
+						sh:class schema:PropertyValueSpecification;
+						sh:minCount 1;
+						sh:maxCount 1;
+					];
+					sh:property [
+						sh:path webapi:sentIn;
+						sh:class webapi:HTTPMessagePart;
+						sh:minCount 1;
+						sh:maxCount 1;
+					];
+					sh:property [
+						sh:path schema:name-input;
+						sh:class schema:PropertyValueSpecification;
+						sh:minCount 1;
+						sh:maxCount 1;
+					];						
+				];
+			]
+			[
+				sh:class webapi:TokenAuthentication;
+				sh:node 
+				[
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:value-input;
+						sh:class schema:PropertyValueSpecification;
+					];
+					sh:property [
+						sh:path webapi:tokenFormat;
+						sh:datatype xsd:string;
+					];
+				];
+			]
+			[
+				sh:class webapi:HTTPBasicAuthentication;
+				sh:node [
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:value-input;
+						sh:class schema:PropertyValueSpecification;
+					];
+				]
+			]				
+		)
+	];
 	sh:property	[
 		sh:path schema:object;
 		sh:class schema:Thing;
@@ -192,37 +248,6 @@ webapi:PotentialActionShape a sh:NodeShape;
 					sh:datatype xsd:string;
 				];
 			];	
-		];
-		sh:property [
-			sh:path webapi:authentication;
-			#sh:class schema:AuthenticationSpecification;
-				
-				    sh:class webapi:FormBasedAuthentication;
-					sh:node 
-					[
-						a sh:NodeShape;
-						sh:property [
-							sh:path schema:value-input;
-							sh:class schema:PropertyValueSpecification;
-							sh:minCount 1;
-							sh:maxCount 1;
-						];
-						sh:property [
-							sh:path webapi:sentIn;
-							sh:class webapi:HTTPMessagePart;
-							sh:minCount 1;
-							sh:maxCount 1;
-						];
-						sh:property [
-							sh:path schema:name-input;
-							sh:class schema:PropertyValueSpecification;
-							sh:minCount 1;
-							sh:maxCount 1;
-						];						
-					]
-				
-						
-			
 		];		
 
 	].
