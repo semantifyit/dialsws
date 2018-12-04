@@ -5,10 +5,6 @@
     "actionStatus": {"@type": "ActionStatusType", "@id": "http://schema.org/PotentialActionStatus"},
   "webapi:authentication": {
         "@type": "webapi:FormBasedAuthentication",
-        "value-input": {
-            "@type":"PropertyValueSpecification",
-            "valueRequired": true
-        },
         "name-input": {
             "@type":"PropertyValueSpecification",
             "valueRequired": true
