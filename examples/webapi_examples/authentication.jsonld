@@ -9,7 +9,6 @@
             "@type":"PropertyValueSpecification",
             "valueRequired": true
         },
-      "webapi:sentIn": {"@id": "webapi:HTTPMessageHeader"},
         "name-input": {
             "@type":"PropertyValueSpecification",
             "valueRequired": true
