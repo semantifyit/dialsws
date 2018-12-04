@@ -17,7 +17,8 @@
 		a sh:PrefixDeclaration;
 		sh:prefix "schema";
 		sh:namespace "http://schema.org/"^^xsd:anyURI ;
-	].
+	];
+	sh:entailment <http://www.w3.org/ns/entailment/RDFS>.
 
 ##classes
 schema:WebAPI a rdfs:Class ;
@@ -204,6 +205,8 @@ webapi:PotentialActionShape a sh:NodeShape;
 						sh:property [
 							sh:path schema:value-input;
 							sh:class schema:PropertyValueSpecification;
+							sh:minCount 1;
+							sh:maxCount 1;
 						];
 						sh:property [
 							sh:path webapi:sentIn;
@@ -214,6 +217,8 @@ webapi:PotentialActionShape a sh:NodeShape;
 						sh:property [
 							sh:path schema:name-input;
 							sh:class schema:PropertyValueSpecification;
+							sh:minCount 1;
+							sh:maxCount 1;
 						];						
 					]
 				]
