@@ -167,7 +167,7 @@ webapi:PotentialActionShape a sh:NodeShape;
 			];
 			sh:property [
 				sh:path schema:urlTemplate;
-				sh:nodeKind sh:IRI ;
+				sh:nodeKind xsd:string ;
 				sh:minCount 1;
 			];
 		];
@@ -341,7 +341,7 @@ webapi:FailedActionStatusShape a sh:NodeShape;
 	].	
 
 webapi:CompletedActionStatusShape a sh:NodeShape;
-	sh:targetNode schema:FailedActionStatus;
+	sh:targetNode schema:CompletedActionStatus;
 	sh:property [
 		sh:path webapi:httpStatusCode;
 		sh:class schema:PropertyValue;
@@ -901,17 +901,17 @@ schema:CompletedActionStatus a schema:ActionStatusType ;
     rdfs:label "CompletedActionStatus" ;
     rdfs:comment "An action that has already taken place." .
 
-schema:FailedActionStatus a schema:ActionStatusType ;
-    rdfs:label "FailedActionStatus" ;
-    rdfs:comment "An action that failed to complete. The action's error property and the HTTP return code contain more information about the failure." .
+#schema:FailedActionStatus a schema:ActionStatusType ;
+#    rdfs:label "FailedActionStatus" ;
+#    rdfs:comment "An action that failed to complete. The action's error property and the HTTP return code contain more information about the failure." .
 
-schema:PotentialActionStatus a schema:ActionStatusType ;
-    rdfs:label "PotentialActionStatus" ;
-    rdfs:comment "A description of an action that is supported." .
+#schema:PotentialActionStatus a schema:ActionStatusType ;
+ #   rdfs:label "PotentialActionStatus" ;
+ #   rdfs:comment "A description of an action that is supported." .
 
-schema:ActiveActionStatus a schema:ActionStatusType ;
-    rdfs:label "ActiveActionStatus" ;
-    rdfs:comment "An ongoning action. Typically used for requests and responses that require further client action (e.g. redirection)" .
+#schema:ActiveActionStatus a schema:ActionStatusType ;
+#    rdfs:label "ActiveActionStatus" ;
+#    rdfs:comment "An ongoning action. Typically used for requests and responses that require further client action (e.g. redirection)" .
 
 webapi:HTTPMessageBody a webapi:HTTPMessagePart;
 	rdfs:label "HTTPMessageBody";
