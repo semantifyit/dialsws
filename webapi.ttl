@@ -105,7 +105,11 @@ webapi:ActionsShape a sh:NodeShape;
 		sh:defaultValue schema:PotentialActionStatus;
 		sh:minCount 1;
 		sh:maxCount 1
-	] .
+	];
+	sh:property [
+		sh:path webapi:authentication;
+		sh:class webapi:AuthenticationSpecification;
+	]; .
 
 webapi:PropertyValueSpecificationShape a sh:NodeShape;
 	sh:targetClass schema:PropertyValueSpecification;
@@ -187,6 +191,55 @@ webapi:PotentialActionShape a sh:NodeShape;
 					sh:datatype xsd:string;
 				];
 			];	
+		];
+		sh:property [
+			sh:path webapi:authentication;
+			#sh:class schema:AuthenticationSpecification;
+			sh:or 
+			(
+				[
+					sh:node [
+						a sh:NodeShape;
+						sh:class webapi:FormBasedAuthentication;
+						sh:property [
+							sh:path schema:value-input;
+							sh:class schema:PropertyValueSpecification;
+						];
+						sh:property [
+							sh:path webapi:sentIn;
+							sh:class webapi:HTTPMessagePart;
+						];
+						sh:property [
+							sh:path schema:name-input;
+							sh:class schema:PropertyValueSpecification;
+						];						
+					]
+				]
+				[
+					sh:node [
+						a sh:NodeShape;
+						sh:class webapi:TokenAuthentication;
+						sh:property [
+							sh:path schema:value-input;
+							sh:class schema:PropertyValueSpecification;
+						];
+						sh:property [
+							sh:path webapi:tokenFormat;
+							sh:datatype xsd:string;
+						];
+					]
+				]
+				[
+					sh:node [
+						a sh:NodeShape;
+						sh:class webapi:HTTPBasicAuthentication;
+						sh:property [
+							sh:path schema:value-input;
+							sh:class schema:PropertyValueSpecification;
+						];
+					]
+				]				
+			)
 		];		
 
 	].
