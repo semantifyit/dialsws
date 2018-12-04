@@ -208,6 +208,8 @@ webapi:PotentialActionShape a sh:NodeShape;
 						sh:property [
 							sh:path webapi:sentIn;
 							sh:class webapi:HTTPMessagePart;
+							sh:minCount 1;
+							sh:maxCount 1;
 						];
 						sh:property [
 							sh:path schema:name-input;
