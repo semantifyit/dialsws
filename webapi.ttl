@@ -188,6 +188,19 @@ webapi:ActionStatusTarget a sh:SPARQLTargetType;
 		}
 		""" .		
 
+webapi:InputOutputPropertyValueSpecification a sh:NodeShape; #experimental
+	sh:targetClass rdf:Property;
+	sh:sparql [
+		sh:prefixes <https://actions.semantify.it/vocab> ;
+		sh:message "An input-output parameter must have a PropertyValueSpecification value.";
+		sh:select """
+			select $this 
+			where { 
+    			?s $this ?o.
+    			FILTER ((contains(str($this), "-input") || contains(str($this), "-output")) && NOT EXISTS{?o a schema:PropertyValueSpecification})
+				} 
+		"""; ].	
+
 webapi:PotentialActionStatusShape a sh:NodeShape;
 	sh:targetNode schema:PotentialActionStatus;
 	sh:property [
