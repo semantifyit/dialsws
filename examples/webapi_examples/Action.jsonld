@@ -10,13 +10,12 @@
         "@type": "Event",
         "name-input":"required",
         "startDate-input":"required",
-        "endDate-input":"required"
-    },
-    "result": {
-        "@type": "Event",
-        "name-input":"required",
-        "startDate-input":"required",
         "endDate-input":"required",
+        "additionalProperty": {
+            "@type": "PropertyValue",
+            "name": "event.show_remaining",
+            "value-input": "optional"
+        },
         "organizer": {
             "@type":"Organizer",
             "identifier-input": "required name=id"
@@ -26,6 +25,14 @@
             "priceCurrency-input": "required" 
         }
     },
+    "result": {
+        "@type": "Event",
+        "name-output":"required",
+        "startDate-output":"required",
+        "endDate-output":"required"
+        
+    }
+    ,
     "target": {
         "@type":"EntryPoint",
         "urlTemplate": "https://www.eventbriteapi.com/v3/{id}/events/",
@@ -33,6 +40,6 @@
         "contentType": "application/ld+json",
         "httpMethod": "POST"
     }
-    
+
     
 }
