@@ -1,4 +1,4 @@
-#Comparison between Schema.org, SmartAPI and Hydra Concepts for Web API Description
+# Comparison between Schema.org, SmartAPI and Hydra Concepts for Web API Description
 
 | **Schema.org Concept**                           | **SmartAPI Concept**            | **Hydra Concept** | **Description** |
 | :----------------------------------------------- | :------------------------------ | :---------------- | :-------------- |
