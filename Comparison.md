@@ -1,3 +1,5 @@
+#Comparison between Schema.org, SmartAPI and Hydra Concepts for Web API Description
+
 | **Schema.org Concept**                           | **SmartAPI Concept**            | **Hydra Concept** | **Description** |
 | :----------------------------------------------- | :------------------------------ | :---------------- | :-------------- |
 |                                                  |                                 |                   |                 |
@@ -21,5 +23,3 @@
 | contentType                                      | media type                      | JSON-LD           | Consumed media type by the API. Hydra allows only JSON-LD    |
 | encodingType                                     | media type                      | JSON-LD           | Response media type of the API. Hydra allows only JSON-LD   |
 
-Comparison between Schema.org, SmartAPI and Hydra Concepts for Web API
-description<span label="tab:comparison"></span>
