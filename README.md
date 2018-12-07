@@ -12,8 +12,8 @@ This repository contains a subset of schema.org and SHACL shapes. The shapes cov
 See https://actions.semantify.it/vocab for the proposed shapes.
 
 ### See also:
-[Mapping and comparison of Schema.org, OpenAPI/SmartAPI and Hydra](Comparison.md)
-[Semantify.it Schema.org Actions Semantify.it Authentication Extension](Authentication.md)
+* [Mapping and comparison of Schema.org, OpenAPI/SmartAPI and Hydra](Comparison.md)
+* [Semantify.it Schema.org Actions Semantify.it Authentication Extension](Authentication.md)
 
 ### Publications
 Şimşek, U., Kärle, E. & Fensel, D. (2018). Machine Readable Web APIs with Schema.org Action Annotations. Procedia Computer Science, 137, 255 - 261. doi: https://doi.org/10.1016/j.procs.2018.09.025 

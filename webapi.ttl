@@ -7,7 +7,7 @@
 @prefix schema: <http://schema.org/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix webapi: <https://actions.semantify.it/vocab/> .
+@prefix smtfy: <https://actions.semantify.it/vocab/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix hydra: <http://www.w3.org/ns/hydra/core#> .
 
@@ -50,38 +50,38 @@ schema:Action a rdfs:Class ;
     dct:source <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass> ;
     rdfs:comment """An action performed by a direct agent and indirect participants upon a direct object. Optionally happens at a location with the help of an inanimate instrument. The execution of the action may produce a result. Specific action sub-type documentation specifies the exact expectation of each argument/role.<br/><br/>""".
 
-webapi:AuthenticationAction a rdfs:Class ;
+smtfy:AuthenticationAction a rdfs:Class ;
     rdfs:label "Action" ;
     rdfs:comment """An action performed to complete an authentication flow for obtaining a token.<br/><br/>""" ;
 	rdfs:subClassOf schema:Action .
 
-webapi:AuthenticationSpecification a rdfs:Class;
+smtfy:AuthenticationSpecification a rdfs:Class;
 	rdfs:label "AuthenticationSpecification";
 	rdfs:comment "Specification of the authentication method required to perfom the on a web resource.";
 	rdfs:subClassOf schema:PropertyValue.
 
-webapi:HTTPBasicAuthentication a rdfs:Class;
+smtfy:HTTPBasicAuthentication a rdfs:Class;
 	rdfs:label "HTTPBasicAuthentication";
 	rdfs:comment "Values of this specification is mapped to 'Basic <token>' pattern in the Authentication header of a request.";
-	rdfs:subClassOf webapi:AuthenticationSpecification.
+	rdfs:subClassOf smtfy:AuthenticationSpecification.
 
-webapi:FormBasedAuthentication a rdfs:Class;
+smtfy:FormBasedAuthentication a rdfs:Class;
 	rdfs:label "FormBasedAuthentication";
 	rdfs:comment "Custom form-based authentication method specification";
-	rdfs:subClassOf webapi:AuthenticationSpecification.
+	rdfs:subClassOf smtfy:AuthenticationSpecification.
 
-webapi:TokenAuthentication a rdfs:Class;
+smtfy:TokenAuthentication a rdfs:Class;
 	rdfs:label "TokenAuthentication";
 	rdfs:comment "Values of this specification is mapped to 'Bearer <token>' pattern in the Authentication header of a request.";
-	rdfs:subClassOf webapi:AuthenticationSpecification.
+	rdfs:subClassOf smtfy:AuthenticationSpecification.
 
-webapi:Error a rdfs:Class;
+smtfy:Error a rdfs:Class;
 	rdfs:label "Error";
 	rdfs:comment "An error specification";
 	rdfs:subClassOf hydra:Error ;
 	rdfs:subClassOf schema:PropertyValue .
 
-webapi:HTTPMessagePart a rdf:Class;
+smtfy:HTTPMessagePart a rdf:Class;
 	rdfs:label "HTTPMessagePart";
 	rdfs:comment "A part of the HTTP message where the content is sent.";
 	rdfs:subClassOf schema:Enumeration .
@@ -98,7 +98,7 @@ schema:Thing a rdfs:Class ;
 
 ##shapes
 
-webapi:ActionsShape a sh:NodeShape;
+smtfy:ActionsShape a sh:NodeShape;
 	sh:targetClass schema:Action;
 	sh:property [
 		sh:path schema:actionStatus;
@@ -108,11 +108,11 @@ webapi:ActionsShape a sh:NodeShape;
 		sh:maxCount 1
 	];
 	sh:property [
-		sh:path webapi:authentication;
-		sh:class webapi:AuthenticationSpecification;
+		sh:path smtfy:authentication;
+		sh:class smtfy:AuthenticationSpecification;
 	]; .
 
-webapi:PropertyValueSpecificationShape a sh:NodeShape;
+smtfy:PropertyValueSpecificationShape a sh:NodeShape;
 	sh:targetClass schema:PropertyValueSpecification;
 	sh:property [
 		sh:path schema:valueRequired;
@@ -132,17 +132,17 @@ webapi:PropertyValueSpecificationShape a sh:NodeShape;
 		sh:maxCount 1
 	]	.
 
-webapi:PotentialActionShape a sh:NodeShape;
+smtfy:PotentialActionShape a sh:NodeShape;
 	sh:target	[
-		a webapi:ActionStatusTarget;
+		a smtfy:ActionStatusTarget;
 		schema:actionStatus schema:PotentialActionStatus;
 	];
 	sh:property [
-		sh:path webapi:authentication;
+		sh:path smtfy:authentication;
 		sh:or 
 		(
 			[
-				sh:class webapi:FormBasedAuthentication;
+				sh:class smtfy:FormBasedAuthentication;
 				sh:node 
 				[
 					a sh:NodeShape;
@@ -153,8 +153,8 @@ webapi:PotentialActionShape a sh:NodeShape;
 						sh:maxCount 1;
 					];
 					sh:property [
-						sh:path webapi:sentIn;
-						sh:class webapi:HTTPMessagePart;
+						sh:path smtfy:sentIn;
+						sh:class smtfy:HTTPMessagePart;
 						sh:minCount 1;
 						sh:maxCount 1;
 					];
@@ -167,7 +167,7 @@ webapi:PotentialActionShape a sh:NodeShape;
 				];
 			]
 			[
-				sh:class webapi:TokenAuthentication;
+				sh:class smtfy:TokenAuthentication;
 				sh:node 
 				[
 					a sh:NodeShape;
@@ -176,13 +176,13 @@ webapi:PotentialActionShape a sh:NodeShape;
 						sh:class schema:PropertyValueSpecification;
 					];
 					sh:property [
-						sh:path webapi:tokenFormat;
+						sh:path smtfy:tokenFormat;
 						sh:datatype xsd:string;
 					];
 				];
 			]
 			[
-				sh:class webapi:HTTPBasicAuthentication;
+				sh:class smtfy:HTTPBasicAuthentication;
 				sh:node [
 					a sh:NodeShape;
 					sh:property [
@@ -232,7 +232,7 @@ webapi:PotentialActionShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:error;
 		sh:description "Human readable error messages for potential errors for this action.";
-		sh:class webapi:Error;
+		sh:class smtfy:Error;
 		sh:property [
 			sh:path schema:propertyID;
 			sh:description: "An internal ID for the error message.";
@@ -252,7 +252,7 @@ webapi:PotentialActionShape a sh:NodeShape;
 
 	].
 
-webapi:ActionStatusTarget a sh:SPARQLTargetType;
+smtfy:ActionStatusTarget a sh:SPARQLTargetType;
 	rdfs:subClassOf sh:Target;
 	sh:labelTemplate "Target action annotations with {$actionStatus} status";
 	sh:parameter [
@@ -269,7 +269,7 @@ webapi:ActionStatusTarget a sh:SPARQLTargetType;
 		}
 		""" .		
 
-webapi:InputOutputPropertyValueSpecification a sh:NodeShape; #experimental
+smtfy:InputOutputPropertyValueSpecification a sh:NodeShape; #experimental
 	sh:targetClass rdf:Property;
 	sh:sparql [
 		sh:prefixes <https://actions.semantify.it/vocab> ;
@@ -282,10 +282,10 @@ webapi:InputOutputPropertyValueSpecification a sh:NodeShape; #experimental
 				} 
 		"""; ].	
 
-webapi:PotentialActionStatusShape a sh:NodeShape;
+smtfy:PotentialActionStatusShape a sh:NodeShape;
 	sh:targetNode schema:PotentialActionStatus;
 	sh:property [
-		sh:path webapi:httpStatusCode;
+		sh:path smtfy:httpStatusCode;
 		sh:class schema:PropertyValue;
 		sh:node [
 			a sh:NodeShape;
@@ -319,11 +319,11 @@ webapi:PotentialActionStatusShape a sh:NodeShape;
 		];
 	].
 
-webapi:FailedActionStatusShape a sh:NodeShape;
+smtfy:FailedActionStatusShape a sh:NodeShape;
 	sh:targetNode schema:FailedActionStatus;
 	sh:deactivated true;
 	sh:property [
-		sh:path webapi:httpStatusCode;
+		sh:path smtfy:httpStatusCode;
 		sh:class schema:PropertyValue;
 		sh:minCount 1;
 		sh:maxCount 1;
@@ -347,11 +347,11 @@ webapi:FailedActionStatusShape a sh:NodeShape;
 		];
 	].	
 
-webapi:CompletedActionStatusShape a sh:NodeShape;
+smtfy:CompletedActionStatusShape a sh:NodeShape;
 	sh:targetNode schema:CompletedActionStatus;
 	sh:deactivated true;
 	sh:property [
-		sh:path webapi:httpStatusCode;
+		sh:path smtfy:httpStatusCode;
 		sh:class schema:PropertyValue;
 		sh:minCount 1;
 		sh:maxCount 1;
@@ -376,10 +376,10 @@ webapi:CompletedActionStatusShape a sh:NodeShape;
 		];
 	].
 
-webapi:ActiveActionStatusShape a sh:NodeShape;
+smtfy:ActiveActionStatusShape a sh:NodeShape;
 	sh:targetNode schema:ActiveActionStatus;
 	sh:property [
-		sh:path webapi:httpStatusCode;
+		sh:path smtfy:httpStatusCode;
 		sh:class schema:PropertyValue;
 		sh:node [
 			a sh:NodeShape;
@@ -395,13 +395,13 @@ webapi:ActiveActionStatusShape a sh:NodeShape;
 		];
 	].
 
-webapi:FormBasedAuthenticationShape a sh:NodeShape;
+smtfy:FormBasedAuthenticationShape a sh:NodeShape;
 	sh:name "FormBasedAuthenticationShape";
 	sh:description "The shape that defines constraints on the form based authentication descriptions";
-	sh:targetClass webapi:FormBasedAuthentication;
+	sh:targetClass smtfy:FormBasedAuthentication;
 	sh:property [
-		sh:path webapi:sentIn;
-		sh:in (webapi:HTTPMessageBody webapi:HTTPMessageHeader webapi:HTTPMessageURL);
+		sh:path smtfy:sentIn;
+		sh:in (smtfy:HTTPMessageBody smtfy:HTTPMessageHeader smtfy:HTTPMessageURL);
 	];
 	sh:property [
 		sh:path schema:name;
@@ -411,10 +411,10 @@ webapi:FormBasedAuthenticationShape a sh:NodeShape;
 		sh:maxCount 1;
 	] .
 
-webapi:AuthenticationSpecificationShape a sh:NodeShape;
+smtfy:AuthenticationSpecificationShape a sh:NodeShape;
 	sh:name "AuthenticationSpecificationShape";
 	sh:description "A shape describing constraints on authentication specifications";
-	sh:targetClass webapi:AuthenticationSpecification;
+	sh:targetClass smtfy:AuthenticationSpecification;
 	sh:property [
 		sh:path schema:value;
 		sh:description "An authentication specification must have one value.";
@@ -423,7 +423,7 @@ webapi:AuthenticationSpecificationShape a sh:NodeShape;
 		sh:maxCount 1;
 	] .
 
-webapi:WebAPIShape a sh:NodeShape;
+smtfy:WebAPIShape a sh:NodeShape;
 	sh:name "WebAPIShape";
 	sh:description "A shape that constrains the WebAPI type.";
 	sh:targetClass schema:WebAPI;
@@ -433,7 +433,7 @@ webapi:WebAPIShape a sh:NodeShape;
 		sh:or 
 		(
 			[
-				sh:node webapi:DocumentationShape;
+				sh:node smtfy:DocumentationShape;
 				sh:class schema:CreativeWork;
 			]
 			[
@@ -446,7 +446,7 @@ webapi:WebAPIShape a sh:NodeShape;
 		sh:or ([sh:nodeKind sh:IRI;] [sh:datatype xsd:string])
 	] .
 
-webapi:DocumentationShape a sh:NodeShape;
+smtfy:DocumentationShape a sh:NodeShape;
 	sh:name "DocumentationShape";
 	sh:description "A shape for WebAPI documentation";
 	sh:property [
@@ -476,20 +476,20 @@ webapi:DocumentationShape a sh:NodeShape;
 	];
 	sh:property [
 		sh:path schema:author;
-		sh:or ([sh:class schema:Person; sh:node webapi:ContactShape] [sh:class schema:Organization; sh:node webapi:ContactShape]);
+		sh:or ([sh:class schema:Person; sh:node smtfy:ContactShape] [sh:class schema:Organization; sh:node smtfy:ContactShape]);
 	];
 	sh:property [
 		sh:path schema:accountablePerson;
 		sh:class schema:Person;
-		sh:node webapi:ContactShape;
+		sh:node smtfy:ContactShape;
 	];
 	sh:property [
 		sh:path schema:contributor;
-		sh:or ([sh:class schema:Person; sh:node webapi:ContactShape] [sh:class schema:Organization; sh:node webapi:ContactShape]);
+		sh:or ([sh:class schema:Person; sh:node smtfy:ContactShape] [sh:class schema:Organization; sh:node smtfy:ContactShape]);
 	];
 	sh:property [
 		sh:path schema:provider;
-		sh:or ([sh:class schema:Person; sh:node webapi:ContactShape] [sh:class schema:Organization; sh:node webapi:ContactShape]);
+		sh:or ([sh:class schema:Person; sh:node smtfy:ContactShape] [sh:class schema:Organization; sh:node smtfy:ContactShape]);
 	];
 	sh:property [
 		sh:path schema:license;
@@ -506,7 +506,7 @@ webapi:DocumentationShape a sh:NodeShape;
 
 	] .
 
-webapi:ContactShape a sh:NodeShape;
+smtfy:ContactShape a sh:NodeShape;
 	sh:name "ContactShape";
 	sh:description "A shape for the essential contact information of a Person or Organization";
 	sh:property [
@@ -802,7 +802,7 @@ schema:instrument a rdf:Property ;
 	rdfs:label "instrument" ;
 	schema:domainIncludes schema:Action ;
 	schema:rangeIncludes schema:Thing ;
-	rdfs:comment "The object that helped the agent perform the action. In the context of web apis, this property can be used with webapi:AuthenticationSpecification" .
+	rdfs:comment "The object that helped the agent perform the action. In the context of web apis, this property can be used with smtfy:AuthenticationSpecification" .
 
 schema:actionStatus a rdf:Property ;
 	rdfs:label "actionStatus" ;
@@ -878,26 +878,26 @@ schema:unitCode a rdf:Property ;
 	schema:domainIncludes schema:TypeAndQuantityNode , schema:PropertyValue , schema:UnitPriceSpecification ;
 	schema:rangeIncludes schema:URL .
 
-webapi:sentIn a rdf:Property;
+smtfy:sentIn a rdf:Property;
 	rdfs:label "sentIn";
-	schema:domainIncludes webapi:FormBasedAuthentication;
+	schema:domainIncludes smtfy:FormBasedAuthentication;
 	schema:rangeIncludes schema:Text;
 	rdfs:comment "The part of the HTTP request where the credentials are sent.".
 
-webapi:tokenFormat a rdf:Property;
+smtfy:tokenFormat a rdf:Property;
 	rdfs:label "tokenFormat";
-	schema:domainIncludes webapi:TokenAuthentication;
+	schema:domainIncludes smtfy:TokenAuthentication;
 	schema:rangeIncludes schema:Text;
 	rdfs:comment "Format of the bearer token".
 
-webapi:authentication a rdf:Property;
+smtfy:authentication a rdf:Property;
 	rdfs:label "authentication";
 	schema:domainIncludes schema:Action;
-	schema:rangeIncludes webapi:AuthenticationSpecification;
+	schema:rangeIncludes smtfy:AuthenticationSpecification;
 	rdfs:subPropertyOf schema:instrument ;
 	rdfs:comment "The authentication specification for the action. " .
 
-webapi:httpStatusCode a rdf:Property;
+smtfy:httpStatusCode a rdf:Property;
 	rdfs:label "httpStatusCode";
 	schema:domainIncludes schema:ActionStatusType;
 	schema:rangeIncludes schema:PropertyValue;
@@ -921,14 +921,14 @@ webapi:httpStatusCode a rdf:Property;
 #    rdfs:label "ActiveActionStatus" ;
 #    rdfs:comment "An ongoning action. Typically used for requests and responses that require further client action (e.g. redirection)" .
 
-webapi:HTTPMessageBody a webapi:HTTPMessagePart;
+smtfy:HTTPMessageBody a smtfy:HTTPMessagePart;
 	rdfs:label "HTTPMessageBody";
 	rdfs:comment "Body of an HTTP message" .
 
-webapi:HTTPMessageHeader a webapi:HTTPMessagePart;
+smtfy:HTTPMessageHeader a smtfy:HTTPMessagePart;
 	rdfs:label "HTTPMessageHeader";
 	rdfs:comment "Header of an HTTP message" .
 
-webapi:HTTPMessageURL a webapi:HTTPMessagePart;
+smtfy:HTTPMessageURL a smtfy:HTTPMessagePart;
 	rdfs:label "HTTPMessageURL";
 	rdfs:comment "URL in the start line of an HTTP message" .
