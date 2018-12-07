@@ -23,7 +23,8 @@ See https://actions.semantify.it/vocab for the proposed shapes.
 Simsek,  U.,  Fensel,  D.:  Intent  generation  for goal-oriented  dialogue  systems based  on  schema.org annotations.  In:  The  Prooceedings  of  1st  International Workshop  on  Chatbots  co-located  with  ICWSM 2018  (2018),  http://dblp.uni-trier.de/db/journals/corr/corr1807.html#abs-1807-01292 (Preprint)
 
 **This work is partially supported by:**
-<a rel="license" href="https://netidee.at/dialogical-access-lightweight-semantic-web-services"><img alt="netidee stipendium" style="border-width:0" src="images/netidee_stip_logo.jpg" width=300/></a>
+<br>
+<a href="https://netidee.at/dialogical-access-lightweight-semantic-web-services"><img alt="netidee stipendium" style="border-width:0" src="images/netidee_stip_logo.jpg" width=300/></a> <a href="https://mindlab.ai/"><img alt="mindlab" style="border-width:0" src="images/mindlab_logo.png" width=300/></a> 
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
