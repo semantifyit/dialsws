@@ -435,6 +435,7 @@ smtfy:WebAPIShape a sh:NodeShape;
 			[
 				sh:node smtfy:DocumentationShape;
 				sh:class schema:CreativeWork;
+				sh:nodeKind sh:IRI;
 			]
 			[
 				sh:nodeKind sh:IRI;
@@ -449,6 +450,11 @@ smtfy:WebAPIShape a sh:NodeShape;
 smtfy:DocumentationShape a sh:NodeShape;
 	sh:name "DocumentationShape";
 	sh:description "A shape for WebAPI documentation";
+		sh:property [
+		sh:path schema:about;
+		sh:node schema:PotentialActionShape;
+		sh:descption "A potential action of the API.";
+	];
 	sh:property [
 		sh:path schema:encodingFormat;
 		sh:minCount 1;
