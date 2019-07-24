@@ -1,0 +1,31 @@
+{
+    "@context": "http://schema.org/",
+    "@type": "SearchAction",
+    "name": "Search connection",
+    "sh:shapesGraph": "https://actions.semantify.it/vao/shapes/123",
+    "object": {
+        "@type": "Trip",
+        "itinerary": {
+            "sh:shapesGraph":"https://actions.semantify.it/vao/shapes/123#Itinerary",
+            "@type": "vao:Itinerary",
+            "vao:start": {
+                "@type": "Place",
+                "url-input": "required"
+            },
+            "vao:end": {
+                "@type": "Place",
+                "url-input": "required",
+                "modality-input": {"@id": "Vehicle", "sh:shapesGraph": "https://actions.semantify.it/vao/shapes/123#Modality" }
+            },
+            "vao:station":
+            {
+                "@type":"Place",
+                "url-input": "required",
+                "modality-input": "required"
+            }
+            
+        }
+        
+    }
+
+}
