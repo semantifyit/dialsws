@@ -1,0 +1,65 @@
+@prefix smtfy: <https://actions.semantify.it/vocab/> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+## types
+
+smtfy:AuthenticationSpecification a rdfs:Class;
+    rdfs:label "AuthenticationSpecification"@en;
+    rdfs:comment "A specification for different authentication methods."@en;
+    rdfs:subClassOf schema:PropertyValue.
+
+smtfy:FormBasedAuthentication a rdfs:Class;
+    rdfs:label "FormBasedAuthentication"@en;
+    rdfs:comment "A specification for custom form-based authentication methods."@en;
+    rdfs:subClassOf schema:AuthenticationSpecification.
+
+smtfy:TokenAuthentication a rdfs:Class;
+    rdfs:label "TokenAuthentication"@en;
+    rdfs:comment "A specification for token-based authentication methods such as JWT or OAuth";
+    rdfs:subClassOf schema:AuthenticationSpecification.
+
+smtfy:HTTPBasicAuthentication a rdfs:Class;
+    rdfs:label "HTTPBasicAuthentication"@en;
+    rdfs:comment "A specification for HTTP Basic Authentication (RFC7617)"@en;
+    rdfs:subClassOf schema:AuthenticationSpecification;
+    rdfs:seeAlso <https://tools.ietf.org/html/rfc7617> .
+
+smtfy:AuthenticateAction a rdfs:Class;
+    rdfs:label "AuthenticateAction";
+    rdfs:comment "An action for the obtaining the authentication token for an API (analogous to logging in a website)";
+    rdfs:subClassOf schema:Action.
+
+## properties
+
+smtfy:authentication a rdf:Property ;
+    rdfs:label "authentication"@en ;
+    schema:domainIncludes schema:Action;
+    schema:rangeIncludes smtfy:AuthenticationSpecification ;
+    rdfs:comment "An authentication specification for an action"@en .
+
+smtfy:sentIn a rdf:Property ;
+    rdfs:label "sentIn"@en ;
+    schema:domainIncludes smtfy:FormBasedAuthentication;
+    schema:rangeIncludes schema:Text ;
+    rdfs:comment "The part of the request the authentication token is sent. (URL, Header or Body)"@en .
+
+smtfy:tokenFormat a rdf:Property ;
+    rdfs:label "tokenFormat"@en ;
+    schema:domainIncludes smtfy:TokenAuthentication;
+    schema:rangeIncludes smtfy:Text ;
+    rdfs:comment "The format of the authentication token. (e.g. JWT, OAuth) "@en .
+
+smtfy:credentialString a rdf:Property ;
+    rdfs:label "credentialString"@en ;
+    schema:domainIncludes smtfy:HTTPBasicAuthentication;
+    schema:rangeIncludes smtfy:Text ;
+    rdfs:comment "The encoded credential string for HTTP Basic Authentication"@en .
+
+smtfy:encoding a rdf:Property;
+    rdfs:label "encoding"@en;
+    schema:domainIncludes smtfy:HTTPBasicAuthentication;
+    schema:rangeIncludes schema:Text;
+    rdfs:comment "The encoding method of the credential string for HTTP Basic Authentication"@en.
+

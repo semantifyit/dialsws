@@ -1,0 +1,174 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix smtfy: <https://actions.semantify.it/vocab/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
+
+
+smtfy:PotentialActionShape a sh:NodeShape;
+	sh:target	[
+		a smtfy:ActionStatusTarget;
+		schema:actionStatus schema:PotentialActionStatus;
+	];
+	sh:property [
+		sh:path smtfy:authentication;
+		sh:or 
+		(
+			[
+				sh:class smtfy:FormBasedAuthentication;
+				sh:node 
+				[
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:value-input;
+						sh:class schema:PropertyValueSpecification;
+						sh:minCount 1;
+						sh:maxCount 1;
+					];
+					sh:property [
+						sh:path smtfy:sentIn;
+						sh:class smtfy:HTTPMessagePart;
+						sh:minCount 1;
+						sh:maxCount 1;
+					];
+					sh:property [
+						sh:path schema:name-input;
+						sh:class schema:PropertyValueSpecification;
+						sh:minCount 1;
+						sh:maxCount 1;
+					];						
+				];
+			]
+			[
+				sh:class smtfy:TokenAuthentication;
+				sh:node 
+				[
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:value-input;
+						sh:class schema:PropertyValueSpecification;
+					];
+					sh:property [
+						sh:path smtfy:tokenFormat;
+						sh:datatype xsd:string;
+					];
+				];
+			]
+			[
+				sh:class smtfy:HTTPBasicAuthentication;
+				sh:node [
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:value-input;
+						sh:class schema:PropertyValueSpecification;
+					];
+				]
+			]				
+		)
+	];
+	sh:property	[
+		sh:path schema:object;
+		sh:class schema:Thing;
+	];
+	sh:property [
+		sh:path schema:result;
+		sh:class schema:Thing;
+		sh:minCount 1;
+	];
+	sh:property [
+		sh:path schema:target;
+		sh:class schema:EntryPoint;
+		sh:minCount 1;
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:contentType;
+				sh:datatype xsd:string;
+			];
+			sh:property [
+				sh:path schema:encodingType;
+				sh:datatype xsd:string;
+			];
+			sh:property [
+				sh:path schema:httpMethod;
+				sh:datatype xsd:string;
+				sh:in ("GET" "HEAD" "POST" "PUT" "DELETE" "CONNECT" "OPTIONS" "TRACE");
+				sh:minCount 1;
+			];
+			sh:property [
+				sh:path schema:urlTemplate;
+				sh:datetype xsd:string ;
+				sh:minCount 1;
+			];
+		];
+	];	
+	sh:property [
+		sh:path schema:error;
+		sh:description "Human readable error messages for potential errors for this action.";
+		sh:class smtfy:Error;
+		sh:property [
+			sh:path schema:propertyID;
+			sh:description: "An internal ID for the error message.";
+			sh:class schema:PropertyValueSpecification;	
+		];
+		sh:property [
+			sh:path schema:description-output;
+			sh:class schema:PropertyValueSpecification;
+			sh:node [ 
+				a sh:NodeShape;
+				sh:property [
+					sh:path schema:defaultValue;
+					sh:datatype xsd:string;
+				];
+			];	
+		];		
+
+	].
+
+smtfy:PotentialActionStatusShape a sh:NodeShape;
+	sh:targetNode schema:PotentialActionStatus;
+	sh:property [
+		sh:path smtfy:httpStatusCode;
+		sh:class schema:PropertyValue;
+		sh:node [
+			a sh:NodeShape;
+			sh:property [
+				sh:path schema:value-output;
+				sh:class schema:PropertyValueSpecification;
+				sh:node [ 
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:defaultValue;
+						sh:datatype xsd:integer;
+						sh:minCount 1;
+						sh:minInclusive 100;
+						sh:maxInclusive 599;
+					];
+				];			
+			]; 
+			sh:property [
+				sh:path schema:description-output;
+				sh:class schema:PropertyValueSpecification;
+				sh:node [ 
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:defaultValue;
+						sh:datatype xsd:string;
+						sh:minCount 1;
+					];
+				];	
+			];
+
+		];
+	].
+
+
+
+

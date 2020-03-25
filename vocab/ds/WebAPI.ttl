@@ -1,0 +1,104 @@
+smtfy:WebAPIShape a sh:NodeShape;
+	sh:name "WebAPIShape";
+	sh:description "A shape that constrains the WebAPI type.";
+	sh:targetClass schema:WebAPI;
+	sh:property [
+		sh:path schema:documentation;
+		sh:minCount 1;
+		sh:or 
+		(
+			[
+				sh:node smtfy:DocumentationShape;
+				sh:class schema:CreativeWork;
+				sh:nodeKind sh:IRI;
+			]
+			[
+				sh:nodeKind sh:IRI;
+			]
+		)
+	];
+	sh:property [
+		sh:path schema:termsOfService;
+		sh:or ([sh:nodeKind sh:IRI;] [sh:datatype xsd:string])
+	] .
+
+smtfy:DocumentationShape a sh:NodeShape;
+	sh:name "DocumentationShape";
+	sh:description "A shape for WebAPI documentation";
+		sh:property [
+		sh:path schema:about;
+		sh:node schema:PotentialActionShape;
+		sh:descption "A potential action of the API.";
+	];
+	sh:property [
+		sh:path schema:encodingFormat;
+		sh:minCount 1;
+		sh:in ("application/ld+json" "text/html") #think about this
+	];
+	sh:property [
+		sh:path schema:url;
+		sh:minCount 1;
+		sh:maxCount 1;
+	];
+	sh:property [
+		sh:path schema:name;
+		sh:minCount 1;
+		sh:maxCount 1;
+	];
+	sh:property [
+		sh:path schema:description;
+		sh:datatype xsd:string;
+	];
+	sh:property [
+		sh:path schema:version;
+		sh:pattern "\\bv?\\d+\\.\\d+\\.\\d+(?:\\.[0-9]+)?\\b";
+		sh:minCount 1;
+		sh:maxCount 1;
+	];
+	sh:property [
+		sh:path schema:author;
+		sh:or ([sh:class schema:Person; sh:node smtfy:ContactShape] [sh:class schema:Organization; sh:node smtfy:ContactShape]);
+	];
+	sh:property [
+		sh:path schema:accountablePerson;
+		sh:class schema:Person;
+		sh:node smtfy:ContactShape;
+	];
+	sh:property [
+		sh:path schema:contributor;
+		sh:or ([sh:class schema:Person; sh:node smtfy:ContactShape] [sh:class schema:Organization; sh:node smtfy:ContactShape]);
+	];
+	sh:property [
+		sh:path schema:provider;
+		sh:or ([sh:class schema:Person; sh:node smtfy:ContactShape] [sh:class schema:Organization; sh:node smtfy:ContactShape]);
+	];
+	sh:property [
+		sh:path schema:license;
+		sh:class schema:CreativeWork;
+		sh:node [ 
+			a sh:NodeShape;
+			sh:nodeKind sh:IRI;
+			sh:property [
+				sh:path schema:name;
+				sh:datatype xsd:string ;
+				sh:minCount 1;
+			];
+		]
+
+	] .
+
+smtfy:ContactShape a sh:NodeShape;
+	sh:name "ContactShape";
+	sh:description "A shape for the essential contact information of a Person or Organization";
+	sh:property [
+		sh:path schema:name;
+		sh:datatype xsd:string;
+	];
+	sh:property [
+		sh:path schema:email;
+		sh:datatype xsd:string;
+	];
+	sh:property [
+		sh:path schema:url;
+		sh:nodeKind sh:IRI;
+	] .
