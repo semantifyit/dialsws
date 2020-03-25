@@ -48,13 +48,13 @@ smtfy:sentIn a rdf:Property ;
 smtfy:tokenFormat a rdf:Property ;
     rdfs:label "tokenFormat"@en ;
     schema:domainIncludes smtfy:TokenAuthentication;
-    schema:rangeIncludes smtfy:Text ;
+    schema:rangeIncludes schema:Text ;
     rdfs:comment "The format of the authentication token. (e.g. JWT, OAuth) "@en .
 
 smtfy:credentialString a rdf:Property ;
     rdfs:label "credentialString"@en ;
     schema:domainIncludes smtfy:HTTPBasicAuthentication;
-    schema:rangeIncludes smtfy:Text ;
+    schema:rangeIncludes schema:Text ;
     rdfs:comment "The encoded credential string for HTTP Basic Authentication"@en .
 
 smtfy:encoding a rdf:Property;
