@@ -13,9 +13,16 @@
 
 
 smtfy:PotentialActionShape a sh:NodeShape;
-	sh:target	[
-		a smtfy:ActionStatusTarget;
-		schema:actionStatus schema:PotentialActionStatus;
+#	sh:target	[
+#		a smtfy:ActionStatusTarget;
+#		schema:actionStatus schema:PotentialActionStatus;
+#	];
+	sh:class schema:Action;
+	sh:property [
+		sh:path schema:actionStatus;
+		sh:hasValue schema:PotentialActionStatus;
+		sh:minCount 1;
+		sh:maxCount 1;
 	];
 	sh:property [
 		sh:path smtfy:authentication;
@@ -28,21 +35,61 @@ smtfy:PotentialActionShape a sh:NodeShape;
 					a sh:NodeShape;
 					sh:property [
 						sh:path schema:value-input;
+						sh:datatype xsd:string;
 						sh:class schema:PropertyValueSpecification;
-						sh:minCount 1;
-						sh:maxCount 1;
+						sh:node [
+							sh:property [
+								sh:path schema:multipleValues;
+								sh:hasValue false;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property [
+								sh:path schema:valueRequired;
+								sh:hasValue true;
+								sh:minCount 1;
+								sh:maxCount 1;
+							]
+						];
+
 					];
 					sh:property [
-						sh:path smtfy:sentIn;
+						sh:path smtfy:sentIn-input;
 						sh:class smtfy:HTTPMessagePart;
-						sh:minCount 1;
-						sh:maxCount 1;
+						sh:class sh:PropertyValueSpecification;
+						sh:node [
+							sh:property [
+								sh:path schema:multipleValues;
+								sh:hasValue false;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property [
+								sh:path schema:valueRequired;
+								sh:hasValue true;
+								sh:minCount 1;
+								sh:maxCount 1;
+							]
+						];
 					];
 					sh:property [
 						sh:path schema:name-input;
+						sh:datatype xsd:string;
 						sh:class schema:PropertyValueSpecification;
-						sh:minCount 1;
-						sh:maxCount 1;
+						sh:node [
+							sh:property [
+								sh:path schema:multipleValues;
+								sh:hasValue false;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property [
+								sh:path schema:valueRequired;
+								sh:hasValue true;
+								sh:minCount 1;
+								sh:maxCount 1;
+							]
+						];
 					];						
 				];
 			]
@@ -53,11 +100,48 @@ smtfy:PotentialActionShape a sh:NodeShape;
 					a sh:NodeShape;
 					sh:property [
 						sh:path schema:value-input;
+						sh:datatype xsd:string;
 						sh:class schema:PropertyValueSpecification;
+						sh:node [
+							sh:property [
+								sh:path schema:multipleValues;
+								sh:hasValue false;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property [
+								sh:path schema:valueRequired;
+								sh:hasValue true;
+								sh:minCount 1;
+								sh:maxCount 1;
+							]
+						];						
 					];
 					sh:property [
-						sh:path smtfy:tokenFormat;
-						sh:datatype xsd:string;
+						sh:path smtfy:tokenFormat-input;
+						sh:datatype xsd:string; 
+						sh:class schema:PropertyValueSpecification;
+						sh:node [
+							sh:property [
+								sh:path schema:multipleValues;
+								sh:hasValue false;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property [
+								sh:path schema:valueRequired;
+								sh:hasValue true;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property
+							[
+								sh:path smtfy:valueList;
+								sh:hasValue (smtfy:OAuth20 smtfy:JWT);
+								sh:minCount 1;
+								sh:maxCount 1;
+							]
+						];
 					];
 				];
 			]
@@ -67,19 +151,76 @@ smtfy:PotentialActionShape a sh:NodeShape;
 					a sh:NodeShape;
 					sh:property [
 						sh:path schema:value-input;
+						sh:datatype xsd:string;
 						sh:class schema:PropertyValueSpecification;
+						sh:node [
+							sh:property [
+								sh:path schema:multipleValues;
+								sh:hasValue false;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property [
+								sh:path schema:valueRequired;
+								sh:hasValue true;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property [
+								sh:path schema:defaultValue;
+								sh:hasValue "base64";
+								sh:minCount 1;
+								sh:maxCount 1;
+							]
+						];
 					];
+					sh:property [
+						sh:path smtfy:encoding-input;
+						sh:datatype xsd:string;
+						sh:class schem:PropertyValueSpecification;
+						sh:node [
+							sh:property [
+								sh:path schema:multipleValues;
+								sh:hasValue false;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property [
+								sh:path schema:valueRequired;
+								sh:hasValue true;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property [
+								sh:path schema:defaultValue;
+								sh:hasValue "base64";
+								sh:minCount 1;
+								sh:maxCount 1;
+							]
+						];
+					]	
 				]
 			]				
 		)
 	];
 	sh:property	[
 		sh:path schema:object;
-		sh:class schema:Thing;
+		sh:class sh:NodeShape;
+		sh:node [
+			sh:property [
+				sh:path sh:targetClass;
+				sh:hasValue schema:Thing;
+			]
+		]
 	];
 	sh:property [
 		sh:path schema:result;
-		sh:class schema:Thing;
+		sh:class sh:NodeShape;
+		sh:node [
+			sh:property [
+				sh:path sh:targetClass;
+				sh:hasValue schema:Thing;
+		];
 		sh:minCount 1;
 	];
 	sh:property [
@@ -116,11 +257,11 @@ smtfy:PotentialActionShape a sh:NodeShape;
 		sh:property [
 			sh:path schema:propertyID;
 			sh:description: "An internal ID for the error message.";
-			sh:class schema:PropertyValueSpecification;	
+			sh:datatype xsd:string;	
 		];
 		sh:property [
-			sh:path schema:description-output;
-			sh:class schema:PropertyValueSpecification;
+			sh:path schema:description;
+			sh:datatype xsd:string;
 			sh:node [ 
 				a sh:NodeShape;
 				sh:property [
@@ -129,41 +270,28 @@ smtfy:PotentialActionShape a sh:NodeShape;
 				];
 			];	
 		];		
-
+	]
 	].
 
 smtfy:PotentialActionStatusShape a sh:NodeShape;
 	sh:targetNode schema:PotentialActionStatus;
 	sh:property [
 		sh:path smtfy:httpStatusCode;
+		sh:description "Potential HTTP response status code a server may return for a request based on this resource description";
 		sh:class schema:PropertyValue;
 		sh:node [
 			a sh:NodeShape;
 			sh:property [
-				sh:path schema:value-output;
-				sh:class schema:PropertyValueSpecification;
-				sh:node [ 
-					a sh:NodeShape;
-					sh:property [
-						sh:path schema:defaultValue;
-						sh:datatype xsd:integer;
-						sh:minCount 1;
-						sh:minInclusive 100;
-						sh:maxInclusive 599;
-					];
-				];			
+				sh:path schema:value;
+				sh:datatype schema:integer;
+				sh:minCount 1;
+				sh:minInclusive 100;
+				sh:maxInclusive 599;
 			]; 
 			sh:property [
-				sh:path schema:description-output;
-				sh:class schema:PropertyValueSpecification;
-				sh:node [ 
-					a sh:NodeShape;
-					sh:property [
-						sh:path schema:defaultValue;
-						sh:datatype xsd:string;
-						sh:minCount 1;
-					];
-				];	
+				sh:path schema:description;
+				sh:class xsd:string;
+				sh:minCount 1;	
 			];
 
 		];

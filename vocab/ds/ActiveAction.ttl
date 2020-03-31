@@ -13,19 +13,75 @@
 
 smtfy:ActiveActionStatusShape a sh:NodeShape;
 	sh:targetNode schema:ActiveActionStatus;
-	sh:property [
-		sh:path smtfy:httpStatusCode;
-		sh:class schema:PropertyValue;
-		sh:node [
-			a sh:NodeShape;
-			sh:property [
-				sh:path schema:value;
-				sh:class schema:PropertyValueSpecification;	
-			]; 
-			sh:property [
-				sh:path schema:description;
-				sh:class schema:PropertyValueSpecification;
-			];
+		sh:property [
+		sh:path smtfy:authentication;
+		sh:or 
+		(
+			[
+				sh:class smtfy:FormBasedAuthentication;
+				sh:node 
+				[
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:value;
+						sh:datatype xsd:string;
+						sh:minCount 1;
+						sh:maxCount 1;
 
-		];
+					];
+					sh:property [
+						sh:path smtfy:sentIn;
+						sh:class smtfy:HTTPMessagePart;
+						sh:minCount 1;
+						sh:maxCount 1;
+					];
+					sh:property [
+						sh:path schema:name;
+						sh:datatype xsd:string;
+						sh:minCount 1;
+						sh:maxCount 1;
+					];						
+				];
+			]
+			[
+				sh:class smtfy:TokenAuthentication;
+				sh:node 
+				[
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:value;
+						sh:datatype xsd:string;
+						sh:minCount 1;
+						sh:maxCount 1;
+						
+					];
+					sh:property [
+						sh:path smtfy:tokenFormat;
+						sh:datatype xsd:string; 
+						sh:minCount 1;
+						sh:maxCount 1;
+						sh:in ("OAuth20" "JWT");
+					];
+				];
+			]
+			[
+				sh:class smtfy:HTTPBasicAuthentication;
+				sh:node [
+					a sh:NodeShape;
+					sh:property [
+						sh:path schema:value;
+						sh:class xsd:string;
+						sh:minCount 1;
+						sh:maxCount 1;
+					];
+					sh:property [
+						sh:path smtfy:encoding;
+						sh:datatype xsd:string;
+						sh:minCount 1;
+						sh:maxCount 1;
+						sh:defaultValue "base64"
+					]	
+				]
+			]				
+		)
 	].

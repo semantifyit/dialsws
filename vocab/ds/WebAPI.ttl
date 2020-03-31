@@ -5,21 +5,12 @@ smtfy:WebAPIShape a sh:NodeShape;
 	sh:property [
 		sh:path schema:documentation;
 		sh:minCount 1;
-		sh:or 
-		(
-			[
-				sh:node smtfy:DocumentationShape;
-				sh:class schema:CreativeWork;
-				sh:nodeKind sh:IRI;
-			]
-			[
-				sh:nodeKind sh:IRI;
-			]
-		)
+		sh:node smtfy:DocumentationShape;
+		sh:class schema:CreativeWork;
 	];
 	sh:property [
 		sh:path schema:termsOfService;
-		sh:or ([sh:nodeKind sh:IRI;] [sh:datatype xsd:string])
+		sh:or ([sh:datatype xsd:anyURI;] [sh:datatype xsd:string])
 	] .
 
 smtfy:DocumentationShape a sh:NodeShape;
@@ -28,7 +19,7 @@ smtfy:DocumentationShape a sh:NodeShape;
 		sh:property [
 		sh:path schema:about;
 		sh:node schema:PotentialActionShape;
-		sh:descption "A potential action of the API.";
+		sh:description "A resource description in the API.";
 	];
 	sh:property [
 		sh:path schema:encodingFormat;

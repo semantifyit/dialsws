@@ -1,0 +1,46 @@
+@prefix smtfy: <https://actions.semantify.it/vocab/> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+## types
+
+smtfy:Error a rdfs:Class;
+	rdfs:label "Error";
+	rdfs:comment "An error specification";
+	rdfs:subClassOf hydra:Error ;
+	rdfs:subClassOf schema:PropertyValue .
+
+smtfy:HTTPMessagePart a rdf:Class;
+	rdfs:label "HTTPMessagePart";
+	rdfs:comment "A part of the HTTP message where the content is sent.";
+	rdfs:subClassOf schema:Enumeration .
+
+## properties
+
+smtfy:httpStatusCode a rdf:Property;
+	rdfs:label "httpStatusCode";
+	schema:domainIncludes schema:ActionStatusType;
+	schema:rangeIncludes schema:PropertyValue;
+	rdfs:comment "HTTP status code (RFC 7231) to support the action status. " .
+
+smtfy:valueList a rdf:Property;
+	rdfs:label "valueList";
+	schema:domainIncludes schema:PropertyValueSpecification;
+	schema:rangeIncludes rdf:List; ## SHACL list
+	rdfs:comment "A list of possible values inspired by HTML 5 input attribute datalist. " .
+
+## instances
+
+smtfy:HTTPMessageBody a smtfy:HTTPMessagePart;
+	rdfs:label "HTTPMessageBody";
+	rdfs:comment "Body of an HTTP message" .
+
+smtfy:HTTPMessageHeader a smtfy:HTTPMessagePart;
+	rdfs:label "HTTPMessageHeader";
+	rdfs:comment "Header of an HTTP message" .
+
+smtfy:HTTPMessageURL a smtfy:HTTPMessagePart;
+	rdfs:label "HTTPMessageURL";
+	rdfs:comment "URL in the start line of an HTTP message" .
+
