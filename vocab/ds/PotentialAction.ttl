@@ -30,11 +30,15 @@ smtfy:PotentialActionShape a sh:NodeShape;
 		(
 			[
 				sh:class smtfy:FormBasedAuthentication;
+				sh:minCount 1;
+				sh:maxCount 1;
 				sh:node 
 				[
 					a sh:NodeShape;
 					sh:property [
 						sh:path schema:value-input;
+						sh:minCount 1;
+						sh:maxCount 1;
 						sh:class schema:PropertyValueSpecification;
 						sh:node [
 							sh:property [
@@ -53,6 +57,8 @@ smtfy:PotentialActionShape a sh:NodeShape;
 					sh:property [
 						sh:path schema:name-input;
 						sh:class schema:PropertyValueSpecification;
+						sh:minCount 1;
+						sh:maxCount 1;
 						sh:node [
 							sh:property [
 								sh:path schema:multipleValues;
@@ -64,11 +70,6 @@ smtfy:PotentialActionShape a sh:NodeShape;
 								sh:minCount 1;
 								sh:maxCount 1;
 							];
-							sh:property [
-								sh:path schema:defaultValue;
-								sh:minCount 1;
-								sh:maxCount 1;
-							]
 						];
 					];						
 				];
