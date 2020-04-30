@@ -35,18 +35,15 @@ smtfy:PotentialActionShape a sh:NodeShape;
 					a sh:NodeShape;
 					sh:property [
 						sh:path schema:value-input;
-						sh:datatype xsd:string;
 						sh:class schema:PropertyValueSpecification;
 						sh:node [
 							sh:property [
 								sh:path schema:multipleValues;
-								sh:hasValue false;
 								sh:minCount 1;
 								sh:maxCount 1;
 							];
 							sh:property [
 								sh:path schema:valueRequired;
-								sh:hasValue true;
 								sh:minCount 1;
 								sh:maxCount 1;
 							]
@@ -54,38 +51,21 @@ smtfy:PotentialActionShape a sh:NodeShape;
 
 					];
 					sh:property [
-						sh:path smtfy:sentIn-input;
-						sh:class smtfy:HTTPMessagePart;
-						sh:class sh:PropertyValueSpecification;
-						sh:node [
-							sh:property [
-								sh:path schema:multipleValues;
-								sh:hasValue false;
-								sh:minCount 1;
-								sh:maxCount 1;
-							];
-							sh:property [
-								sh:path schema:valueRequired;
-								sh:hasValue true;
-								sh:minCount 1;
-								sh:maxCount 1;
-							]
-						];
-					];
-					sh:property [
 						sh:path schema:name-input;
-						sh:datatype xsd:string;
 						sh:class schema:PropertyValueSpecification;
 						sh:node [
 							sh:property [
 								sh:path schema:multipleValues;
-								sh:hasValue false;
 								sh:minCount 1;
 								sh:maxCount 1;
 							];
 							sh:property [
 								sh:path schema:valueRequired;
-								sh:hasValue true;
+								sh:minCount 1;
+								sh:maxCount 1;
+							];
+							sh:property [
+								sh:path schema:defaultValue;
 								sh:minCount 1;
 								sh:maxCount 1;
 							]
@@ -100,37 +80,31 @@ smtfy:PotentialActionShape a sh:NodeShape;
 					a sh:NodeShape;
 					sh:property [
 						sh:path schema:value-input;
-						sh:datatype xsd:string;
 						sh:class schema:PropertyValueSpecification;
 						sh:node [
 							sh:property [
 								sh:path schema:multipleValues;
-								sh:hasValue false;
 								sh:minCount 1;
 								sh:maxCount 1;
 							];
 							sh:property [
 								sh:path schema:valueRequired;
-								sh:hasValue true;
 								sh:minCount 1;
 								sh:maxCount 1;
 							]
 						];						
 					];
 					sh:property [
-						sh:path smtfy:tokenFormat-input;
-						sh:datatype xsd:string; 
+						sh:path smtfy:tokenFormat-input; 
 						sh:class schema:PropertyValueSpecification;
 						sh:node [
 							sh:property [
 								sh:path schema:multipleValues;
-								sh:hasValue false;
 								sh:minCount 1;
 								sh:maxCount 1;
 							];
 							sh:property [
 								sh:path schema:valueRequired;
-								sh:hasValue true;
 								sh:minCount 1;
 								sh:maxCount 1;
 							];
@@ -156,13 +130,11 @@ smtfy:PotentialActionShape a sh:NodeShape;
 						sh:node [
 							sh:property [
 								sh:path schema:multipleValues;
-								sh:hasValue false;
 								sh:minCount 1;
 								sh:maxCount 1;
 							];
 							sh:property [
 								sh:path schema:valueRequired;
-								sh:hasValue true;
 								sh:minCount 1;
 								sh:maxCount 1;
 							];
@@ -181,13 +153,11 @@ smtfy:PotentialActionShape a sh:NodeShape;
 						sh:node [
 							sh:property [
 								sh:path schema:multipleValues;
-								sh:hasValue false;
 								sh:minCount 1;
 								sh:maxCount 1;
 							];
 							sh:property [
 								sh:path schema:valueRequired;
-								sh:hasValue true;
 								sh:minCount 1;
 								sh:maxCount 1;
 							];

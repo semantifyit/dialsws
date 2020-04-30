@@ -108,7 +108,7 @@ weather:sunset a rdf:Property;
 weather:pressure a rdf:Property;
     rdfs:label "pressure"@en;
     schema:domainIncludes weather:WeatherMeasurement;
-    schema:rangeIncludes weather:QuantitativeValue
+    schema:rangeIncludes weather:QuantitativeValue .
 
 # not present in darksky weather api, but in wintersportbericht, add here though as more of a weather type property, not only for skilifts
 weather:snowHeight a rdf:Property;

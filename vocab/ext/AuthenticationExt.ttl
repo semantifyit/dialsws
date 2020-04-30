@@ -39,11 +39,6 @@ smtfy:authentication a rdf:Property ;
     schema:rangeIncludes smtfy:AuthenticationSpecification ;
     rdfs:comment "An authentication specification for an action"@en .
 
-smtfy:sentIn a rdf:Property ;
-    rdfs:label "sentIn"@en ;
-    schema:domainIncludes smtfy:FormBasedAuthentication;
-    schema:rangeIncludes schema:Text ;
-    rdfs:comment "The part of the request the authentication token is sent. (URL, Header or Body)"@en .
 
 smtfy:tokenFormat a rdf:Property ;
     rdfs:label "tokenFormat"@en ;
