@@ -62,4 +62,4 @@ smtfy:to a rdf:Property;
 
 smtfy:condition a rdf:Property;
 	schema:domainIncludes smtfy:PotentialActionLink;
-	smtfy:rangeIncludes fno:Function. 
+	smtfy:rangeIncludes fno:Function.
