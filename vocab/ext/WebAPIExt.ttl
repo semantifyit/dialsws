@@ -11,10 +11,21 @@ smtfy:Error a rdfs:Class;
 	rdfs:subClassOf hydra:Error ;
 	rdfs:subClassOf schema:PropertyValue .
 
-smtfy:HTTPMessagePart a rdf:Class;
-	rdfs:label "HTTPMessagePart";
-	rdfs:comment "A part of the HTTP message where the content is sent.";
-	rdfs:subClassOf schema:Enumeration .
+smtfy:PotentialActionLink a rdfs:Class;
+	rdfs:label "PotentialActionLink";
+	rdfs:comment "A potential action specification on a resource description";
+	rdfs:subClassOf smtfy:ActionLink.
+
+smtfy:InputActionLink a rdfs:Class;
+	rdfs:label "InputActionLink";
+	rdfs:subClassOf smtfy:ActionLink.
+
+smtfy:ActionLink a rdfs:Class;
+	rdfs:subClassOf schema:Intangible.
+
+smtfy:PropertyMap a rdfs:Class;
+	rdfs:subClassOf schema:Intangible .
+
 
 ## properties
 
@@ -30,17 +41,25 @@ smtfy:valueList a rdf:Property;
 	schema:rangeIncludes rdf:List; ## SHACL list
 	rdfs:comment "A list of possible values inspired by HTML 5 input attribute datalist. " .
 
-## instances
+smtfy:actionLink a rdf:Property;
+	schema:domainIncludes smtfy:ActionLink;
+	schema:rangeIncludes schema:Action.
 
-smtfy:HTTPMessageBody a smtfy:HTTPMessagePart;
-	rdfs:label "HTTPMessageBody";
-	rdfs:comment "Body of an HTTP message" .
+smtfy:propertyMapping a rdf:Property;
+	schema:domainIncludes smtfy:ActionLink;
+	schema:rangeIncludes smtfy:PropertyMap.
 
-smtfy:HTTPMessageHeader a smtfy:HTTPMessagePart;
-	rdfs:label "HTTPMessageHeader";
-	rdfs:comment "Header of an HTTP message" .
+smtfy:from a rdf:Property;
+	schema:domainIncludes smtfy:PropertyMap;
+	schema:rangeIncludes rdf:List; # SPP referenced from result
+	schema:rangeIncludes fno:Function.
 
-smtfy:HTTPMessageURL a smtfy:HTTPMessagePart;
-	rdfs:label "HTTPMessageURL";
-	rdfs:comment "URL in the start line of an HTTP message" .
+smtfy:to a rdf:Property;
+	schema:domainIncludes smtfy:PropertyMap;
+	schema:rangeIncludes rdf:List; # SPP referenced from object
+	schema:rangeIncludes fno:Function.
 
+
+smtfy:condition a rdf:Property;
+	schema:domainIncludes smtfy:PotentialActionLink;
+	smtfy:rangeIncludes fno:Function. 
