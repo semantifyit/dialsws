@@ -241,6 +241,15 @@ smtfy:PotentialActionShape a sh:NodeShape;
 				];
 			];	
 		];		
+	];
+	sh:property [
+		sh:path smtfy:potentialActionLink;
+		sh:class smtfy:PotentialActionLink
+
+	];
+	sh:property [
+		sh:path smtfy:precedingActionLink;
+		sh:class smtfy:PrecedingActionLink 
 	]
 	].
 
