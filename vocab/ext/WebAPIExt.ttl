@@ -16,7 +16,7 @@ smtfy:PotentialActionLink a rdfs:Class;
 	rdfs:comment "A potential action specification on a resource description";
 	rdfs:subClassOf smtfy:ActionLink.
 
-smtfy:InputActionLink a rdfs:Class;
+smtfy:PrecedingActionLink a rdfs:Class;
 	rdfs:label "InputActionLink";
 	rdfs:subClassOf smtfy:ActionLink.
 
@@ -41,9 +41,13 @@ smtfy:valueList a rdf:Property;
 	schema:rangeIncludes rdf:List; ## SHACL list
 	rdfs:comment "A list of possible values inspired by HTML 5 input attribute datalist. " .
 
-smtfy:actionLink a rdf:Property;
+smtfy:source a rdf:Property;
 	schema:domainIncludes smtfy:ActionLink;
-	schema:rangeIncludes schema:Action.
+	schema:rangeIncludes schema:Action .
+
+smtfy:target a rdf:Property;
+	schema:domainIncludes smtfy:ActionLink;
+	schema:rangeIncludes schema:Action .
 
 smtfy:propertyMapping a rdf:Property;
 	schema:domainIncludes smtfy:ActionLink;
