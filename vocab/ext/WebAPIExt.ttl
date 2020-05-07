@@ -67,3 +67,11 @@ smtfy:to a rdf:Property;
 smtfy:condition a rdf:Property;
 	schema:domainIncludes smtfy:PotentialActionLink;
 	smtfy:rangeIncludes fno:Function.
+
+smtfy:potentialActionLink a rdf:Property;
+	schema:domainIncludes schema:Action;
+	schema:rangeIncludes smtfy:ActionLink .
+
+smtfy:precedingActionLink a rdf:Property;
+	schema:domainIncludes schema:Action;
+	schema:rangeIncludes smtfy:PrecedingActionLink .
