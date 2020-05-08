@@ -97,18 +97,21 @@ weather:cloudCover a rdf:Property ;
 
 weather:sunrise a rdf:Property;
     rdfs:label "sunrise"@en;
+    rdfs:comment "The sunrise time";
     schema:domainIncludes weather:WeatherMeasurement;
     schema:rangeIncludes schema:DateTime.
 
 weather:sunset a rdf:Property;
     rdfs:label "sunset"@en;
+    rdfs:comment "The sunset time";
     schema:domainIncludes weather:WeatherMeasurement;
     schema:rangeIncludes schema:DateTime.
 
 weather:pressure a rdf:Property;
     rdfs:label "pressure"@en;
+      rdfs:comment "Weather pressure";
     schema:domainIncludes weather:WeatherMeasurement;
-    schema:rangeIncludes weather:QuantitativeValue .
+    schema:rangeIncludes schema:QuantitativeValue .
 
 # not present in darksky weather api, but in wintersportbericht, add here though as more of a weather type property, not only for skilifts
 weather:snowHeight a rdf:Property;

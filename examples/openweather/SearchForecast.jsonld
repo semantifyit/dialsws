@@ -1,0 +1,31 @@
+{
+    "@context": {
+        "@vocab": "http://schema.org/",
+        "weather": "http://vocab.sti2.at/weather/"
+    },
+    "@type": "SearchAction",
+    "name": "Get the current weather based on geocoordinates",
+    "object": {
+        "@type":"weather:WeatherReport",
+        "contentLocation": {
+            "@type": "Place",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude-input": "required",
+                "longitude-input": "required"
+            }
+        },
+    "result": {
+        "@type":"weather:WeatherReport",
+        "contentLocation": {
+            "@type": "Place",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude-input": "required",
+                "longitude-input": "required"
+            }
+        },
+        "dateCreated-output": "required" 
+    }    
+    }
+}
