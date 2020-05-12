@@ -1,9 +1,12 @@
-@prefix smtfy: <https://actions.semantify.it/vocab/> .
+@prefix wasa: <https://vocab.sti2.at/wasa/> .
 @prefix schema: <http://schema.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 ## types
+
+<https://vocab.sti2.at/wasa/> a owl:Ontology .
 
 smtfy:Error a rdfs:Class;
 	rdfs:label "Error";
