@@ -140,11 +140,11 @@
                                                                 {
                                                                     "sh:path": "value",
                                                                     "sh:minCount": 1,
-                                                                    "sh:datatype": "xsd:float",
+                                                                    "sh:datatype": "xsd:float"
                                                                 },
                                                                 {
                                                                     "sh:path": "minValue",
-                                                                    "sh:datatype": "xsd:float",
+                                                                    "sh:datatype": "xsd:float"
                                                                 },
                                                                 {
                                                                     "sh:path": "maxValue",
