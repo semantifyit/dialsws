@@ -1,10 +1,87 @@
 {
     "@context": {
         "@vocab": "http://schema.org/",
-        "weather": "http://vocab.sti2.at/weather/"
+        "weather": "http://vocab.sti2.at/weather/",
+        "wasa": "http://vocab.sti2.at/wasa/",
+        "sh": "https://www.w3.org/ns/shacl#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
     },
     "@type": "SearchAction",
+    "@id": "http://actions.semantify.it/action/0AKwi1",
     "name": "Get the current weather based on geocoordinates",
+    "wasa:actionShape": {
+        "@type": "sh:NodeShape",
+        "sh:targetNode": "http://actions.semantify.it/action/0AKwi1",
+        "sh:property": [{
+            "sh:path": "object",
+            "sh:class": "weather:WeatherReport",
+            "sh:node": {
+                "sh:property": {
+                    "sh:path": "contentLocation",
+                    "sh:class": "Place",
+                    "sh:node": {
+                        "sh:property": {
+                            "sh:path": "geo",
+                            "sh:class":"GeoCoordinates",
+                            "sh:node": {
+                                "sh:property": [{
+                                    
+                                    "sh:path": "latitude",
+                                    "sh:datatype":"xsd:string",
+                                    "sh:group": "wasa:Input"
+                                    
+                                },
+                                {
+                                    "sh:path": "longitude",
+                                    "sh:datatype": "xsd:string",
+                                    "sh:group": "wasa:Input"
+                                }
+                            ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "sh:path": "result",
+            "sh:class": "weather:WeatherReport",
+            "sh:node": {
+                "sh:property": {
+                    "sh:path": "contentLocation",
+                    "sh:class": "Place",
+                    "sh:node": {
+                        "sh:property": {
+                            "sh:path": "geo",
+                            "sh:class":"GeoCoordinates",
+                            "sh:node": {
+                                "sh:property": [{
+                                    
+                                    "sh:path": "latitude",
+                                    "sh:datatype":"xsd:string",
+                                    "sh:equals": {
+                                        "@list":["object", "contentLocation","geo","latitude"]
+                                    },
+                                    "sh:group": "wasa:Output"
+                                    
+                                },
+                                {
+                                    "sh:path": "longitude",
+                                    "sh:datatype": "xsd:string",
+                                    "sh:equals": {
+                                        "@list":["object", "contentLocation","geo","longitude"]
+                                    },
+                                    "sh:group": "wasa:Output"
+                                }
+                            ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+    },
     "object": {
         "@type":"weather:WeatherReport",
         "contentLocation": {
