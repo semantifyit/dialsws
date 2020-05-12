@@ -17,6 +17,12 @@ weather:WeatherMeasurement a rdfs:Class ;
 
 ## PROPERTIES
 
+weather:frequency a rdf:Property;
+    rdfs:label "frequency"@en;
+    schema:domainIncludes weather:WeatherReport;
+    schema:rangeIncludes schema:QuantitativeValue;
+    rdfs:comment "Frequency of the measurements in a report. Typically used together with the temporal coverege" .
+
 weather:temperature a rdf:Property ;
     rdfs:label "temperature"@en ;
     schema:domainIncludes weather:WeatherMeasurement;
