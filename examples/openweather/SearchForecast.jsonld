@@ -1,7 +1,7 @@
 {
     "@context": {
         "@vocab": "http://schema.org/",
-        "weather": "http://vocab.sti2.at/weather/",
+        "weather": "https://vocab.sti2.at/weather/",
         "wasa": "http://vocab.sti2.at/wasa/",
         "sh": "https://www.w3.org/ns/shacl#",
         "xsd": "http://www.w3.org/2001/XMLSchema#"
