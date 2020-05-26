@@ -3,78 +3,86 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 
 ## types
 
 <https://vocab.sti2.at/wasa/> a owl:Ontology .
 
-smtfy:Error a rdfs:Class;
+wasa:Error a rdfs:Class;
 	rdfs:label "Error";
 	rdfs:comment "An error specification";
 	rdfs:subClassOf hydra:Error ;
 	rdfs:subClassOf schema:PropertyValue .
 
-smtfy:PotentialActionLink a rdfs:Class;
+wasa:PotentialActionLink a rdfs:Class;
 	rdfs:label "PotentialActionLink";
 	rdfs:comment "A potential action specification on a resource description";
-	rdfs:subClassOf smtfy:ActionLink.
+	rdfs:subClassOf wasa:ActionLink.
 
-smtfy:PrecedingActionLink a rdfs:Class;
+wasa:PrecedingActionLink a rdfs:Class;
 	rdfs:label "InputActionLink";
-	rdfs:subClassOf smtfy:ActionLink.
+	rdfs:subClassOf wasa:ActionLink.
 
-smtfy:ActionLink a rdfs:Class;
+wasa:ActionLink a rdfs:Class;
 	rdfs:subClassOf schema:Intangible.
 
-smtfy:PropertyMap a rdfs:Class;
+wasa:PropertyMap a rdfs:Class;
 	rdfs:subClassOf schema:Intangible .
-
 
 ## properties
 
-smtfy:httpStatusCode a rdf:Property;
+wasa:httpStatusCode a rdf:Property;
 	rdfs:label "httpStatusCode";
 	schema:domainIncludes schema:ActionStatusType;
 	schema:rangeIncludes schema:PropertyValue;
 	rdfs:comment "HTTP status code (RFC 7231) to support the action status. " .
 
-smtfy:valueList a rdf:Property;
+wasa:valueList a rdf:Property;
 	rdfs:label "valueList";
 	schema:domainIncludes schema:PropertyValueSpecification;
 	schema:rangeIncludes rdf:List; ## SHACL list
 	rdfs:comment "A list of possible values inspired by HTML 5 input attribute datalist. " .
 
-smtfy:source a rdf:Property;
-	schema:domainIncludes smtfy:ActionLink;
+wasa:source a rdf:Property;
+	schema:domainIncludes wasa:ActionLink;
 	schema:rangeIncludes schema:Action .
 
-smtfy:target a rdf:Property;
-	schema:domainIncludes smtfy:ActionLink;
+wasa:target a rdf:Property;
+	schema:domainIncludes wasa:ActionLink;
 	schema:rangeIncludes schema:Action .
 
-smtfy:propertyMapping a rdf:Property;
-	schema:domainIncludes smtfy:ActionLink;
-	schema:rangeIncludes smtfy:PropertyMap.
+wasa:propertyMapping a rdf:Property;
+	schema:domainIncludes wasa:ActionLink;
+	schema:rangeIncludes wasa:PropertyMap.
 
-smtfy:from a rdf:Property;
-	schema:domainIncludes smtfy:PropertyMap;
+wasa:from a rdf:Property;
+	schema:domainIncludes wasa:PropertyMap;
 	schema:rangeIncludes rdf:List; # SPP referenced from result
 	schema:rangeIncludes fno:Function.
 
-smtfy:to a rdf:Property;
-	schema:domainIncludes smtfy:PropertyMap;
+wasa:to a rdf:Property;
+	schema:domainIncludes wasa:PropertyMap;
 	schema:rangeIncludes rdf:List; # SPP referenced from object
 	schema:rangeIncludes fno:Function.
 
 
-smtfy:condition a rdf:Property;
-	schema:domainIncludes smtfy:PotentialActionLink;
-	smtfy:rangeIncludes fno:Function.
+wasa:condition a rdf:Property;
+	schema:domainIncludes wasa:PotentialActionLink;
+	wasa:rangeIncludes fno:Function.
 
-smtfy:potentialActionLink a rdf:Property;
+wasa:potentialActionLink a rdf:Property;
 	schema:domainIncludes schema:Action;
-	schema:rangeIncludes smtfy:ActionLink .
+	schema:rangeIncludes wasa:ActionLink .
 
-smtfy:precedingActionLink a rdf:Property;
+wasa:precedingActionLink a rdf:Property;
 	schema:domainIncludes schema:Action;
-	schema:rangeIncludes smtfy:PrecedingActionLink .
+	schema:rangeIncludes wasa:PrecedingActionLink .
+
+wasa:iterator a rdf:Property;
+	schema:domainIncludes wasa:PotentialActionLink;
+	schema:rangeIncludes rdf:List .
+
+wasa:actionShape a rdf:Property;
+	schema:domainIncludes schema:Action;
+	schema:rangeIncludes sh:NodeShpae .
