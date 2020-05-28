@@ -12,7 +12,6 @@
 wasa:Error a rdfs:Class;
 	rdfs:label "Error";
 	rdfs:comment "An error specification";
-	rdfs:subClassOf hydra:Error ;
 	rdfs:subClassOf schema:PropertyValue .
 
 wasa:PotentialActionLink a rdfs:Class;
