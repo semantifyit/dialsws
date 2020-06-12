@@ -1,7 +1,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> . 
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix schema: <http://schema.org/> .
-@prefix : <https://vocab.sti2.at/uimo/> .
+@base <https://vocab.sti2.at/uimo/> .
 @prefix wasa: <https://vocab.sti2.at/wasa/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>  .
