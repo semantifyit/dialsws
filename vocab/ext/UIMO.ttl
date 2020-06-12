@@ -5,11 +5,27 @@
 @prefix wasa: <https://vocab.sti2.at/wasa/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>  .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 <https://vocab.sti2.at/uimo/> a owl:Ontology.
 
 :Intent a rdfs:Class;
-rdfs:label "Intent" ;
-rdfs:subClassOf schema:ListItem .
+    rdfs:label "Intent" ;
+    rdfs:subClassOf schema:ListItem .
 
-:
+:CompositeIntent a rdfs:Class;
+    rdfs:label "Composite Intent";
+    rdfs:subClassOf schema:ItemList .
+
+:Slot a rdfs:Class;
+    rdfs:label "Slot";
+    rdfs:subClassOf schema:Intangible .
+
+:RequiredSlot a rdfs:Class;
+    rdfs:label "RequiredSlot";
+    rdfs:subClassOf :Slot .
+
+:Utterance a rdfs:Class;
+    rdfs:label "Utterance";
+    rdfs:subClassOf schema:CreativeWork .
+
