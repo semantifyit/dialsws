@@ -26,7 +26,7 @@ Simsek,  U.,  Fensel,  D.:  Intent  generation  for goal-oriented  dialogue  sys
 **This work is partially supported by:**
 <br>
 <a href="https://netidee.at/dialogical-access-lightweight-semantic-web-services"><img alt="netidee stipendium" style="border-width:0" src="images/netidee_stip_logo.jpg" width=300/></a>
-<!--<a href="https://mindlab.ai/"><img alt="mindlab" style="border-width:0" src="images/mindlab_logo.png" width=300/></a> -->
+<a href="https://mindlab.ai/"><img alt="mindlab" style="border-width:0" src="images/mindlab_logo.png" width=300/></a>
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
