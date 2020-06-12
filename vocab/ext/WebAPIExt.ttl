@@ -1,18 +1,19 @@
-@prefix wasa: <https://vocab.sti2.at/wasa/> .
+@prefix wasa: <http://vocab.sti2.at/wasa/> .
 @prefix schema: <http://schema.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+
 
 ## types
 
-<https://vocab.sti2.at/wasa/> a owl:Ontology .
+<http://vocab.sti2.at/wasa/> a owl:Ontology .
 
 wasa:Error a rdfs:Class;
 	rdfs:label "Error";
 	rdfs:comment "An error specification";
-	rdfs:subClassOf hydra:Error ;
 	rdfs:subClassOf schema:PropertyValue .
 
 wasa:PotentialActionLink a rdfs:Class;

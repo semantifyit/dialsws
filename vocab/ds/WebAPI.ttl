@@ -1,25 +1,21 @@
-@prefix dct: <http://purl.org/dc/terms/> .
-@prefix ns1: <http://www.w3.org/2004/02/skos/core#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfa: <http://www.w3.org/ns/rdfa#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix smtfy: <https://vocab.sti2.at/wasa/> .
+@prefix wasa: <https://vocab.sti2.at/wasa/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
 
 
-smtfy:WebAPIShape a sh:NodeShape;
+wasa:WebAPIShape a sh:NodeShape;
 	sh:name "WebAPIShape";
 	sh:description "A shape that constrains the WebAPI type.";
 	sh:targetClass schema:WebAPI;
 	sh:property [
 		sh:path schema:documentation;
 		sh:minCount 1;
-		sh:node smtfy:DocumentationShape;
+		sh:node wasa:DocumentationShape;
 		sh:class schema:CreativeWork;
 	];
 	sh:property [
@@ -27,7 +23,7 @@ smtfy:WebAPIShape a sh:NodeShape;
 		sh:or ([sh:datatype xsd:anyURI;] [sh:datatype xsd:string])
 	] .
 
-smtfy:DocumentationShape a sh:NodeShape;
+wasa:DocumentationShape a sh:NodeShape;
 	sh:name "DocumentationShape";
 	sh:description "A shape for WebAPI documentation";
 		sh:property [
@@ -62,20 +58,20 @@ smtfy:DocumentationShape a sh:NodeShape;
 	];
 	sh:property [
 		sh:path schema:author;
-		sh:or ([sh:class schema:Person; sh:node smtfy:ContactShape] [sh:class schema:Organization; sh:node smtfy:ContactShape]);
+		sh:or ([sh:class schema:Person; sh:node wasa:ContactShape] [sh:class schema:Organization; sh:node wasa:ContactShape]);
 	];
 	sh:property [
 		sh:path schema:accountablePerson;
 		sh:class schema:Person;
-		sh:node smtfy:ContactShape;
+		sh:node wasa:ContactShape;
 	];
 	sh:property [
 		sh:path schema:contributor;
-		sh:or ([sh:class schema:Person; sh:node smtfy:ContactShape] [sh:class schema:Organization; sh:node smtfy:ContactShape]);
+		sh:or ([sh:class schema:Person; sh:node wasa:ContactShape] [sh:class schema:Organization; sh:node wasa:ContactShape]);
 	];
 	sh:property [
 		sh:path schema:provider;
-		sh:or ([sh:class schema:Person; sh:node smtfy:ContactShape] [sh:class schema:Organization; sh:node smtfy:ContactShape]);
+		sh:or ([sh:class schema:Person; sh:node wasa:ContactShape] [sh:class schema:Organization; sh:node wasa:ContactShape]);
 	];
 	sh:property [
 		sh:path schema:license;
@@ -92,7 +88,7 @@ smtfy:DocumentationShape a sh:NodeShape;
 
 	] .
 
-smtfy:ContactShape a sh:NodeShape;
+wasa:ContactShape a sh:NodeShape;
 	sh:name "ContactShape";
 	sh:description "A shape for the essential contact information of a Person or Organization";
 	sh:property [
