@@ -1,7 +1,8 @@
 # Preface {docsify-ignore}
 
-| Editor:        | [Umutcan Şimşek](http://umutcan.eu), University of Innsbruck |
+|        | Name, Affiliation |
 |----------------|--------------------------------------------------------------|
+| **Editor**:        | [Umutcan Şimşek](http://umutcan.eu), University of Innsbruck |
 | **Contributors:**   | [Jürgen Umbrich](https://onlim.com), Onlim GmbH    |
 | **Latest Version:** | {docsify-updated}                                                       |
 
@@ -50,7 +51,25 @@ There are many frameworks to help developers to create goal-oriented dialog syst
    uimo:question "Which date?". 
    
 :utt1 a uimo:Utterance ;
-   uimo:name "I am looking for events next week"@en .
+   schema:text "I am looking for concerts next week"@en .
+
+:entityType a oa:Annotation;
+  oa:hasBody :EventTypeSlot;
+  oa:hasTarget [
+    oa:hasSource :utt1;
+    oa:hasSelector [
+      a oa:TextPositionSelector; 
+      oa:start 17; oa:end 24]
+  ];
+  :entityType a oa:Annotation;
+  oa:hasBody :EventStartDateSlot;
+  oa:hasTarget [
+    oa:hasSource :utt1;
+    oa:hasSelector [
+      a oa:TextPositionSelector; 
+      oa:start 26; oa:end 34]
+  ] .
+
 ```
 
 ?> _TODO_ add a tabbed view for the graphical and Turtle representation of an intent 
