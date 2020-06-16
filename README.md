@@ -60,8 +60,8 @@ There are many frameworks to help developers to create goal-oriented dialog syst
     oa:hasSelector [
       a oa:TextPositionSelector; 
       oa:start 17; oa:end 24]
-  ];
-  :entityType a oa:Annotation;
+  ].
+  :eventDate a oa:Annotation;
   oa:hasBody :EventStartDateSlot;
   oa:hasTarget [
     oa:hasSource :utt1;
