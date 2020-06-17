@@ -1,7 +1,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> . 
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix schema: <http://schema.org/> .
-@prefix : <https://vocab.sti2.at/uimo/> .
+@prefix uimo: <https://vocab.sti2.at/uimo/> .
 @prefix wasa: <https://vocab.sti2.at/wasa/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>  .
@@ -9,23 +9,88 @@
 
 <https://vocab.sti2.at/uimo/> a owl:Ontology.
 
-:Intent a rdfs:Class;
+uimo:Intent a rdfs:Class;
     rdfs:label "Intent" ;
     rdfs:subClassOf schema:ListItem .
 
-:CompositeIntent a rdfs:Class;
+uimo:CompositeIntent a rdfs:Class;
     rdfs:label "Composite Intent";
     rdfs:subClassOf schema:ItemList .
 
-:Slot a rdfs:Class;
+uimo:Slot a rdfs:Class;
     rdfs:label "Slot";
     rdfs:subClassOf schema:Intangible .
 
-:RequiredSlot a rdfs:Class;
+uimo:RequiredSlot a rdfs:Class;
     rdfs:label "RequiredSlot";
     rdfs:subClassOf :Slot .
 
-:Utterance a rdfs:Class;
+uimo:EntityTypeSlot a rdfs:Class;
+    rdfs:label "Entity Type";
+    rdf:subClassOf uimo:Slot .
+
+uimo:Utterance a rdfs:Class;
     rdfs:label "Utterance";
     rdfs:subClassOf schema:CreativeWork .
+
+uimo:SPARQLEndpoint a rdfs:Class;
+    rdfs:label "SPARQL Endpoint";
+    rdfs:subClassOf schema:EntryPoint .
+
+## imported for the UIMO SHACL shape
+oa:Annotation a rdfs:Class;
+    rdfs:label "Annotation" .
+
+oa:SpecificResource a rdfs:Class;
+    rdfs:label "Specific Resource" .
+
+
+## properties
+
+uimo:slot a rdf:Property;
+    rdfs:label "slot";
+    schema:domainIncludes uimo:Intent;
+    schema:rangeIncludes uimo:Slot .
+
+uimo:exampleUtterance a rdf:Property;
+    rdfs:label "example utterance";
+    schema:domainIncludes uimo:Intent;
+    schema:rangeIncludes uimo:Utterance .
+
+uimo:action a rdf:Property;
+    schema:domainIncludes uimo:Intent;
+    schema:rangeIncludes schema:Action .
+
+uimo:valueType a rdf:Property;
+    rdfs:label "value type";
+    schema:domainIncludes uimo:Slot;
+    schema:rangeIncludes schema:Class .
+
+uimo:propertyPath a rdf:Property;
+    rdfs:label "property path";
+    schema:domainIncludes uimo:Slot;
+    schema:rangeIncludes schema:Text .
+
+uimo:question a rdf:Property;
+    rdfs:label "question";
+    schema:domainIncludes uimo:Slot;
+    schema:rangeIncludes schema:Text .
+
+uimo:entityType a rdf:Property;
+    rdfs:label "entity type";
+    schema:domainIncludes uimo:EntityTypeSlot;
+    schema:rangeIncludes schema:Class .
+
+## imported for the UIMO SHACL shape 
+oa:hasBody a rdf:Property;
+    schema:domainIncludes oa:Annotation;
+    schema:rangeIncludes uimo:Slot .
+
+oa:hasSource a rdf:Property;
+    schema:domainIncludes oa:SpecificResource;
+    schema:rangeIncludes uimo:Utterance .
+
+oa:hasTarget a rdf:Property;
+    schema:domainIncludes oa:Annotation;
+    schema:rangeIncludes oa:SpecificResource .
 
