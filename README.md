@@ -19,6 +19,8 @@ The documentation below introduces the **Unified Intent Modeling Ontology** (UIM
 
 There are many frameworks to help developers to create goal-oriented dialog systems. Such frameworks are built around the concept of intents, a piece of functionality that the dialog system supports, which is ultimately matched with the goal of the user. The fulfillment logic of those intents are typically strictly coupled with a specific framework and a backend service. This tight coupling creates a bottleneck in terms of interoperability and scalability. UIMO addresses this issue by providing a mechanism to describe an intent explicitly. Each intent is linked with its possible fulfillment methods that is represented with the WASA language.
 
+?> _TODO_ List reused ontologies and their purposes
+
 ?> You can find an overview of UIMO in the figure below. A human friendly documentation is coming soon. Until then please check out [the vocabulary in Turtle format](/vocab/ext/UIMO.ttl ":ignore title"). 
 
 ![uimo](_media/uimo-Page-2.png ':class=figure')
