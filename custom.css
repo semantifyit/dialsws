@@ -17,3 +17,13 @@
 .definition {
     font-weight: bold;
 }
+
+:root {
+    --base-font-size: 16px;
+    --theme-color   : #44A9CA;
+    --base-font-family: "Fira Sans";
+    --cover-button-primary-background: #ff2e5c;
+    --cover-button-primary-border: 1px solid #ff2e5c;
+    --notice-important-background: #ffb2c3;
+    --notice-tip-background: hsl(194, 100%, 74%)
+  }

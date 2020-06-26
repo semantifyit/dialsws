@@ -18,10 +18,18 @@
       repo: 'https://github.com/semantifyit/sdo-webapi',
       coverpage: true,
       formatUpdated: '{DD}/{MM}/{YYYY}',
-      relativePath: 'true'
+      relativePath: 'true',
+      search:
+      {
+        depth: 3,
+        noData: 'No results...',
+        placeholder: 'Search...'
+      }
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-turtle.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
 </body>
 </html>
