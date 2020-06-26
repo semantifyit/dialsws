@@ -1,0 +1,123 @@
+{
+    "id": "e8f6a63e-73da-4a1a-8bfc-857183f71228",
+    "name": "room.reservation",
+    "auto": true,
+    "contexts": [],
+    "responses": [
+      {
+        "resetContexts": false,
+        "action": "room.reservation",
+        "affectedContexts": [],
+        "parameters": [
+          {
+            "id": "8b0ece57-dc7e-40e9-97d4-df20c09ff800",
+            "required": true,
+            "dataType": "@sys.location",
+            "name": "location",
+            "value": "$location",
+            "prompts": [
+              {
+                "lang": "en",
+                "value": "In what city would you like to reserve a room?"
+              }
+            ],
+            "promptMessages": [],
+            "noMatchPromptMessages": [],
+            "noInputPromptMessages": [],
+            "outputDialogContexts": [],
+            "isList": false
+          },
+          {
+            "id": "8fa3a76f-277c-4b63-9e4a-5b194097ec42",
+            "required": true,
+            "dataType": "@sys.date",
+            "name": "date",
+            "value": "$date",
+            "prompts": [
+              {
+                "lang": "en",
+                "value": "What date is your meeting?"
+              }
+            ],
+            "promptMessages": [],
+            "noMatchPromptMessages": [],
+            "noInputPromptMessages": [],
+            "outputDialogContexts": [],
+            "isList": false
+          },
+          {
+            "id": "3fdef4b4-dff3-4dae-a8f8-c6f978dab782",
+            "required": true,
+            "dataType": "@sys.time",
+            "name": "time",
+            "value": "$time",
+            "prompts": [
+              {
+                "lang": "en",
+                "value": "What time will the meeting start?"
+              }
+            ],
+            "promptMessages": [],
+            "noMatchPromptMessages": [],
+            "noInputPromptMessages": [],
+            "outputDialogContexts": [],
+            "isList": false
+          },
+          {
+            "id": "8cf10cbf-d494-4d88-83a3-055f2743ccee",
+            "required": true,
+            "dataType": "@sys.duration",
+            "name": "duration",
+            "value": "$duration",
+            "prompts": [
+              {
+                "lang": "en",
+                "value": "How long will the meeting last?"
+              }
+            ],
+            "promptMessages": [],
+            "noMatchPromptMessages": [],
+            "noInputPromptMessages": [],
+            "outputDialogContexts": [],
+            "isList": false
+          },
+          {
+            "id": "43603f4a-e193-41ee-9f14-91561604744f",
+            "required": true,
+            "dataType": "@sys.number",
+            "name": "guests",
+            "value": "$guests",
+            "prompts": [
+              {
+                "lang": "en",
+                "value": "How many people are attending the meeting?"
+              }
+            ],
+            "promptMessages": [],
+            "noMatchPromptMessages": [],
+            "noInputPromptMessages": [],
+            "outputDialogContexts": [],
+            "isList": false
+          }
+        ],
+        "messages": [
+          {
+            "type": 0,
+            "lang": "en",
+            "condition": "",
+            "speech": "Ok, here are the meeting details: \nDate: $date , \nTime: $time , \nDuration: $duration , \nLocation: $location , \nGuests: $guests ."
+          }
+        ],
+        "defaultResponsePlatforms": {},
+        "speech": []
+      }
+    ],
+    "priority": 500000,
+    "webhookUsed": false,
+    "webhookForSlotFilling": false,
+    "fallbackIntent": false,
+    "events": [],
+    "conditionalResponses": [],
+    "condition": "",
+    "conditionalFollowupEvents": []
+  }

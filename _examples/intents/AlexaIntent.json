@@ -7,46 +7,40 @@
             "name": "EventSearch",
             "slots": [
               {
-                "name": "event type",
-                "type": "schema-EventType",
-                "samples": [
-                  "I'm starting from {DepartingPlanet} ",
-                  "{DepartingPlanet} ",
-                  "I'm going from {DepartingPlanet} to {ArrivingPlanet} "
-                ]
+                "name": "EventTypeSlot",
+                "type": "schema-EventType"
               },
               {
-                "name": "ArrivingPlanet",
-                "type": "Planet",
-                "samples": [
-                  "I'm going to {ArrivingPlanet} ",
-                  "{ArrivingPlanet} "
-                ]
+                "name": "EventStartDateSlot",
+                "type": "AMAZON.DATE"
+              },
+              {
+                  "name": "EventLocationSlot",
+                  "type": "schema:PostalAddress"
               }
             ],
             "samples": [
-              "calculate travel time",
-              "how long does it take to travel from {DepartingPlanet} to {ArrivingPlanet} "
+              "I am looking for {EventTypeSlot} in {EventLocationSlot} {EventStartDateSlot}"
             ]
           }
         ],
         "types": [
           {
-            "name": "Planet",
+            "name": "Event",
             "values": [
               {
                 "name": {
-                  "value": "Mercury"
+                  "value": "schema-Event"
                 }
               },
               {
                 "name": {
-                  "value": "Venus"
+                  "value": "schema-MusicEvent"
                 }
               },
               {
                 "name": {
-                  "value": "Earth"
+                  "value": "schema-TheaterEvent"
                 }
               }
             ]
@@ -56,90 +50,49 @@
       "dialog": {
         "intents": [
           {
-            "name": "GetTravelTime",
-            "confirmationRequired": false,
-            "prompts": {},
+            "name": "EventSearch",
             "slots": [
               {
                 "name": "DepartingPlanet",
-                "type": "Planet",
-                "confirmationRequired": false,
-                "elicitationRequired": true,
-                "prompts": {
-                  "elicitation": "Elicit.Intent-GetTravelTime.IntentSlot-DepartingPlanet"
-                },
-                "validations": [
-                  {
-                    "type": "isNotInSet",
-                    "prompt": "Slot.Validation.596358663326.282490667310.1526107495625",
-                    "values": [
-                      "the sun",
-                      "sun",
-                      "our sun"
-                    ]
-                  },
-                  {
-                    "type": "hasEntityResolutionMatch",
-                    "prompt": "Slot.Validation.596358663326.282490667310.1366622834897"
-                  }
-                ]
+                "type": "schema-EventType",
+                "elicitationRequired": false
               },
               {
-                "name": "ArrivingPlanet",
-                "type": "Planet",
-                "confirmationRequired": false,
+                "name": "EventStartDateSlot",
+                "type": "AMAZON.DATE",
                 "elicitationRequired": true,
                 "prompts": {
-                  "elicitation": "Elicit.Intent-GetTravelTime.IntentSlot-ArrivingPlanet"
+                  "elicitation": "Elicit.Intent-EventSearch.IntentSlot-EventStartDateSlot"
+                }
+              },
+              {
+                "name": "EventLocationSlot",
+                "type": "schema-PostalAddress",
+                "elicitationRequired": true,
+                "prompts": {
+                  "elicitation": "Elicit.Intent-EventSearch.IntentSlot-EventLocationSlot"
                 }
               }
             ]
           }
-        ],
-        "delegationStrategy": "ALWAYS"
+        ]
       },
       "prompts": [
         {
-          "id": "Elicit.Intent-GetTravelTime.IntentSlot-DepartingPlanet",
+          "id": "Elicit.Intent-EventSearch.IntentSlot-EventLocationSlot",
           "variations": [
             {
               "type": "PlainText",
-              "value": "Which planet do you want to start from?"
+              "value": "Where?"
             }
           ]
         },
         {
-          "id": "Elicit.Intent-GetTravelTime.IntentSlot-ArrivingPlanet",
+          "id": "Elicit.Intent-EventSearch.IntentSlot-EventStartDateSlot",
           "variations": [
             {
               "type": "PlainText",
-              "value": "Which planet do you want to travel to?"
-            }
-          ]
-        },
-        {
-          "id": "Slot.Validation.596358663326.282490667310.1526107495625",
-          "variations": [
-            {
-              "type": "PlainText",
-              "value": "I can't answer this question about the sun, only planets. Please tell me a planet."
-            },
-            {
-              "type": "PlainText",
-              "value": "While the sun is the center of our solar system, it is not a planet. Please tell me a planet."
-            }
-          ]
-        },
-        {
-          "id": "Slot.Validation.596358663326.282490667310.1366622834897",
-          "variations": [
-            {
-              "type": "PlainText",
-              "value": "{DepartingPlanet} is not a planet. Please tell me one of the nine planets in our solar system. "
-            },
-            {
-              "type": "PlainText",
-              "value": "I don't recognize {DepartingPlanet} as a planet in our solar system. Please tell me a planet."
+              "value": "Which date?"
             }
           ]
         }

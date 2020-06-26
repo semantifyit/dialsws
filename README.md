@@ -19,7 +19,7 @@ The documentation below introduces the **Unified Intent Modeling Ontology** (UIM
 
 There are many frameworks to help developers to create goal-oriented dialog systems. Such frameworks are built around the concept of intents, a piece of functionality that the dialog system supports, which is ultimately matched with the goal of the user. The fulfillment logic of those intents are typically strictly coupled with a specific framework and a backend service. This tight coupling creates a bottleneck in terms of interoperability and scalability. UIMO addresses this issue by providing a mechanism to describe an intent explicitly. Each intent is linked with its possible fulfillment methods that are represented with the WASA language.
 
-!> _TODO_ List reused ontologies and their purposes
+> _TODO_ List reused ontologies and their purposes
 
 ?> You can find an overview of UIMO in the figure below. A human friendly documentation is coming soon. Until then please check out [the vocabulary in Turtle format](vocab/ext/UIMO.ttl ":ignore title"). 
 
@@ -29,13 +29,24 @@ There are many frameworks to help developers to create goal-oriented dialog syst
 
 ## Example: Event Search Intent
 
+<!--?> _TODO_ add a tabbed view for the graphical and Turtle representation of an intent -->
+
 [](_examples/uimo/intents/EventSearch.ttl ':include turtle')
 
-The core ontology already covers many aspects of dialog intents supported by various state-of-the art dialog system frameworks. 
+The core ontology already covers many aspects of dialog intents supported by various state-of-the art dialog system frameworks. Below we demonstrate how an intent modelled in UIMO can be mapped to a valid Alexa Intent:
 
 [](_examples/intents/AlexaIntent.json ':include')
 
-?> _TODO_ add a tabbed view for the graphical and Turtle representation of an intent 
+<div class="caption">Alexa Intent based on EventSearch intent modeled with UIMO</div>
+
+A mapper can deterministically map UIMO types and properties to [Amazon Alexa Interaction Model](https://developer.amazon.com/en-US/docs/alexa/smapi/interaction-model-schema.html). The language model defines the supported intents and their slots, as well as the sample annotated utterances. For example, `intents` object in the interaction model is generated based on the intent URI and slot definitions. The utterances in the `samples` array are generated based on the text position annotations of `:uttr1`. The dialog model defines the interaction of the skill and the user based on the defined intents. The `dialog.intents` object defines the required slots with the `elicitationRequired` property for each slot. Each `uimo:RequiredSlot` is mapped to a slot definition with a `true` value for this property. The values of prompts are created based on the uimo:question values of `uimo:RequiredSlot` instances.
+
+> _TODO_ add DialogFlow example
+
+# Intent Generation based on Semantic Fulfillment Descriptions
+
+Here we will explain how intents can be semi-automatically extracted from fulfillment descriptions (i.e. WASA APIs) and represented with UIMO.
+
 <!--The doc folder contains a multipage HTML documentation created by Ontodocs.-->
 
 <!--### See also:
