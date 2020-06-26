@@ -10,32 +10,46 @@
    uimo:slot :EventStartDateSlot ;
    uimo:exampleUtterance :utt1 ;
    uimo:action :SPARQL_EP ;
-   uimo:action :ENTITY_SEARCH_API .
+   uimo:action :EVENT_SEARCH_API .
    
 :EventTypeSlot a uimo:EntityTypeSlot ;
-   uimo:entityType schema:Event.
+   uimo:valueType schema:Event.
 
 :EventStartDateSlot a uimo:RequiredSlot ;
    uimo:propertyPath "schema:startDate" ;
-   uimo:valueType xsd:dateTime ;
+   uimo:valueType xsd:date ;
    uimo:question "Which date?". 
-   
-:utt1 a uimo:Utterance ;
-   schema:text "I am looking for concerts next week"@en .
 
-:entityType a oa:Annotation;
+:EventLocationSlot a uimo:RequiredSlot ;
+   uimo:propertyPath "schema:location/addressLocality | schema:location/addressCountry" ;
+   uimo:valueType schema:PostalAddress ;
+   uimo:question "Where?". 
+   
+:Utt1 a uimo:Utterance ;
+   schema:text "I am looking for concerts in Innsbruck next tuesday"@en .
+
+:EntityTypeAnno a oa:Annotation;
   oa:hasBody :EventTypeSlot;
   oa:hasTarget [
     oa:hasSource :utt1;
     oa:hasSelector [
       a oa:TextPositionSelector; 
       oa:start 17; oa:end 24]
-  ].
-  :eventDate a oa:Annotation;
+];
+:StartDateAnno a oa:Annotation;
   oa:hasBody :EventStartDateSlot;
   oa:hasTarget [
     oa:hasSource :utt1;
     oa:hasSelector [
       a oa:TextPositionSelector; 
-      oa:start 26; oa:end 34]
-  ] .
+      oa:start 39; oa:end 50]
+];
+:LocationAnno a oa:Annotation;
+  oa:hasBody :EventLocationSlot;
+  oa:hasTarget [
+    oa:hasSource :utt1;
+    oa:hasSelector [
+      a oa:TextPositionSelector; 
+      oa:start 29; oa:end 37]
+].
+

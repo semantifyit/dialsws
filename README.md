@@ -29,50 +29,7 @@ There are many frameworks to help developers to create goal-oriented dialog syst
 
 ## Example: Event Search Intent
 
-```turtle
-@prefix : <http://dialsws.xyz/events/> .
-@prefix uimo: <http://vocab.sti2.at/uimo/> .
-@prefix schema:  <http://schema.org/> .
-@prefix oa: <http://www.w3.org/ns/oa#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-:EventSearch a uimo:Intent ;
-   schema:name "Search Events"@en ;
-   uimo:slot :EventTypeSlot ;
-   uimo:slot :EventStartDateSlot ;
-   uimo:exampleUtterance :utt1 ;
-   uimo:action :SPARQL_EP ;
-   uimo:action :ENTITY_SEARCH_API .
-   
-:EventTypeSlot a uimo:EntityTypeSlot ;
-   uimo:entityType schema:Event.
-
-:EventStartDateSlot a uimo:RequiredSlot ;
-   uimo:propertyPath "schema:startDate" ;
-   uimo:valueType xsd:dateTime ;
-   uimo:question "Which date?". 
-   
-:utt1 a uimo:Utterance ;
-   schema:text "I am looking for concerts next week"@en .
-
-:entityType a oa:Annotation;
-  oa:hasBody :EventTypeSlot;
-  oa:hasTarget [
-    oa:hasSource :utt1;
-    oa:hasSelector [
-      a oa:TextPositionSelector; 
-      oa:start 17; oa:end 24]
-  ].
-  :eventDate a oa:Annotation;
-  oa:hasBody :EventStartDateSlot;
-  oa:hasTarget [
-    oa:hasSource :utt1;
-    oa:hasSelector [
-      a oa:TextPositionSelector; 
-      oa:start 26; oa:end 34]
-  ] .
-
-```
+[](_examples/uimo/intents/EventSearch.ttl ':include turtle')
 
 ?> _TODO_ add a tabbed view for the graphical and Turtle representation of an intent 
 <!--The doc folder contains a multipage HTML documentation created by Ontodocs.-->
