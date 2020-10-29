@@ -1,0 +1,58 @@
+@prefix uimo: <http://vocab.sti2.at/uimo/> .
+@prefix wasa: <http://vocab.sti2.at/wasa/> .
+@prefix : <http://example.org> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <http://schema.org/> .
+@prefix smtfy: <https://actions.staging.semantify.it/api/rdf/action/> .
+
+:SearchLodgingReservation a uimo:Intent;
+    uimo:fulfillment  <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+    uimo:slot :p_HPQR71vICC_p, :p__Seda_WkDX_p, :p_xQ86FqtPNa_p, :p_Sv_baWGglh_p, :p_fEy9F7Be7X_p, :p_ExBlHLW_mj_p, :p_JJ1EmcgNDk_p, :p__yYdqJ_C6T_p, :p_o9dMsFeCER_p, :p_eqdUpEBz0c_p, :p_X9eFRpxiN5X_p, :p_HqPZwydWzm5_p   .
+
+:p_HPQR71vICC_p a uimo:RequiredSlot;
+    uimo:valueType xsd:integer;
+    uimo:slotSpecification [
+        uimo:propertyPath "object/numAdults";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType xsd:integer 
+    ] .
+
+:p_Sv_baWGglh_p	 a uimo:EntityTypeSlot;
+    uimo:valueType schema:LodgingReservation ;
+    uimo:slotSpecification [
+        uimo:propertyPath "object";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType schema:LodgingReservation 
+    ],
+    [
+        uimo:propertyPath "result";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType schema:LodgingReservation 
+    ] .
+
+:p_xQ86FqtPNa_p a uimo:RequiredSlot;
+    uimo:valueType xsd:datetime ;
+    uimo:slotSpecification [
+        uimo:propertyPath "object/checkinTime";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType xsd:datetime 
+    ],
+    [
+        uimo:propertyPath "result/checkinTime";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType xsd:datetime 
+    ] .
+    
+:p__Seda_WkDX_p a uimo:RequiredSlot;
+    uimo:valueType xsd:datetime ;
+    uimo:slotSpecification [
+        uimo:propertyPath "object/checkoutTime";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType xsd:datetime 
+    ],
+    [
+        uimo:propertyPath "result/checkoutTime";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType xsd:datetime 
+    ] .
+

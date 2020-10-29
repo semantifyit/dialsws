@@ -41,7 +41,17 @@ The core ontology already covers many aspects of dialog intents supported by var
 
 A mapper can deterministically map UIMO types and properties to [Amazon Alexa Interaction Model](https://developer.amazon.com/en-US/docs/alexa/smapi/interaction-model-schema.html). The language model defines the supported intents and their slots, as well as the sample annotated utterances. For example, `intents` object in the interaction model is generated based on the intent URI and slot definitions. The utterances in the `samples` array are generated based on the text position annotations of `:uttr1`. The dialog model defines the interaction of the skill and the user based on the defined intents. The `dialog.intents` object defines the required slots with the `elicitationRequired` property for each slot. Each `uimo:RequiredSlot` is mapped to a slot definition with a `true` value for this property. The values of prompts are created based on the uimo:question values of `uimo:RequiredSlot` instances.
 
-> _TODO_ add DialogFlow example
+## Example: Search Hotel Availabilities Intent
+
+The intent generated based on a `SearchAction` with `LodgingReservation` result type is represent with UIMO as follows:
+
+[](_examples/uimo/intents/feratel-search-hotel-availabilities-intent.ttl ':include')
+
+This intent is mapped to a DialogFlow intent:
+
+[](_examples/intents/feratel-search-hotel-availabilities-df-intent.json ':include')
+
+
 
 # Intent Generation based on Semantic Fulfillment Descriptions
 

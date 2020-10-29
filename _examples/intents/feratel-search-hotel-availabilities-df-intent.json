@@ -1,0 +1,207 @@
+{
+  "id": "805ccd20-1a0b-11eb-ba1d-1781eacd0072",
+  "name": "SearchAction: LodgingReservation",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "805d9070-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_Sv-baWGglh_p",
+          "required": false,
+          "dataType": "@e_9voTgtRZl_e",
+          "value": "$p_Sv-baWGglh_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805dde90-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_xQ86FqtPNa_p",
+          "required": true,
+          "dataType": "@sys.date-time",
+          "value": "$p_xQ86FqtPNa_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            "Please give me the checkin time"
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805e05a0-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p__Seda_WkDX_p",
+          "required": true,
+          "dataType": "@sys.date-time",
+          "value": "$p__Seda_WkDX_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            "Please give me the checkout time"
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805e2cb0-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_HPQR71vICC_p",
+          "required": true,
+          "dataType": "@sys.number-integer",
+          "value": "$p_HPQR71vICC_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            "Please give me the num adults"
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805e53c0-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_fEy9F7Be7X_p",
+          "required": false,
+          "dataType": "@e_41hZawE_mZ_e",
+          "value": "$p_fEy9F7Be7X_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805e7ad0-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_ExBlHLW-mj_p",
+          "required": false,
+          "dataType": "@sys.number",
+          "value": "$p_ExBlHLW-mj_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805e7ad1-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_JJ1EmcgNDk_p",
+          "required": false,
+          "dataType": "@sys.any",
+          "value": "$p_JJ1EmcgNDk_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805e7ad2-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_-yYdqJ-C6T_p",
+          "required": false,
+          "dataType": "@e_VG4jhyDM5m_e",
+          "value": "$p_-yYdqJ-C6T_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805e7ad3-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_o9dMsFeCER_p",
+          "required": false,
+          "dataType": "@e_pyHxXDqWhF_e",
+          "value": "$p_o9dMsFeCER_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805ea1e0-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_eqdUpEBz0c_p",
+          "required": false,
+          "dataType": "@sys.any",
+          "value": "$p_eqdUpEBz0c_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805ea1e1-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_X9eFRpxiN5X_p",
+          "required": false,
+          "dataType": "@e_Pi5QYU42e8_e",
+          "value": "$p_X9eFRpxiN5X_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "805ea1e2-1a0b-11eb-ba1d-1781eacd0072",
+          "name": "p_HqPZwydWzm5_p",
+          "required": false,
+          "dataType": "@e_YeVXWKN6ln_e",
+          "value": "$p_HqPZwydWzm5_p",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        }
+      ],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "en",
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}
