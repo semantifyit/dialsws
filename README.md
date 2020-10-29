@@ -45,7 +45,7 @@ A mapper can deterministically map UIMO types and properties to [Amazon Alexa In
 
 The intent generated based on a `SearchAction` with `LodgingReservation` result type is represent with UIMO as follows:
 
-[](_examples/uimo/intents/feratel-search-hotel-availabilities-intent.ttl ':include')
+[](_examples/uimo/intents/feratel-search-hotel-availabilities-intent.ttl ':include turtle')
 
 This intent is mapped to a DialogFlow intent:
 
