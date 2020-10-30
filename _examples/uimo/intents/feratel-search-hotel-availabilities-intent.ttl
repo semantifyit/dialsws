@@ -56,3 +56,10 @@
         uimo:valueType xsd:datetime 
     ] .
 
+:p_fEy9F7Be7X_p a uimo:RequiredSlot;
+    uimo:valueType xsd:integer;
+    uimo:slotSpecification [
+        uimo:propertyPath "object/numAdults";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType xsd:integer 
+    ] .
