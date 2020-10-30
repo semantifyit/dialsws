@@ -51,11 +51,16 @@ This intent is mapped to a DialogFlow intent:
 
 [](_examples/intents/feratel-search-hotel-availabilities-df-intent.json ':include')
 
+Note that the intent generator contains a compabability layer that provides certain heuristics for framework specific mappings from UIMO.
+
+# Intent Generation based on WASA Potential Actions
+
+The screenshots below show the intent generator tool.
+
+![fulfillment](_media/dialsws-intent.png ':class=custom.css')
+![fulfillment](_media/dialsws-intent.png) ':class=custom.css')
 
 
-# Intent Generation based on Semantic Fulfillment Descriptions
-
-Here we will explain how intents can be semi-automatically extracted from fulfillment descriptions (i.e. WASA APIs) and represented with UIMO.
 
 <!--The doc folder contains a multipage HTML documentation created by Ontodocs.-->
 
