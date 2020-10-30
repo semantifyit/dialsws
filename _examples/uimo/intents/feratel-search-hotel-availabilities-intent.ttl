@@ -56,10 +56,97 @@
         uimo:valueType xsd:datetime 
     ] .
 
-:p_fEy9F7Be7X_p a uimo:RequiredSlot;
-    uimo:valueType xsd:integer;
+:p_fEy9F7Be7X_p a uimo:EntityTypeSlot;
+    uimo:valueType schema:PriceSpecification;
     uimo:slotSpecification [
-        uimo:propertyPath "object/numAdults";
+        uimo:propertyPath "result/totalPrice";
         uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
-        uimo:valueType xsd:integer 
+        uimo:valueType schema:PriceSpecification 
     ] .
+
+:p_ExBlHLW_mj_p	a uimo:Slot;
+    uimo:valueType xsd:double;
+    uimo:slotSpecification [
+        uimo:propertyPath "result/totalPrice/price";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType xsd:double 
+    ] .
+
+:p_JJ1EmcgNDk_p a uimo:Slot;
+    uimo:valueType xsd:string;
+    uimo:slotSpecification [
+        uimo:propertyPath "result/totalPrice/priceCurrency";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType xsd:string 
+    ] .
+
+:p_JJ1EmcgNDk_p a uimo:Slot;
+    uimo:valueType xsd:string;
+    uimo:slotSpecification [
+        uimo:propertyPath "result/totalPrice/priceCurrency";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType xsd:string 
+    ] .
+
+:p__yYdqJ_C6T_p a uimo:EntityValueType;
+    uimo:valueType schema:HotelRoom;
+    uimo:slotSpecification [
+        uimo:propertyPath "result/reservationFor";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType schema:HotelRoom
+    ] .
+
+:p_o9dMsFeCER_p a uimo:EntityValueType;
+    uimo:valueType schema:LodgingBusiness;
+    uimo:slotSpecification [
+        uimo:propertyPath "result/reservationFor/containedInPlace";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType schema:LodgingBusiness
+    ] .
+
+:p_HqPZwydWzm5_p a uimo:Slot;
+    uimo:valueType xsd:string;
+    uimo:slotSpecification [
+        uimo:propertyPath "result/reservationFor/containedInPlace/location/name";
+        uimo:action <smtfy:a60b9447-0627-11eb-a9c2-65fc86341528>;
+        uimo:valueType xsd:string
+    ] .
+
+:Utt1 a uimo:Utterance ;
+   schema:text "I need a room in innsbruck for two tomorrow"@en .
+
+:RoomTypeAnno a oa:Annotation;
+  oa:hasBody :p__yYdqJ_C6T_p;
+  oa:hasTarget [
+    oa:hasSource :Utt1;
+    oa:hasSelector [
+      a oa:TextPositionSelector; 
+      oa:start 9; oa:end 12]
+] .
+
+:HotelLocationAnno a oa:Annotation;
+  oa:hasBody :p_HqPZwydWzm5_p;
+  oa:hasTarget [
+    oa:hasSource :Utt1;
+    oa:hasSelector [
+      a oa:TextPositionSelector; 
+      oa:start 17; oa:end 25]
+].
+
+:NumAdultsAnno a oa:Annotation;
+  oa:hasBody :p_HPQR71vICC_p;
+  oa:hasTarget [
+    oa:hasSource :Utt1;
+    oa:hasSelector [
+      a oa:TextPositionSelector; 
+      oa:start 31; oa:end 33]
+].
+
+:NumAdultsAnno a oa:Annotation;
+  oa:hasBody :p_xQ86FqtPNa_p;
+  oa:hasTarget [
+    oa:hasSource :Utt1;
+    oa:hasSelector [
+      a oa:TextPositionSelector; 
+      oa:start 35; oa:end 42]
+].
