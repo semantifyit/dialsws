@@ -21,7 +21,7 @@
 :root {
     --base-font-size: 16px;
     --theme-color   : #44A9CA;
-    --base-font-family: "Futura Bk Bt";
+    --base-font-family: "Futura Bk Bt", Lato, sans-serif;
     --cover-button-primary-background: #ff2e5c;
     --cover-button-primary-border: 1px solid #ff2e5c;
     --notice-important-background: #ffb2c3;
