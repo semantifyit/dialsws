@@ -58,9 +58,17 @@ Note that the intent generator contains a compabability layer that provides cert
 The screenshots below show the intent generator tool.
 
 ![fulfillment](_media/dialsws-intent.png ':class=custom.css')
-![fulfillment](_media/dialsws-intent.png) ':class=custom.css')
+<span class="caption">An intent has fulfillments that are WASA Potential Actions</span>
 
+![fulfillment](_media/dialsws-slots.png ':class=custom.css')
+<span class="caption">Slots are extracted from input and output descriptions of fulfillments</span>
 
+![fulfillment](_media/dialsws-training.png ':class=custom.css')
+<span class="caption">The training sentences can be annotated with the generated slots.</span>
+
+# Dialog Examples
+
+coming soon.
 
 <!--The doc folder contains a multipage HTML documentation created by Ontodocs.-->
 
