@@ -6,6 +6,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#>  .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
 
 <https://vocab.sti2.at/uimo/> a owl:Ontology.
 
@@ -26,12 +27,22 @@ uimo:RequiredSlot a rdfs:Class;
     rdfs:subClassOf :Slot .
 
 uimo:EntityTypeSlot a rdfs:Class;
-    rdfs:label "Entity Type";
-    rdf:subClassOf uimo:Slot .
+    rdfs:label "Entity Type Slot";
+    rdfs:subClassOf uimo:Slot .
+
+uimo:RegExSlot a rdfs:Class;
+    rdfs:label "Regular Expression Slot";
+    rdfs:comment "A slot whose value is defined by a regular expression";
+    rdfs:subClassOf uimo:Slot .
+
+uimo:FunctionalSlot a rdfs:Class;
+    rdfs:label "Regular Expression Slot";
+    rdfs:comment "A slot whose value is defined by function represented with the FnO ontology.";
+    rdfs:subClassOf uimo:Slot .
 
 uimo:ContextualSlot a rdfs:Class;
     rdfs:label "Contextual Slot";
-    rdf:subClassOf uimo:Slot .
+    rdfs:subClassOf uimo:Slot .
 
 uimo:Utterance a rdfs:Class;
     rdfs:label "Utterance";
@@ -92,6 +103,18 @@ uimo:slotSpecification a rdf:Property;
     rdfs:label "slotSpecification";
     schema:domainIncludes uimo:Slot;
     schema:rangeIncludes uimo:SlotSpecification .
+
+uimo:pattern a rdf:Property;
+    rdfs:label "pattern";
+    rdfs:comment "A regular expression pattern that decide if a phrase is a potential value for a regular expression slot" .
+    schema:domainIncludes uimo:RegExSlot;
+    schema:rangeIncludes schema:Text .
+
+uimo:function a rdf:Property;
+    rdfs:label "pattern";
+    rdfs:comment "A regular expression pattern that decide if a phrase is a potential value for a regular expression slot" .
+    schema:domainIncludes uimo:FunctionalSlot;
+    schema:rangeIncludes fno:Function .
 
 ## imported for the UIMO SHACL shape 
 oa:hasBody a rdf:Property;
