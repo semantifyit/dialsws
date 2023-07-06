@@ -36,7 +36,7 @@ uimo:RegExSlot a rdfs:Class;
     rdfs:subClassOf uimo:Slot .
 
 uimo:FunctionalSlot a rdfs:Class;
-    rdfs:label "Regular Expression Slot";
+    rdfs:label "Functional slot";
     rdfs:comment "A slot whose value is defined by function represented with the FnO ontology.";
     rdfs:subClassOf uimo:Slot .
 
